@@ -811,7 +811,7 @@ const MKT=[
     const xy=pts.map((p,i)=>`${(i/(pts.length-1)*96+2).toFixed(1)},${(22-(p[1]-lo)/r*18).toFixed(1)}`);const up=vs[vs.length-1]>=vs[vs.length-2];
     return `<svg viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="${xy.join(" ")}" fill="none" stroke="var(--muted)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><circle cx="${xy[xy.length-1].split(",")[0]}" cy="${xy[xy.length-1].split(",")[1]}" r="2.2" fill="var(${up?"--gsec":"--mpc"})"/></svg>`;};
   document.getElementById("mkt").innerHTML=MKT.map(o=>{
-    if(!o.pts.length)return `<div class="mk" title="${esc(o.note)}"><div class="nm">${esc(o.n)}</div><div class="val">—</div><div class="dt">Filled on your first update run</div></div>`;
+    if(!o.pts.length)return `<div class="mk" title="${esc(o.note)}"><div class="nm">${esc(o.n)}</div><div class="val">—</div><div class="dt">${esc(o.note||"Not captured yet")}</div></div>`;
     const n=o.pts.length,[d1,v1]=o.pts[n-1];let ch="";
     if(n>=2){const [d0,v0]=o.pts[n-2],dv=v1-v0,cls=Math.abs(dv)<1e-9?"ch flat":dv>0?"ch up":"ch dn",ar=Math.abs(dv)<1e-9?"▬":dv>0?"▲":"▼";
       ch=o.m==="y"?`<span class="${cls}">${ar} ${dv>0?"+":""}${(dv*100).toFixed(1)} bp</span>`:`<span class="${cls}">${ar} ${dv>0?"+":""}${nf(dv,o.dp)} (${dv>0?"+":""}${(dv/v0*100).toFixed(2)}%)</span>`;

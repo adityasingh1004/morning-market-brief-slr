@@ -81,7 +81,7 @@ def make_base(src: str, account: str = "YOUR-GITHUB-ACCOUNT") -> str:
 
     # 5. render empty series gracefully
     guard = ('if(!o.pts.length)return `<div class="mk" title="${esc(o.note)}"><div class="nm">${esc(o.n)}</div>'
-             '<div class="val">—</div><div class="dt">Filled on your first update run</div></div>`;\n    ')
+             '<div class="val">—</div><div class="dt">${esc(o.note||"Not captured yet")}</div></div>`;\n    ')
     if guard not in s:
         s = s.replace("const n=o.pts.length,[d1,v1]=o.pts[n-1];", guard + "const n=o.pts.length,[d1,v1]=o.pts[n-1];", 1)
     return s
