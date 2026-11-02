@@ -1,3 +1,6 @@
+# Morning Market Brief – SLR
+# Copyright (C) 2026 Aditya Kumar Singh
+# SPDX-License-Identifier: AGPL-3.0-only (with additional attribution terms, see ADDITIONAL-TERMS.md)
 """Where the tool keeps its files.
 
 Default data ships inside the package. Users edit their own copies in the home

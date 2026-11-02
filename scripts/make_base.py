@@ -1,3 +1,6 @@
+# Morning Market Brief – SLR
+# Copyright (C) 2026 Aditya Kumar Singh
+# SPDX-License-Identifier: AGPL-3.0-only (with additional attribution terms, see ADDITIONAL-TERMS.md)
 """Builds the public base report from the author's live report.
 
     python scripts/make_base.py SOURCE.html [--out report/base_report.html]

@@ -1,3 +1,6 @@
+# Morning Market Brief – SLR
+# Copyright (C) 2026 Aditya Kumar Singh
+# SPDX-License-Identifier: AGPL-3.0-only (with additional attribution terms, see ADDITIONAL-TERMS.md)
 """Calendar engine: turns the official-calendar seed plus date rules into dated events.
 
 Standard library only, so it installs on a locked-down treasury PC with plain Python 3.9+.

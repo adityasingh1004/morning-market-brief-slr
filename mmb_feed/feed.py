@@ -1,3 +1,6 @@
+# Morning Market Brief – SLR
+# Copyright (C) 2026 Aditya Kumar Singh
+# SPDX-License-Identifier: AGPL-3.0-only (with additional attribution terms, see ADDITIONAL-TERMS.md)
 """Confirms scheduled events against RBI press releases (RSS feed).
 
 Deterministic title matching only: no AI, no numbers parsed from prose.

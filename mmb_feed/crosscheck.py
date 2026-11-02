@@ -1,3 +1,6 @@
+# Morning Market Brief – SLR
+# Copyright (C) 2026 Aditya Kumar Singh
+# SPDX-License-Identifier: AGPL-3.0-only (with additional attribution terms, see ADDITIONAL-TERMS.md)
 """Compares engine events with another calendar (e.g. the FY27 dashboard export) event by event."""
 from __future__ import annotations
 

@@ -1,3 +1,6 @@
+# Morning Market Brief – SLR
+# Copyright (C) 2026 Aditya Kumar Singh
+# SPDX-License-Identifier: AGPL-3.0-only (with additional attribution terms, see ADDITIONAL-TERMS.md)
 """Reads the content of RBI press releases carried in the RSS feed.
 
 Every number comes straight out of RBI's own HTML tables. Nothing is estimated.
