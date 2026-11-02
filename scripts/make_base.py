@@ -40,7 +40,7 @@ def footer(repo: str) -> str:
             f'UNVERIFIED against their sources; check the source before relying on any figure. Not investment advice.</footer>')
 
 
-def make_base(src: str, account: str = "YOUR-GITHUB-ACCOUNT") -> str:
+def make_base(src: str, account: str = "adityasingh1004") -> str:
     s = src
     # 1. hosting wrapper: keep the real document only
     i = s.find("<!DOCTYPE html>")
@@ -91,7 +91,7 @@ def main(argv=None):
     p = argparse.ArgumentParser()
     p.add_argument("source")
     p.add_argument("--out", default=str(Path(__file__).resolve().parent.parent / "report" / "base_report.html"))
-    p.add_argument("--account", default="YOUR-GITHUB-ACCOUNT", help="GitHub account that hosts the repo")
+    p.add_argument("--account", default="adityasingh1004", help="GitHub account that hosts the repo")
     a = p.parse_args(argv)
     out = make_base(Path(a.source).read_text(encoding="utf-8"), a.account)
     Path(a.out).write_text(out, encoding="utf-8")

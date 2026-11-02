@@ -39,7 +39,7 @@ The page itself is one HTML file in `~/MorningMarketBrief/report.html`. Open it 
 
 **Claude Code**
 ```
-git clone https://github.com/YOUR-GITHUB-ACCOUNT/morning-market-brief-slr ~/.claude/skills/morning-market-brief-slr
+git clone https://github.com/adityasingh1004/morning-market-brief-slr ~/.claude/skills/morning-market-brief-slr
 ```
 Then ask Claude: *"Run the Morning Market Brief – SLR daily update."*
 
