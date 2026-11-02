@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Synthetic test fixture with made-up titles in RBI's usual wording. Not real RBI releases. -->
+<rss version="2.0"><channel><title>RBI Press Releases (test fixture)</title>
+<item><title>Auction of Government of India Dated Securities</title><link>https://example.invalid/pr1</link><pubDate>Mon, 02 Nov 2026 17:00:00 +0530</pubDate></item>
+<item><title>Auction of 91 Days, 182 Days and 364 Days Treasury Bills</title><link>https://example.invalid/pr2</link><pubDate>Mon, 02 Nov 2026 17:30:00 +0530</pubDate></item>
+<item><title>Auction of State Government Securities</title><link>https://example.invalid/pr3</link><pubDate>Fri, 30 Oct 2026 18:00:00 +0530</pubDate></item>
+<item><title>Treasury Bills: Full Auction Result</title><link>https://example.invalid/pr4</link><pubDate>Wed, 04 Nov 2026 19:00:00 +0530</pubDate></item>
+<item><title>Money Market Operations as on November 03, 2026</title><link>https://example.invalid/pr5</link><pubDate>Wed, 04 Nov 2026 09:00:00 +0530</pubDate></item>
+</channel></rss>

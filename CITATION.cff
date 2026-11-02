@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use or share Morning Market Brief – SLR, please cite it as below."
+title: "Morning Market Brief – SLR"
+abstract: "A daily overview of India's government debt market (G-Sec, T-bills, SDLs, RBI operations), maintained from official releases with every figure tagged against its source."
+type: software
+authors:
+  - family-names: "Singh"
+    given-names: "Aditya Kumar"
+version: "1.0.0"
+date-released: "2026-11-02"
+license: AGPL-3.0-only
+repository-code: "https://github.com/YOUR-GITHUB-ACCOUNT/morning-market-brief-slr"
+keywords:
+  - India
+  - government securities
+  - SDL
+  - RBI
+  - fixed income
+  - treasury

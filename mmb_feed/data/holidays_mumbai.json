@@ -1,0 +1,7 @@
+{
+ "note": "Fill from RBI Holiday Matrix (Mumbai, NI Act): https://rbi.org.in/Scripts/HolidayMatrixDisplay.aspx . Only entries listed here are treated as holidays; weekends are automatic.",
+ "holidays": {
+  "2026-10-02": "Gandhi Jayanti",
+  "2026-12-25": "Christmas"
+ }
+}

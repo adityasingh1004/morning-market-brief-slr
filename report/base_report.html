@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Aditya Kumar Singh">
+<meta name="generator" content="Morning Market Brief – SLR">
+<meta name="license" content="AGPL-3.0 with attribution terms">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Morning Market Brief – SLR · FY 2026-27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F5F1; --card:#FFFFFF; --ink:#16233A; --muted:#5E6A78; --rule:#D6DCD4; --soft:#E9EDE7;
+  --gsec:#2F6B4F; --mat:#B7791F; --tbill:#2A7F9E; --sdl:#7A4E8C; --mpc:#B3283B; --data:#46607A; --other:#7D848E; --fiscal:#6B6A2A;
+  --ops:#4B55C8; --tax:#9A5530;
+  --ok:#2F6B4F; --warn:#9A6A12; --bad:#B3283B; --focus:#2A7F9E;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1521; --card:#162132; --ink:#E5E9EF; --muted:#9AA6B5; --rule:#2A3950; --soft:#1C2A3E;
+    --gsec:#62B58D; --mat:#E3A64A; --tbill:#5DB8D8; --sdl:#B892CC; --mpc:#F06A7C; --data:#93ACC7; --other:#A2A9B3; --fiscal:#C4C27A;
+    --ops:#98A0F2; --tax:#D9A07A;
+    --ok:#62B58D; --warn:#E3A64A; --bad:#F06A7C; --focus:#5DB8D8;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1521; --card:#162132; --ink:#E5E9EF; --muted:#9AA6B5; --rule:#2A3950; --soft:#1C2A3E;
+  --gsec:#62B58D; --mat:#E3A64A; --tbill:#5DB8D8; --sdl:#B892CC; --mpc:#F06A7C; --data:#93ACC7; --other:#A2A9B3; --fiscal:#C4C27A;
+  --ops:#98A0F2; --tax:#D9A07A;
+    --ok:#62B58D; --warn:#E3A64A; --bad:#F06A7C; --focus:#5DB8D8;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;font-variant-numeric:tabular-nums}
+a{color:var(--tbill)}
+.wrap{max-width:1100px;margin:0 auto;padding:18px 16px 48px}
+header h1{font-size:clamp(22px,5.4vw,34px);line-height:1.1;margin:4px 0 6px;font-weight:800;letter-spacing:-.02em}
+header p{margin:0;color:var(--muted);max-width:70ch}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:16px 0 18px}
+@media(min-width:760px){.facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.facts div{background:var(--card);padding:10px 12px}
+.facts dt{font-size:12.5px;color:var(--muted)}
+.facts dd{margin:2px 0 0;font-weight:700;font-size:16px}
+.facts dd small{font-weight:500;color:var(--muted);font-size:12px;display:block}
+
+/* market strip */
+.mkt{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px;margin:0 0 18px}
+.mkt h2{font-size:16px;margin:0 0 2px}
+.mkt p.sub{margin:0 0 10px;color:var(--muted);font-size:13px}
+.mkt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media(min-width:760px){.mkt-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.mk{border:1px solid var(--rule);border-radius:8px;padding:8px 10px;min-width:0}
+.mk .nm{font-size:12.5px;color:var(--muted)}
+.mk .val{font-weight:700;font-size:18px}
+.mk .val small{font-weight:500;font-size:12px;color:var(--muted)}
+.mk .ch{font-size:13px;font-weight:700}
+.mk .ch.flat{color:var(--muted);font-weight:600}
+.mk .dt{font-size:11.5px;color:var(--muted)}
+.mk svg{display:block;width:100%;height:26px;margin:4px 0 2px}
+.mk .hist{font-size:11.5px;color:var(--muted);margin-top:2px}
+
+/* year strip (hero) */
+.strip{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 12px 8px}
+.strip h2{font-size:16px;margin:0 0 2px}
+.strip p.sub{margin:0 0 8px;color:var(--muted);font-size:13px}
+.strip-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.strip svg{display:block}
+.strip .bar{cursor:pointer}
+.strip .bar:hover,.strip .bar:focus{opacity:.75;outline:none}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+
+/* tabs */
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);margin:18px -16px 12px;padding:8px 16px;border-bottom:1px solid var(--rule);overflow-x:auto;white-space:nowrap}
+nav.tabs button{font:inherit;font-size:14px;font-weight:600;border:0;background:none;color:var(--muted);padding:8px 10px;border-radius:8px;cursor:pointer}
+nav.tabs button[aria-selected="true"]{color:var(--ink);background:var(--soft)}
+button:focus-visible,.chip:focus-visible,.day:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+section[role="tabpanel"]{display:none}
+section[role="tabpanel"].on{display:block}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.chip{font:inherit;font-size:13px;border:1px solid var(--rule);background:var(--card);color:var(--ink);padding:5px 10px 5px 8px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip .sw{width:10px;height:10px;border-radius:50%}
+.chip[aria-pressed="false"]{opacity:.45}
+.chip b{font-weight:600;color:var(--muted);font-size:12px}
+
+/* calendar */
+.calhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.calhead h3{margin:0;font-size:19px}
+.calhead .nav{display:flex;gap:6px}
+.btn{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.dow{font-size:12px;color:var(--muted);text-align:center;padding:2px 0}
+.day{min-height:54px;background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:4px;font:inherit;text-align:left;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;gap:3px}
+.day.out{visibility:hidden}
+.day.wknd{background:var(--soft)}
+.day .n{font-size:13px;font-weight:600}
+.day.today .n{background:var(--ink);color:var(--paper);border-radius:4px;padding:0 4px;align-self:flex-start}
+.day.sel{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.dots{display:flex;flex-wrap:wrap;gap:3px}
+.dots span{width:7px;height:7px;border-radius:50%}
+.day .mini{display:none;font-size:11px;line-height:1.2;border-left:3px solid;padding-left:4px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+@media(min-width:760px){.day{min-height:96px}.day .mini{display:block}.day .dots{display:none}}
+.detail{margin-top:14px}
+.detail h4{margin:0 0 8px;font-size:16px}
+
+/* event list */
+.ev{display:grid;grid-template-columns:4px 1fr;gap:0 10px;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 12px 10px 0;margin-bottom:8px}
+.ev .cbar{border-radius:0 3px 3px 0}
+.ev .t{font-weight:700}
+.ev .meta{font-size:13px;color:var(--muted);margin-top:2px}
+.ev .amt{font-weight:700}
+.ev .d{font-size:13.5px;margin-top:4px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:4px;padding:1px 6px;margin-top:6px;border:1px solid}
+.badge.v{color:var(--ok);border-color:var(--ok)}
+.badge.s{color:var(--warn);border-color:var(--warn)}
+.badge.u{color:#fff;background:var(--bad);border-color:var(--bad)}
+.badge.c{color:var(--ops);border-color:var(--ops)}
+.src{font-size:12px;color:var(--muted);margin-left:6px}
+.agenda h4{margin:18px 0 8px;font-size:15px;color:var(--muted);font-weight:600}
+.agenda .dt{font-size:13px;font-weight:700;margin:12px 0 4px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+label.tog{font-size:14px;display:inline-flex;gap:6px;align-items:center}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top;white-space:nowrap}
+th{font-size:12.5px;color:var(--muted);font-weight:600;background:var(--soft)}
+td.num,th.num{text-align:right}
+tr.past td{color:var(--muted)}
+tr.tot td{font-weight:700;background:var(--soft)}
+.ten{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:4px;padding:0 5px;margin:1px 3px 1px 0;white-space:nowrap}
+.ten.g{border-color:var(--gsec);color:var(--gsec)}
+.note{font-size:13.5px;color:var(--muted);max-width:75ch}
+.panel-intro{max-width:75ch;margin:0 0 12px}
+.q{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px;margin-bottom:10px}
+.q h4{margin:0 0 4px}
+.split{display:grid;gap:12px}
+@media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
+.up{color:var(--gsec);font-weight:700}.dn{color:var(--mpc);font-weight:700}
+ol.srcs{padding-left:20px}ol.srcs li{margin-bottom:6px;font-size:14px}
+
+/* curves */
+.cv-wrap{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px}
+.cv-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+#cvSvg{display:block;width:100%;min-width:560px;height:auto}
+#cvSvg text{fill:var(--muted);font-size:11px;font-family:inherit}
+#cvSvg .pt{cursor:pointer}
+#cvSvg .pt:focus{outline:none}
+#cvSvg .pt:focus circle,#cvSvg .pt:focus rect,#cvSvg .pt:hover circle,#cvSvg .pt:hover rect{stroke:var(--ink);stroke-width:2}
+.cv-tog{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 8px;font-size:13.5px}
+.cv-tog label{display:inline-flex;gap:6px;align-items:center}
+.cv-key{display:inline-block;width:10px;height:10px;border-radius:50%}
+.cv-key.h{background:none!important;border:2px solid}
+#cvPick{margin-top:10px;min-height:2.6em}
+.cv-obs{display:grid;gap:10px;margin-top:14px}
+@media(min-width:900px){.cv-obs{grid-template-columns:1fr 1fr}}
+.cv-obs .q p{margin:4px 0 0;font-size:14px}
+td.sp{font-weight:700}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>FY 2026-27 borrowing, redemptions &amp; events</h1>
+  <p>Central government dated securities and T-bills, state government securities, G-Sec redemptions, RBI policy dates and official Indian data releases, April 2026 to March 2027. Data as of <span id="asof"></span>. Morning Market Brief – SLR · by Aditya Kumar Singh.</p>
+</header>
+
+<dl class="facts" id="facts"></dl>
+
+<section class="mkt" aria-label="Market levels">
+  <h2>Markets, last few sessions</h2>
+  <p class="sub">Closing or end-of-day levels with the change from the previous session (yields in basis points). Not live: refreshed when this page is updated. US Treasury yields are from the US Treasury; every other level is from a media or data-vendor report and marked Secondary.</p>
+  <div class="mkt-grid" id="mkt"></div>
+</section>
+
+<div class="strip">
+  <h2>The year, week by week</h2>
+  <p class="sub">Bars above the line are gross supply notified per calendar; below the line are dated G-Sec redemptions (amber) and RBI OMO sales (indigo), which add paper to the market. Tap any week to open it in the calendar.</p>
+  <div class="strip-scroll"><svg id="strip" role="img" aria-label="Weekly G-Sec and T-bill supply versus redemptions, FY 2026-27"></svg></div>
+  <div class="legend">
+    <span><i style="background:var(--gsec)"></i>Dated G-Sec auctions</span>
+    <span><i style="background:var(--tbill)"></i>T-bill auctions</span>
+    <span><i style="background:var(--mat)"></i>G-Sec redemptions</span>
+    <span><i style="background:var(--mpc);transform:rotate(45deg)"></i>MPC decision</span>
+    <span><i style="background:var(--ops)"></i>OMO sales (below line)</span>
+    <span><i style="background:var(--data)"></i>GDP release</span>
+    <span><i style="background:var(--tax)"></i>Advance tax</span>
+  </div>
+</div>
+
+<nav class="tabs" role="tablist" aria-label="Views">
+  <button role="tab" aria-selected="true" data-tab="cal">Calendar</button>
+  <button role="tab" aria-selected="false" data-tab="agenda">Agenda</button>
+  <button role="tab" aria-selected="false" data-tab="curve">G-Sec &amp; SDL curves</button>
+  <button role="tab" aria-selected="false" data-tab="math">Borrowing math</button>
+  <button role="tab" aria-selected="false" data-tab="cash">Govt cash</button>
+  <button role="tab" aria-selected="false" data-tab="mat">Maturities</button>
+  <button role="tab" aria-selected="false" data-tab="gsec">G-Sec auctions</button>
+  <button role="tab" aria-selected="false" data-tab="tb">T-bills</button>
+  <button role="tab" aria-selected="false" data-tab="sdl">SDLs</button>
+  <button role="tab" aria-selected="false" data-tab="ops">RBI operations</button>
+  <button role="tab" aria-selected="false" data-tab="tax">Tax dates</button>
+  <button role="tab" aria-selected="false" data-tab="src">Sources &amp; flags</button>
+</nav>
+
+<div class="filters" id="filters" aria-label="Show event types"></div>
+
+<section role="tabpanel" id="p-cal" class="on">
+  <div class="calhead">
+    <h3 id="calTitle"></h3>
+    <div class="nav"><button class="btn" id="prev" aria-label="Previous month">‹</button><button class="btn" id="todayBtn">Today</button><button class="btn" id="next" aria-label="Next month">›</button></div>
+  </div>
+  <div class="grid" id="dow"></div>
+  <div class="grid" id="grid"></div>
+  <div class="detail" id="detail"></div>
+</section>
+
+<section role="tabpanel" id="p-agenda">
+  <div class="row">
+    <label class="tog"><input type="checkbox" id="showPast"> Include past events</label>
+  </div>
+  <div class="agenda" id="agenda"></div>
+</section>
+
+
+<section role="tabpanel" id="p-curve">
+  <p class="panel-intro">G-Sec and SDL yield curves built only from RBI primary-market prints: T-bill, dated G-Sec, OMO-sale and SDL auction cut-offs. SDL points are RBI cut-offs, not CCIL-published SGS spreads. The 10Y point is the 16 Oct re-issue auction cut-off. Tap any point for its source.</p>
+  <div class="cv-wrap">
+    <div class="cv-tog" id="cvTog">
+      <label><input type="checkbox" id="cvGs" checked><span class="cv-key" style="background:var(--gsec)"></span>G-Sec, 9–16 Oct</label>
+      <label><input type="checkbox" id="cvGsO" checked><span class="cv-key h" style="border-color:var(--gsec)"></span>G-Sec, 1 Oct auction</label>
+      <label><input type="checkbox" id="cvSdl" checked><span class="cv-key" style="background:var(--sdl)"></span>SDL, 13 Oct auction</label>
+      <label><input type="checkbox" id="cvSdlO"><span class="cv-key h" style="border-color:var(--sdl)"></span>SDL, 6 Oct auction</label>
+    </div>
+    <div class="cv-scroll"><svg id="cvSvg" viewBox="0 0 720 380" role="img" aria-label="G-Sec and SDL yield curves from RBI auction cut-offs, October 2026"></svg></div>
+    <div id="cvPick" class="note">Tap a point to see the security, yield, date and source.</div>
+  </div>
+  <div class="cv-obs" id="cvObs"></div>
+  <h3 style="font-size:16px;margin:20px 0 8px">SDL cut-offs vs the G-Sec auction curve, 13 Oct</h3>
+  <div class="tbl"><table id="cvTbl"></table></div>
+  <p class="note" id="cvNote"></p>
+</section>
+
+<section role="tabpanel" id="p-math">
+  <p class="panel-intro">How FY 2026-27 central government dated borrowing adds up: what was budgeted, what has been raised, what is being repaid, and what that leaves as net borrowing. Net to date is measured directly from the change in outstanding dated stock, which captures redemptions, the July buyback and switches without needing each redemption amount.</p>
+  <div class="tbl"><table id="mathTbl"></table></div>
+  <p class="note" id="mathNote"></p>
+  <h3 style="font-size:16px;margin:20px 0 8px">Other government paper, April–July 2026</h3>
+  <div class="tbl"><table id="otherTbl"></table></div>
+</section>
+
+<section role="tabpanel" id="p-cash">
+  <p class="panel-intro">How the Centre's cash position at RBI moved each fortnight of FY27, and how much of each move the known borrowing flows explain. RBI's weekly balance sheet shows Central Government deposits fixed at about ₹100 crore, because surplus cash is invested rather than held as deposits. So this tab tracks <b>Net RBI Credit to the Centre</b>, published fortnightly (15th and month-end) in the WSS Reserve Money table. When it falls, the Centre's cash surplus with RBI has risen, after removing RBI's own OMO sales, which also cut RBI's holdings of government paper.</p>
+  <div class="tbl"><table id="cashTbl"></table></div>
+  <p class="note" id="cashNote"></p>
+  <div class="cv-obs" id="cashObs"></div>
+</section>
+
+<section role="tabpanel" id="p-ops">
+  <p class="panel-intro">RBI operations in FY 2026-27 that changed rupee liquidity or G-Sec supply: outright OMOs, FX swap auctions and the special USD-INR swap facility for FCNR(B), ECB and OFCB inflows.</p>
+  <div id="opsWrap"></div>
+</section>
+
+<section role="tabpanel" id="p-tax">
+  <p class="panel-intro">Dates when tax payments move money from bank deposits into the government's account at RBI. Large payment dates tighten system liquidity for a few days until the government spends the cash back out.</p>
+  <div class="tbl"><table id="taxTbl"></table></div>
+  <p class="note">Advance-tax dates are from Section 211 of the Income-tax Act (Income Tax Department website). GST dates are from CGST Rule 61 as reproduced by GSTN/compliance sites. TDS deposit dates are by convention and not checked this session. A due date on a holiday moves to the next working day.</p>
+</section>
+
+<section role="tabpanel" id="p-mat">
+  <p class="panel-intro">Dated Government of India securities maturing in FY 2026-27. Outstanding amounts for the four remaining securities are from RBI's list as on 28 September 2026 and already reflect this year's switches and buybacks. For securities already redeemed, the RBI figure is from an earlier undated snapshot, so the amount actually paid at maturity may be lower.</p>
+  <div class="tbl"><table id="matTbl"></table></div>
+  <p class="note" id="matNote"></p>
+</section>
+
+<section role="tabpanel" id="p-gsec">
+  <p class="panel-intro">Weekly dated-security auctions from the H1 calendar (Ministry of Finance, 27 March 2026) and H2 calendar (RBI, 25 September 2026). Amounts are notified amounts in ₹ crore; each security carries a greenshoe of up to ₹2,000 crore. Auctions are shown on the Friday of each week; the actual day is set in RBI's auction notification.</p>
+  <div class="row"><button class="btn" data-half="H1">H1 (Apr–Sep)</button><button class="btn" data-half="H2">H2 (Oct–Mar)</button><button class="btn" data-half="ALL">Full year</button></div>
+  <div class="split">
+    <div class="tbl"><table id="gsecTbl"></table></div>
+    <div>
+      <div class="tbl"><table id="mixTbl"></table></div>
+      <p class="note">Weekly run-rate compares average notified supply per auction week in each half. Computed from the two official calendars; H1 actual raising was ₹8,13,506 crore against ₹8,20,000 crore notified (Finance Ministry, via media).</p>
+    </div>
+  </div>
+</section>
+
+<section role="tabpanel" id="p-tb">
+  <p class="panel-intro">Weekly Treasury Bill auctions (Wednesday auction, Thursday issue unless noted). Q1 and Q2 from PIB releases of the Ministry of Finance; Q3 amounts from the 25 September 2026 calendar as reported, with dates from secondary reports. The Q4 (January–March 2027) calendar is normally released in the last week of December.</p>
+  <div id="tbWrap"></div>
+</section>
+
+<section role="tabpanel" id="p-sdl">
+  <p class="panel-intro">State government securities are auctioned weekly, usually on Tuesdays. RBI publishes quarterly indicative calendars with state-wise, week-wise amounts in annexes, and confirms each week's states and amounts two to three days before the auction.</p>
+  <div id="sdlWrap"></div>
+</section>
+
+<section role="tabpanel" id="p-src">
+  <p class="panel-intro">Every item in this dashboard carries one of three marks.</p>
+  <p><span class="badge v">Verified</span> Read this session from a primary source (RBI, Ministry of Finance/DEA, PIB, MoSPI, CCIL).</p>
+  <p><span class="badge s">Secondary</span> Official figure, but read from a media or third-party report of the official release. Confirm against the primary document before use.</p>
+  <p><span class="badge c">Computed</span> Arithmetic on the figures above it; as reliable as its weakest input.</p>
+  <p><span class="badge u">UNVERIFIED — CHECK MANUALLY</span> Estimated from convention or prior-year pattern, or not confirmed this session.</p>
+  <ol class="srcs" id="srcList"></ol>
+</section>
+</div>
+
+<script>
+/* Morning Market Brief – SLR — created by Aditya Kumar Singh. AGPL-3.0 with attribution terms (ADDITIONAL-TERMS.md): this notice and the #mmb-attribution footer must be kept. */
+(function(){
+"use strict";
+const DATA_AS_OF="2026-11-02";
+/* Today = viewer's current date in IST, held inside FY 2026-27 */
+const TODAY=(()=>{try{const s=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Kolkata",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());if(/^\d{4}-\d{2}-\d{2}$/.test(s))return s<"2026-04-01"?"2026-04-01":s>"2027-03-31"?"2027-03-31":s;}catch(e){}return DATA_AS_OF;})();
+const FY_START="2026-04-01", FY_END="2027-03-31";
+
+/* ---------- sources ---------- */
+const SRC={
+  rbiH2:{t:"RBI Press Release 2026-2027/1190, Issuance calendar Oct 2026–Mar 2027 (25 Sep 2026)",u:"https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63668"},
+  deaH1:{t:"Ministry of Finance (DEA) press communique, Issuance calendar Apr–Sep 2026 (27 Mar 2026)",u:"http://www.dea.gov.in/files/press_release_documents/Calendar%20for%20Dated%20Securities%20for%20first%20half%20of%20FY%202026-27.pdf"},
+  pibTB1:{t:"PIB / Ministry of Finance, T-bill calendar quarter ending June 2026 (27 Mar 2026)",u:"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2246256"},
+  pibTB2:{t:"PIB / Ministry of Finance, T-bill calendar quarter ending September 2026 (25 Jun 2026)",u:"https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2277896&reg=48&lang=2"},
+  tb3:{t:"T-bill calendar quarter ending December 2026 (MoF, 25 Sep 2026), as reported by ANI / Tribune / Observer Voice",u:"https://www.tribuneindia.com/news/business/govt-to-raise-rs-299-lakh-crore-through-treasury-bills-in-oct-dec-quarter"},
+  rbiOS:{t:"RBI, List of Government of India securities outstanding as on 28 Sep 2026",u:"https://rbi.org.in/Scripts/bs_viewcontent.aspx?Id=1956"},
+  rbiOSold:{t:"RBI, List of GoI securities outstanding (earlier snapshot, date not shown in extract)",u:"https://www.website.rbi.org.in/documents/d/rbi/listofgovernmentofindiasecuritiesoutstanding"},
+  ccil:{t:"CCIL Rakshitra, Outstanding Government Debt, July 2026",u:"https://www.ccilindia.com/documents/d/ccil/Outstanding_Government_Debt%20Rakshitra-pdf"},
+  sdlQ2:{t:"RBI Press Release 2026-2027/551, SDL indicative calendar Jul–Sep 2026 (25 Jun 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63029"},
+  sdlQ1:{t:"SDL indicative calendar Apr–Jun 2026 (RBI), as reported by Business Standard",u:"https://www.business-standard.com/finance/news/rbis-pilot-aimed-to-boost-sdl-market-liquidity-impact-on-yields-gradual-126040300964_1.html"},
+  mpc:{t:"RBI MPC schedule for 2026-27 (announced 23 Mar 2026), as reported by Upstox / Angel One",u:"https://upstox.com/news/market-news/latest-updates/rbi-releases-mpc-calendar-for-fy-27-check-next-monetary-policy-date-and-full-schedule/article-191134/"},
+  mpcAug:{t:"RBI Monetary Policy Statement 5 Aug 2026, as summarised by SCC Online",u:"https://www.scconline.com/blog/?p=392925"},
+  mospi:{t:"MoSPI Advance Release Calendar 2026-27 (updated 25 May 2026)",u:"https://www.mospi.gov.in/uploads/documents/releaseCalender/1779709510470-ADVANCE%20RELEASE%20CALENDAR%202026-27%20Updated%2025.05.2026.pdf"},
+  mofH2:{t:"Finance Ministry statement on H2 FY27 borrowing (25 Sep 2026), as reported by The Hans India / Nagaland Post",u:"https://www.thehansindia.com/business/centre-scales-back-fy27-borrowing-to-rs-1599-lakh-cr-1125729"},
+  buyback:{t:"GoI buyback auction 28 Jul 2026, as reported by Traders Union",u:"https://tradersunion.com/news/central-banks/show/2770059-government-securities-repurchase-auction-20000-crore/"},
+  budget:{t:"Budget 2026-27 speech figures (gross ₹17.2 lakh cr, net ₹11.7 lakh cr, FD ₹16.95 lakh cr), as reported by Arunachal Times / PTI",u:"https://arunachaltimes.in/?p=277377"},
+  mofH1:{t:"Finance Ministry H1 statement 27 Mar 2026 (gross cut to ₹16.09 lakh cr after switches), as reported by PTI via TaxTMI",u:"https://www.taxtmi.com/news?id=71904"},
+  mofH2b:{t:"Finance Ministry statement 25 Sep 2026 (H1 raised ₹8,13,506 cr; net borrowing kept at budget), as reported by ThePrint",u:"https://theprint.in/economy/centre-to-borrow-rs-7-86-lakh-cr-in-oct-mar-fy27-borrowing-slashed-by-rs-1-2-lakh-cr/3053795/"},
+  omo17:{t:"RBI PR 2026-2027/1135, OMO sale result 17 Sep 2026, as reproduced by CompliedAI",u:"https://www.compliedai.com/updates/rbi/detailed-result-omo-sale-auction-held-on-sep-17-2026-and-settlement-on-s-t3fthj"},
+  omo21:{t:"OMO sale 21 Sep 2026 result, DD News",u:"https://ddnews.gov.in/en/rbi-sells-rs-25000-crore-government-securities-through-omo-to-manage-liquidity/"},
+  omo28:{t:"RBI detailed result, OMO sale 28 Sep 2026, as reproduced by mfd.co.in",u:"https://mfd.co.in/detailed-result-omo-sale-auction-held-on-sep-28-2026-and-settlement-on-sep-29-2026/"},
+  omoAnn:{t:"OMO sale ₹25,000 cr on 28 Sep (RBI PR of 11 Sep 2026), as reported by Business Today",u:"https://www.businesstoday.in/markets/story/rbi-to-conduct-omo-sale-of-rs-25000-crore-in-government-bonds-on-september-28-557376-2026-09-23"},
+  swapMay:{t:"RBI, Result of the USD/INR Buy/Sell Swap Auction, 26 May 2026",u:"https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=62807"},
+  fx31:{t:"RBI data on special USD-INR swap facility as of 31 Aug 2026, as reported by Business Standard",u:"https://www.business-standard.com/markets/capital-market-news/rbi-forex-swap-scheme-attracts-127-23-billion-through-fcnr-b-deposits-126090300126_1.html"},
+  fx18:{t:"RBI data as of 18 Sep 2026 (released 21 Sep), as reported by ANI / Business Today",u:"https://www.indiagazette.com/news/279322015/forex-inflows-under-rbi-swap-facility-rise-to-usd-1436-billion"},
+  fx21:{t:"Finance Ministry release 24 Aug 2026 (facility at $73 bn as on 21 Aug), DD News",u:"https://ddnews.gov.in/en/rbis-usd-inr-swap-facility-sparks-unprecedented-forex-inflows-banks-raise-usd-73-billion-in-11-weeks/"},
+  fxBS:{t:"FCNR(B) window deadline advanced to 31 Aug; swaps until 11 Sep; $56.846 bn as of 14 Aug, Business Standard",u:"https://www.business-standard.com/finance/news/rbi-fcnr-b-window-nri-dollar-swap-deposit-scheme-deadline-forex-126081700609_1.html"},
+  itd:{t:"Income Tax Department, Section 211 (advance-tax instalments)",u:"https://www.incometaxindia.gov.in/w/section-211"},
+  gst:{t:"GSTR-3B due dates (CGST Rule 61), GSTN summary via compliance calendar",u:"https://lookuptax.com/compliance-calendar/india"},
+  rbiPR:{t:"RBI press releases index (1 Oct 2026: underwriting auction ₹33,000 cr; 4-day VRRR)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx"},
+  bb2:{t:"Centre announces ₹30,000 crore G-Sec buyback (Business Standard, 28 Aug 2026)",u:"https://www.business-standard.com/amp/markets/news/centre-announces-30-000-crore-govt-securities-buyback-via-auction-126082801128_1.html"},
+  omo21b:{t:"OMO sale 21 Sep 2026, security-wise acceptance (Business Standard)",u:"https://www.business-standard.com/amp/finance/news/rbi-sells-25k-cr-g-secs-in-second-omo-tranche-to-drain-surplus-liquidity-126092100986_1.html"},
+  sdlQ3:{t:"RBI, SDL indicative calendar Oct–Dec 2026 (1 Oct 2026), as reproduced by BestCurrentAffairs / Business Standard",u:"https://www.business-standard.com/amp/economy/news/rbi-extends-benchmark-issuance-strategy-to-7-more-states-j-k-from-q3-fy27-126100101347_1.html"},
+  uw1:{t:"RBI, Result of Underwriting Auction 1 Oct 2026, as reproduced by BestCurrentAffairs",u:"https://bestcurrentaffairs.com/result-of-underwriting-auction-conducted-on-october-01-2026/"},
+  vrrr5:{t:"RBI Press Release 2026-2027/1236, Overnight VRRR auction under LAF on 5 Oct 2026 (1 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63714"},
+  vrrr5r:{t:"RBI Press Release 2026-2027/1243, Result of overnight VRRR auction 5 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63721"},
+  vrrr5b:{t:"RBI Press Release 2026-2027/1248, Result of second overnight VRRR auction 5 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63726"},
+  vrrr6:{t:"RBI Press Release 2026-2027/1255, Overnight VRRR auction under LAF on 6 Oct 2026 (5 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63733"},
+  gs9:{t:"RBI Press Release 2026-2027/1252, Auction of GoI dated securities on 9 Oct 2026 (5 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63730"},
+  sdl6:{t:"RBI Press Release 2026-2027/1238, Auction of State Government Securities on 6 Oct 2026 (1 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63716"},
+  tb7:{t:"RBI Press Release 2026-2027/1234, Auction of 91/182/364-day T-bills on 7 Oct 2026 (1 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63712"},
+  sdlQ3p:{t:"RBI Press Release 2026-2027/1237, SDL indicative calendar Oct–Dec 2026 (1 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63715"},
+  vrrr6r:{t:"RBI Press Release 2026-2027/1258, Result of overnight VRRR auction 6 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63736"},
+  sdl6r:{t:"RBI Press Release 2026-2027/1259, Result of yield/price based auction of SGS, 6 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63737"},
+  vrrr7:{t:"RBI press release (6 Oct 2026), Overnight VRRR auction under LAF on 7 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63740"},
+  mpcOct:{t:"RBI Press Release, Monetary Policy Statement 2026-27: Resolution of the MPC, 5–7 Oct 2026 (7 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63742"},
+  vrrr7r:{t:"RBI press release (7 Oct 2026), Result of overnight VRRR auction 7 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63745"},
+  vrrr29:{t:"RBI Press Release 2026-2027/1275, 29-day VRRR auction under LAF on 8 Oct 2026 (7 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63753"},
+  tb7r:{t:"RBI press release (7 Oct 2026), 91/182/364-day T-bill auction result: cut-off",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63746"},
+  vrrr29r:{t:"RBI Press Release 2026-2027/1277, Result of 29-day VRRR auction 8 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63755"},
+  vrrr8:{t:"RBI Press Release 2026-2027/1278, Overnight VRRR auction under LAF on 8 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63756"},
+  vrrr8r:{t:"RBI Press Release 2026-2027/1280, Result of overnight VRRR auction 8 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63758"},
+  uw9:{t:"RBI Press Release 2026-2027/1279, Underwriting auction for ₹36,000 cr G-Secs on 9 Oct 2026 (8 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63757"},
+  vrrr10:{t:"RBI Press Release 2026-2027/1288, 10-day VRRR auction under LAF on 9 Oct 2026 (8 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63766"},
+  gs9r:{t:"RBI Press Release 2026-2027/1296, Government Stock – Auction Results: Cut-off, 9 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63774"},
+  uw9r:{t:"RBI Press Release 2026-2027/1290, Result of Underwriting Auction 9 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63768"},
+  vrrr10r:{t:"RBI Press Release 2026-2027/1291, Result of 10-day VRRR auction 9 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63769"},
+  vrrr3a:{t:"RBI Press Release 2026-2027/1292, 3-day VRRR auction under LAF on 9 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63770"},
+  vrrr3ar:{t:"RBI Press Release 2026-2027/1293, Result of 3-day VRRR auction 9 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63771"},
+  tb14:{t:"RBI Press Release 2026-2027/1300, Auction of 91/182/364-day T-bills on 14 Oct 2026 (9 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63778"},
+  omoOct:{t:"RBI Press Release 2026-2027/1301, RBI announces OMO sale of GoI securities, 13 Oct 2026 (9 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63779"},
+  sdl13:{t:"RBI Press Release 2026-2027/1302, Auction of State Government Securities on 13 Oct 2026 (9 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63780"},
+  vrrr12:{t:"RBI Press Release 2026-2027/1304, 3-day VRRR auction under LAF on 12 Oct 2026 (9 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63782"},
+  vrrr12r:{t:"RBI Press Release 2026-2027/1308, Result of 3-day VRRR auction 12 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63786"},
+  gs9f:{t:"RBI Press Release, Government Stock – Full Auction Results, 9 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63775"},
+  fxReg:{t:"RBI Press Release 2026-2027/1305, RBI announces regulatory measures for the foreign exchange market (10 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63783"},
+  omcWin:{t:"RBI Press Release 2026-2027/1306, Special window for public sector OMCs to meet dollar requirements (10 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63784"},
+  gs1r:{t:"RBI press release (1 Oct 2026), Government Stock – Auction Results: Cut-off",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63708"},
+  sdl6f:{t:"RBI press release (6 Oct 2026), State Government Securities – Full Auction Result",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63738"},
+  sdlRes:{t:"RBI SDL auction result releases, 3 Apr–7 Oct 2025, 6 Jan–27 Mar 2026 and 7 Apr–6 Oct 2026 (one release per auction; e.g. prid 60140–61375, 61977–62447, 62511–63738)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx"},
+  sdlQ4fy26:{t:"RBI Press Release 2025-2026/1839, SDL indicative calendar Jan–Mar 2026 (2 Jan 2026)",u:"https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=61955"},
+  rbiAR:{t:"RBI Annual Report 2025-26, Table VII.4 (gross SDL borrowing FY24–FY26)",u:"https://www.rbi.org.in/scripts/AnnualReportPublications.aspx?Id=1467"},
+  rbiBul:{t:"RBI Bulletin, Market Borrowings of State Governments (Tables 49/51; Mar 2024, Feb–Mar 2025, Apr & Jun 2026 issues)",u:"https://www.rbi.org.in/Scripts/BS_ViewBulletin.aspx?Id=24165"},
+  gs16:{t:"RBI Press Release 2026-2027/1314, Auction of GoI dated security on 16 Oct 2026 (12 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63792"},
+  vrrr13:{t:"RBI Press Release 2026-2027/1315, Overnight VRRR auction under LAF on 13 Oct 2026 (12 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63793"},
+  cpiSep:{t:"MoSPI/NSO CPI release for September 2026 (12 Oct 2026), as reported by The Statesman",u:"https://www.thestatesman.com/business/indias-retail-inflation-stands-at-5-54-in-september-2026-1503650208.html"},
+  omo13r:{t:"RBI press release (13 Oct 2026), Detailed Result: OMO Sale Auction held on 13 Oct 2026, settlement 14 Oct",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63798"},
+  sdl13f:{t:"RBI press release (13 Oct 2026), State Government Securities – Full Auction Result",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63799"},
+  vrrr13r:{t:"RBI press release (13 Oct 2026), Result of overnight VRRR auction 13 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63795"},
+  vrrr14:{t:"RBI Press Release 2026-2027/1322, Overnight VRRR auction under LAF on 14 Oct 2026 (13 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63800"},
+  tb14r:{t:"RBI Press Release 2026-2027/1325, 91/182/364-day T-bill auction result: cut-off, 14 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63803"},
+  tb14f:{t:"RBI Press Release 2026-2027/1326, Treasury Bills: Full Auction Result, 14 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63804"},
+  vrrr14r:{t:"RBI Press Release 2026-2027/1324, Result of overnight VRRR auction 14 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63802"},
+  vrrr15:{t:"RBI Press Release 2026-2027/1327, Overnight VRRR auction under LAF on 15 Oct 2026 (14 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63805"},
+  sw19:{t:"RBI Press Release 2026-2027/1328, Conversion/Switch of Government of India Securities, 19 Oct 2026 (14 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63806"},
+  vrrr15r:{t:"RBI Press Release 2026-2027/1331, Result of overnight VRRR auction 15 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63809"},
+  uw16:{t:"RBI Press Release 2026-2027/1333, Underwriting auction for ₹34,000 cr G-Sec on 16 Oct 2026 (15 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63811"},
+  sdl19:{t:"RBI Press Release 2026-2027/1336, Auction of State Government Securities on 19 Oct 2026 (15 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63814"},
+  bopAug:{t:"RBI Press Release 2026-2027/1335, Developments in India's Balance of Payments, August 2026 (15 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63813"},
+  ferrFaq:{t:"RBI press release (15 Oct 2026), FAQs on Foreign Exchange Risk Reserve",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63812"},
+  gs16r:{t:"RBI press release (16 Oct 2026), Government Stock – Auction Results: Cut-off, 6.94% GS 2036",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63817"},
+  gs16f:{t:"RBI Press Release 2026-2027/1340, Government Stock – Full Auction Results, 16 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63818"},
+  mmo15:{t:"RBI Press Release 2026-2027/1337, Money Market Operations as on 15 Oct 2026 (16 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63815"},
+  wss16:{t:"RBI Press Release 2026-2027/1341, Weekly Statistical Supplement – Extract (16 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63819"},
+  tb21:{t:"RBI press release (16 Oct 2026), Auction of 91/182/364-day T-bills (21 Oct 2026 auction notice)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63821"},
+  uw16r:{t:"RBI Press Release 2026-2027/1338, Result of Underwriting Auction conducted on 16 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63816"},
+  sgb19:{t:"RBI Press Release 2026-2027/1344, SGB 2020-21 Series VII premature redemption price, due 19 Oct 2026 (16 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63822"},
+  vrr19:{t:"RBI Press Release 2026-2027/1345, 7-day VRR auction under LAF on 19 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63823"},
+  vrr19r:{t:"RBI Press Release 2026-2027/1347, Result of 7-day VRR auction 19 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63825"},
+  mmo18:{t:"RBI Press Release 2026-2027/1349, Money Market Operations as on 18 Oct 2026 (19 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63827"},
+  sdl19r:{t:"RBI Press Release 2026-2027/1350, Result of yield/price based auction of SGS, 19 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63828"},
+  sw19r:{t:"RBI Press Release 2026-2027/1351, Result: Conversion/Switch Auction of GoI Securities, 19 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63829"},
+  sdl19f:{t:"RBI Press Release 2026-2027/1352, State Government Securities – Full Auction Result, 19 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63830"},
+  gs23:{t:"RBI Press Release 2026-2027/1354, Auction of GoI dated securities on 23 Oct 2026 (19 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63832"},
+  vrr21:{t:"RBI Press Release 2026-2027/1355, Overnight VRR auction under LAF on 21 Oct 2026 (19 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63833"},
+  mmo19:{t:"RBI Press Release 2026-2027/1356, Money Market Operations as on 19 Oct 2026 (21 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63834"},
+  vrr21r:{t:"RBI Press Release 2026-2027/1357, Result of overnight VRR auction 21 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63835"},
+  mmo20:{t:"RBI Press Release 2026-2027/1358, Money Market Operations as on 20 Oct 2026 (21 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63836"},
+  tb21r:{t:"RBI Press Release 2026-2027/1359, 91/182/364-day T-bill auction result: cut-off, 21 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63837"},
+  tb21f:{t:"RBI Press Release 2026-2027/1360, Treasury Bills: Full Auction Result, 21 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63838"},
+  mpcMin:{t:"RBI Press Release 2026-2027/1361, Minutes of the MPC meeting, 5–7 Oct 2026 (21 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63839"},
+  vrr22:{t:"RBI Press Release 2026-2027/1363, Overnight VRR auction under LAF on 22 Oct 2026 (21 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63841"},
+  mmo21:{t:"RBI Press Release 2026-2027/1364, Money Market Operations as on 21 Oct 2026 (22 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63842"},
+  vrr22r:{t:"RBI Press Release 2026-2027/1365, Result of overnight VRR auction 22 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63843"},
+  uw23:{t:"RBI Press Release 2026-2027/1366, Underwriting auction for ₹33,000 cr G-Secs on 23 Oct 2026 (22 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63844"},
+  rm15:{t:"RBI Press Release 2026-2027/1368, Reserve Money for the fortnight ended 15 Oct 2026 (22 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63846"},
+  sgb23:{t:"RBI Press Release 2026-2027/1369, SGB 2018-19 Series-II final redemption price, due 23 Oct 2026 (22 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63847"},
+  vrr23:{t:"RBI Press Release 2026-2027/1370, 3-day VRR auction under LAF on 23 Oct 2026 (22 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63848"},
+  mmo22:{t:"RBI Press Release 2026-2027/1371, Money Market Operations as on 22 Oct 2026 (23 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63849"},
+  uw23r:{t:"RBI Press Release 2026-2027/1372, Result of Underwriting Auction conducted on 23 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63850"},
+  vrr23r:{t:"RBI Press Release 2026-2027/1373, Result of 3-day VRR auction 23 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63851"},
+  gs23f:{t:"RBI Press Release 2026-2027/1375, Government Stock – Full Auction Results, 23 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63853"},
+  wss23:{t:"RBI Press Release 2026-2027/1377, Weekly Statistical Supplement – Extract (23 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63855"},
+  tb28:{t:"RBI Press Release 2026-2027/1379, Auction of 91/182/364-day T-bills on 28 Oct 2026 (23 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63857"},
+  sdl27:{t:"RBI Press Release 2026-2027/1382, Auction of State Government Securities on 27 Oct 2026 (23 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63860"},
+  vrr26:{t:"RBI Press Release 2026-2027/1383, 4-day VRR auction under LAF on 26 Oct 2026 (23 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63861"},
+  gs30:{t:"RBI Press Release 2026-2027/1390, Auction of GoI dated securities on 30 Oct 2026 (26 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63868"},
+  vrr26r:{t:"RBI Press Release 2026-2027/1386, Result of 4-day VRR auction 26 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63864"},
+  mmo23:{t:"RBI Press Release 2026-2027/1385, Money Market Operations as on 23 Oct 2026 (26 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63863"},
+  mmo24:{t:"RBI Press Release 2026-2027/1387, Money Market Operations as on 24 Oct 2026 (26 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63865"},
+  mmo25:{t:"RBI Press Release 2026-2027/1388, Money Market Operations as on 25 Oct 2026 (26 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63866"},
+  mUst:{t:"US Department of the Treasury, Daily Treasury Par Yield Curve Rates, October 2026",u:"https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610"},
+  mBdi:{t:"Baltic Dry Index daily reports, 23–30 Oct 2026, Hellenic Shipping News",u:"https://www.hellenicshippingnews.com/category/dry-bulk-market/"},
+  mInr:{t:"Rupee closes: 21–22 Oct (PTI via ThePrint); 28 Oct (HDFC Sky, 29 Oct); 29–30 Oct, Rupee rises 33 paise to close at 94.93 (HDFC Sky, 30 Oct 2026)",u:"https://hdfcsky.com/news/rupee-rises-33-paise-to-close-at-94-93-against-us-dollar"},
+  mIn10:{t:"India 10Y (6.94% GS 2036): Trading Economics, 22–30 Oct 2026",u:"https://tradingeconomics.com/india/government-bond-yield"},
+  mIn5:{t:"India 5Y government bond yield, Trading Economics (22, 26–27 and 29–30 Oct 2026)",u:"https://tradingeconomics.com/india/5-year-note-yield"},
+  mBrent:{t:"Price of oil, Fortune daily snapshots (21–22 Oct 8:00 a.m. ET; 28–29 Oct 8:45 a.m. ET; 30 Oct 8:15 a.m. ET)",u:"https://fortune.com/article/price-of-oil-10-30-2026/"},
+  mGold:{t:"Current price of gold, Fortune: 29 Oct (9:10 a.m. ET) and 30 Oct 2026 (10:30 a.m. ET, with same-time prior-day comparison)",u:"https://fortune.com/article/current-price-of-gold-10-30-2026/"},
+  wssT1:{t:"RBI WSS 2 Oct 2026, Table 1: RBI Liabilities and Assets (Central Government deposits ₹100 cr)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28743"},
+  wss0501:{t:"RBI WSS 1 May 2026, Reserve Money: Components and Sources (as on 15 Apr 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28419"},
+  wss0515:{t:"RBI WSS 15 May 2026, Reserve Money: Components and Sources (as on 30 Apr 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28449"},
+  wss0529:{t:"RBI WSS 29 May 2026, Reserve Money: Components and Sources (as on 15 May 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28479"},
+  wss0612:{t:"RBI WSS 12 Jun 2026, Reserve Money: Components and Sources (as on 31 May 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28509"},
+  wss0626:{t:"RBI WSS 26 Jun 2026, Reserve Money: Components and Sources (as on 15 Jun 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28539"},
+  wss0710:{t:"RBI WSS 10 Jul 2026, Reserve Money: Components and Sources (as on 30 Jun 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28569"},
+  wss0724:{t:"RBI WSS 24 Jul 2026, Reserve Money: Components and Sources (as on 15 Jul 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28599"},
+  wss0807:{t:"RBI WSS 7 Aug 2026, Reserve Money: Components and Sources (as on 31 Jul 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28629"},
+  wss0904:{t:"RBI WSS 4 Sep 2026, Reserve Money: Components and Sources (as on 15 Aug 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28689"},
+  wss0918:{t:"RBI WSS 18 Sep 2026, Reserve Money: Components and Sources (as on 31 Aug 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28719"},
+  wss1002:{t:"RBI WSS 2 Oct 2026, Reserve Money: Components and Sources (as on 15 Sep 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28749"},
+  wss1016:{t:"RBI WSS 16 Oct 2026, Reserve Money: Components and Sources (as on 30 Sep 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28779"},
+  sdl27r:{t:"RBI press release (27 Oct 2026), Result of yield/price based auction of SGS, 27 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63870"},
+  sdl27f:{t:"RBI press release (27 Oct 2026), State Government Securities – Full Auction Result, 27 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63871"},
+  mmo26:{t:"RBI Press Release 2026-2027/1391, Money Market Operations as on 26 Oct 2026 (27 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63869"},
+  tb28r:{t:"RBI Press Release 2026-2027/1398, 91/182/364-day T-bill auction result: cut-off, 28 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63876"},
+  tb28f:{t:"RBI Press Release 2026-2027/1399, Treasury Bills: Full Auction Result, 28 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63877"},
+  mmo27:{t:"RBI Press Release 2026-2027/1396, Money Market Operations as on 27 Oct 2026 (28 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63874"},
+  csfs:{t:"RBI Press Release 2026-2027/1395, 36th Conference of State Finance Secretaries (27 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63873"},
+  iipSep:{t:"MoSPI/NSO IIP release for September 2026 (28 Oct 2026), as reported by Business Standard",u:"https://www.business-standard.com/economy/news/industrial-output-slows-to-6-7-in-september-compared-to-8-in-august-126102801206_1.html"},
+  sgb28:{t:"RBI Press Release 2026-2027/1394 (27 Oct 2026), SGB 2020-21 Series I premature redemption price, due 28 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63872"},
+  mmo28:{t:"RBI Press Release 2026-2027/1401, Money Market Operations as on 28 Oct 2026 (29 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63879"},
+  uw30:{t:"RBI press release (29 Oct 2026), Underwriting auction for ₹33,000 cr G-Secs on 30 Oct 2026 (title from RBI index; text not readable this run)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63880"},
+  frb34:{t:"RBI Press Release 2026-2027/1405, Interest rate on GoI Floating Rate Bond 2034 (29 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63883"},
+  sgb30:{t:"RBI Press Release 2026-2027/1406, SGB 2019-20 Series VI premature redemption price, due 30 Oct 2026 (29 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63884"},
+  gs30f:{t:"RBI Press Release 2026-2027/1411, Government Stock – Full Auction Results, 30 Oct 2026",u:"https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63889"},
+  uw30r:{t:"RBI Press Release 2026-2027/1408, Result of Underwriting Auction conducted on 30 Oct 2026",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63886"},
+  mmo29:{t:"RBI Press Release 2026-2027/1407, Money Market Operations as on 29 Oct 2026 (30 Oct 2026)",u:"https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63885"},
+  tb4:{t:"RBI Press Release 2026-2027/1417, Auction of 91/182/364-day T-bills on 4 Nov 2026 (30 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63895"},
+  sdl3:{t:"RBI Press Release 2026-2027/1418, Auction of State Government Securities on 3 Nov 2026 (30 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63896"},
+  sgb2:{t:"RBI Press Release 2026-2027/1419, SGB 2021-22 Series VII premature redemption price, due 2 Nov 2026 (30 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63897"},
+  wss30:{t:"RBI Press Release 2026-2027/1413, Weekly Statistical Supplement – Extract (30 Oct 2026)",u:"https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=63890"},
+  wss1030:{t:"RBI WSS 30 Oct 2026, Reserve Money: Components and Sources (as on 15 Oct 2026)",u:"https://www.rbi.org.in/Scripts/WSSView.aspx?Id=28809"},
+  none:{t:"No source read this session",u:""}
+};
+
+/* ---------- categories ---------- */
+const CATS=[
+  {k:"gsec",n:"G-Sec auctions",c:"--gsec"},
+  {k:"mat",n:"Redemptions",c:"--mat"},
+  {k:"tbill",n:"T-bills",c:"--tbill"},
+  {k:"sdl",n:"SDLs",c:"--sdl"},
+  {k:"mpc",n:"RBI policy & ops",c:"--mpc"},
+  {k:"data",n:"MoSPI data",c:"--data"},
+  {k:"other",n:"Other data (unverified dates)",c:"--other"},
+  {k:"ops",n:"RBI liquidity & FX ops",c:"--ops"},
+  {k:"tax",n:"Tax outflows",c:"--tax"},
+  {k:"fiscal",n:"Fiscal & liquidity",c:"--fiscal"}
+];
+
+/* ---------- date helpers ---------- */
+const D=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(Date.UTC(y,m-1,d));};
+const S=dt=>dt.toISOString().slice(0,10);
+const addDays=(s,n)=>{const d=D(s);d.setUTCDate(d.getUTCDate()+n);return S(d);};
+const dow=s=>D(s).getUTCDay();
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const WD=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const fmtD=s=>{const d=D(s);return `${WD[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]} ${d.getUTCFullYear()}`;};
+const inr=n=>{if(n==null)return"";const neg=n<0;n=Math.abs(n);let [i,f]=n.toFixed(n%1?2:0).split(".");let last=i.slice(-3),rest=i.slice(0,-3);if(rest)last=","+last;rest=rest.replace(/\B(?=(\d{2})+(?!\d))/g,",");return (neg?"-":"")+"₹"+rest+last+(f?"."+f:"")+" cr";};
+const nextWorking=s=>{let x=s;while(dow(x)===0||dow(x)===6)x=addDays(x,1);return x;};
+/* Holidays known to fall on scheduled Fridays; RBI Mumbai holiday list not read this session */
+const HOLS={"2026-04-03":"Good Friday","2026-12-25":"Christmas"};
+
+const EV=[];
+function add(date,cat,title,o={}){EV.push(Object.assign({date,cat,title,amt:null,detail:"",st:"v",src:"none"},o));}
+
+/* ---------- dated G-Sec calendar ---------- */
+const H1=[["2026-04-03","15:17,50:12"],["2026-04-10","10:34"],["2026-04-17","5:21,40:11"],["2026-04-24","3:11,7:11,30:5,G30:5"],["2026-05-01","15:17,50:12"],["2026-05-08","10:34"],["2026-05-15","5:21,40:11"],["2026-05-22","3:11,7:11,30:10"],["2026-05-29","15:17,50:11"],["2026-06-05","10:34"],["2026-06-12","5:21,40:11"],["2026-06-19","3:11,7:11,30:5,G30:5"],["2026-06-26","15:17,50:11"],["2026-07-03","10:34"],["2026-07-10","5:21,40:11"],["2026-07-17","3:11,7:11,30:10"],["2026-07-24","15:17,50:11"],["2026-07-31","10:34"],["2026-08-07","5:21,40:11"],["2026-08-14","3:11,7:11,30:5,G30:5"],["2026-08-21","15:17,50:11"],["2026-08-28","10:34"],["2026-09-04","5:21,40:11"],["2026-09-11","3:11,7:11,30:10"],["2026-09-18","15:17,50:11"],["2026-09-25","10:34"]];
+const H2=[["2026-10-01","3:9,7:12,30:9,G30:3"],["2026-10-09","15:23,50:13"],["2026-10-16","10:34"],["2026-10-23","5:19,40:14"],["2026-10-30","3:9,7:12,30:9,G30:3"],["2026-11-06","15:23,50:13"],["2026-11-13","10:34"],["2026-11-20","5:19,40:14"],["2026-11-27","3:9,7:12,30:9,G30:3"],["2026-12-04","15:23,50:13"],["2026-12-11","10:34"],["2026-12-18","5:19,40:14"],["2026-12-25","3:9,7:12,30:9,G30:3"],["2027-01-01","15:23,50:13"],["2027-01-08","10:35"],["2027-01-15","5:19,40:14"],["2027-01-22","3:9,7:12,30:9,G30:3"],["2027-01-29","15:23,50:13"],["2027-02-05","10:35"],["2027-02-12","5:19,40:14"],["2027-02-19","3:9,7:12,30:12"],["2027-02-26","15:23,50:13"],["2027-03-05","10:35"]];
+const parseAlloc=s=>s.split(",").map(p=>{const [t,a]=p.split(":");return {t,a:Number(a)*1000};});
+const tenLabel=t=>t==="G30"?"30Y SGrB":t+"Y";
+const GW=[];
+[[H1,"H1","deaH1"],[H2,"H2","rbiH2"]].forEach(([arr,half,src])=>arr.forEach(([fri,al],i)=>{
+  const alloc=parseAlloc(al), tot=alloc.reduce((a,b)=>a+b.a,0);
+  const mon=fri==="2026-10-01"?"2026-09-28":addDays(fri,-4);
+  GW.push({fri,mon,half,wk:i+1,alloc,tot,src});
+  let det=`Auction week ${i+1} of ${half} (${fmtD(mon).slice(4)} to ${fmtD(fri).slice(4)}): `+alloc.map(x=>`${tenLabel(x.t)} ${inr(x.a)}`).join("; ")+".";
+  if(HOLS[fri]) det+=` Friday is ${HOLS[fri]}; the auction day will be set by RBI notification.`;
+  if(fri==="2026-10-01") det+=" DONE. Held Thursday 1 Oct (2 Oct is Gandhi Jayanti). Result (RBI): all fully accepted, no devolvement on PDs. Cut-offs: 6.20% GS 2029 ₹9,000 cr at 98.53/6.7688%; 6.57% GS 2033 ₹12,000 cr at 96.79/7.1680%; 7.63% GS 2056 ₹9,000 cr at 99.30/7.6895%; 7.50% GOI SGrB 2056 ₹3,000 cr at 98.20/7.6539%. Underwriting commission 1.97/0.85/0.64/0.87 paise per ₹100 (Secondary). Greenshoe not shown in the cut-off release.";
+  if(fri==="2026-10-09") det+=" Securities notified (RBI, 5 Oct): 7.06% GS 2041 ₹23,000 cr and 7.43% GS 2076 ₹13,000 cr, multiple-price; settlement Mon 12 Oct 2026. Underwriting auction (RBI, 8 Oct) on 9 Oct, ACU window 9:00–9:30 AM: MUC per PD ₹548 cr (2041) and ₹310 cr (2076). Result (RBI, 9 Oct): both fully accepted, no devolvement on PDs; cut-off 7.06% GS 2041 7.4898% (price ₹96.18), 7.43% GS 2076 7.8015% (₹95.33). Underwriting commission cut-off 0.54 paise/₹100 (2041) and 0.88p (2076); MUC ₹11,508 cr and ₹6,510 cr, ACU accepted ₹11,492 cr and ₹6,490 cr. DONE. Full results (RBI): bids ₹64,288 cr (369) for 2041 and ₹27,815 cr (177) for 2076, bid-cover 2.80× and 2.14× on competitive bids (Computed); accepted ₹23,000 cr and ₹13,000 cr exactly (non-competitive ₹84.62 cr and ₹8.75 cr); weighted average yield 7.4886% and 7.7882%; no greenshoe shown, total accepted equals notified.";
+  if(fri==="2026-10-16") det+=" Security notified (RBI, 12 Oct): 6.94% GS 2036 (re-issue, matures 11 May 2036) ₹34,000 cr, price-based multiple-price auction; greenshoe up to ₹2,000 cr; non-competitive up to 5%. Auction Fri 16 Oct (non-competitive 10:30–11:00, competitive 10:30–11:30 AM; PD underwriting 9:00–9:30 AM); settlement Mon 19 Oct. When-issued trading 13–16 Oct. Underwriting auction (RBI, 15 Oct): ACU window 9:00–9:30 AM on 16 Oct; MUC ₹810 cr per PD and minimum ACU bid ₹810 cr per PD; multiple-price. DONE. Result (RBI, 16 Oct): ₹34,000 cr fully accepted, no devolvement on PDs; cut-off price ₹96.91 / 7.3955%, weighted average ₹96.93 / 7.3925%. Competitive bids ₹94,072.12 cr (400), accepted ₹33,960.71 cr (113 bids; 20.7188% partial allotment at cut-off); bid-cover 2.77× on competitive bids (Computed). Non-competitive ₹39.29 cr (5 bids), all accepted. Underwriting result (RBI PR 1338): MUC ₹17,010 cr, ACU accepted ₹16,990 cr, total underwritten ₹34,000 cr; ACU commission cut-off 0.38 paise per ₹100. Total accepted equals notified, so no greenshoe.";
+  if(fri==="2026-10-23") det+=" Securities notified (RBI, 19 Oct): 6.53% GS 2031 (re-issue, matures 7 Sep 2031) ₹19,000 cr and 7.71% GS 2066 (re-issue, matures 18 May 2066) ₹14,000 cr; total ₹33,000 cr, price-based multiple-price auction; greenshoe up to ₹2,000 cr each. Auction Fri 23 Oct (non-competitive 10:30–11:00, competitive 10:30–11:30 AM); settlement Mon 26 Oct. When-issued trading 21–23 Oct. Underwriting auction (RBI, 22 Oct): ACU window 9:00–9:30 AM on 23 Oct via e-Kuber, multiple-price; MUC and minimum ACU bid per PD ₹453 cr (2031) and ₹334 cr (2066). DONE. Result (RBI PR 1375, 23 Oct): both fully accepted, no devolvement on PDs. 6.53% GS 2031: cut-off ₹96.65 / 7.3589%, weighted average ₹96.71 / 7.3437%; competitive bids ₹33,343.80 cr (173), accepted ₹18,994.981 cr (104 bids; 97.0690% partial allotment at cut-off); non-competitive ₹5.019 cr (4); bid-cover 1.75× on competitive bids (Computed). 7.71% GS 2066: cut-off ₹97.30 / 7.9339%, weighted average ₹97.45 / 7.9211%; competitive bids ₹29,157.00 cr (219), accepted ₹13,941.425 cr (118 bids; 27.7973% partial allotment); non-competitive ₹58.575 cr (4); bid-cover 2.08× (Computed). Total accepted equals notified, so no greenshoe. Underwriting result (RBI PR 1372): MUC ₹9,513 cr and ₹7,014 cr, ACU accepted ₹9,487 cr and ₹6,986 cr, fully underwritten; ACU commission cut-off 0.69 and 0.94 paise per ₹100.";
+  if(fri==="2026-10-30") det+=" Securities notified (RBI PR 1390, 26 Oct): all re-issues, price-based, multiple-price: 6.20% GS 2029 (matures 17 Aug 2029) ₹9,000 cr; 6.57% GS 2033 (17 Aug 2033) ₹12,000 cr; 7.63% GS 2056 (15 Sep 2056) ₹9,000 cr; 7.50% GOI SGrB 2056 (27 Apr 2056) ₹3,000 cr; total ₹33,000 cr, matching the H2 calendar. Greenshoe up to ₹2,000 cr per security. Auction Fri 30 Oct; settlement Mon 2 Nov. When-issued trading 27–30 Oct. Same four securities as the 1 Oct auction (cut-offs then 6.7688% / 7.1680% / 7.6895% / 7.6539%). Underwriting auction for the ₹33,000 cr announced by RBI on 29 Oct (prid 63880). DONE. Result (RBI PR 1411, 30 Oct): all four fully accepted, no devolvement on PDs. 6.20% GS 2029: cut-off ₹97.69 / 7.1218%, weighted average ₹97.74 / 7.1014%; competitive bids ₹18,463 cr (109), accepted ₹8,996.382 cr (53; 76.8546% partial allotment); non-competitive ₹3.618 cr; cover 2.05× (Computed). 6.57% GS 2033: cut-off ₹95.71 / 7.3818%, WA ₹95.78 / 7.3681%; bids ₹27,422 cr (175), accepted ₹11,993.805 cr (86; 88.2329%); non-competitive ₹6.195 cr; cover 2.29× (Computed). 7.63% GS 2056: cut-off ₹97.51 / 7.8459%, WA ₹97.56 / 7.8415%; bids ₹27,235 cr (230), accepted ₹8,901.23 cr (49; 37.7490%); non-competitive ₹98.77 cr; cover 3.03× (Computed). 7.50% GOI SGrB 2056: cut-off ₹96.23 / 7.8292%, WA ₹96.35 / 7.8184%; bids ₹6,281 cr (54), accepted ₹2,999.723 cr (14; 87.1538%); non-competitive ₹0.277 cr; cover 2.09× (Computed). Cut-offs up 35 / 21 / 16 / 18 bp on the same securities' 1 Oct auction (Computed). Total accepted equals notified, so no greenshoe. Underwriting result (RBI PR 1408): MUC ₹4,515 / 6,006 / 4,515 / 1,512 cr, ACU accepted ₹4,485 / 5,994 / 4,485 / 1,488 cr, fully underwritten; ACU commission cut-off 0.92 / 0.64 / 0.74 / 1.00 paise per ₹100.";
+  const dn=(fri==="2026-10-01"||fri==="2026-10-09"||fri==="2026-10-16"||fri==="2026-10-23"||fri==="2026-10-30");
+  add(fri,"gsec",`G-Sec auction · ${alloc.map(x=>tenLabel(x.t)).join(", ")}${dn?" · ✓ done":""}`,{amt:tot,detail:det,st:"v",src:fri==="2026-10-30"?"gs30f":fri==="2026-10-23"?"gs23f":fri==="2026-10-16"?"gs16f":fri==="2026-10-09"?"gs9r":fri==="2026-10-01"?"gs1r":src});
+}));
+
+/* ---------- redemptions ---------- */
+const MAT=[
+  {sec:"7.27% GS 2026",isin:"IN0020190016",d:"2026-04-08",amt:34856.942,st:"u",src:"rbiOSold",why:"Amount from earlier RBI snapshot; amount actually redeemed not confirmed."},
+  {sec:"5.63% GS 2026",isin:"IN0020210012",d:"2026-04-12",amt:86505.372,st:"u",src:"rbiOSold",why:"Amount from earlier RBI snapshot; amount actually redeemed not confirmed."},
+  {sec:"6.99% GS 2026",isin:"IN0020230028",d:"2026-04-17",amt:34791.175,st:"u",src:"rbiOSold",why:"Amount from earlier RBI snapshot; amount actually redeemed not confirmed."},
+  {sec:"8.33% GS 2026",isin:"IN0020120039",d:"2026-07-09",amt:66016.031,st:"u",src:"rbiOSold",why:"Amount from earlier RBI snapshot; amount actually redeemed not confirmed."},
+  {sec:"6.97% GS 2026",isin:"IN0020160035",d:"2026-09-06",amt:47969.76,st:"s",src:"ccil",why:"Outstanding at end-July 2026 per CCIL; final redeemed amount not read from RBI."},
+  {sec:"10.18% GS 2026",isin:"IN0020010081",d:"2026-09-11",amt:15000,st:"s",src:"ccil",why:"Outstanding at end-July 2026 per CCIL."},
+  {sec:"7.33% GS 2026",isin:"IN0020230119",d:"2026-10-30",amt:35472.601,st:"v",src:"rbiOS",why:""},
+  {sec:"5.74% GS 2026",isin:"IN0020210186",d:"2026-11-15",amt:39518.079,st:"v",src:"rbiOS",why:""},
+  {sec:"8.15% GS 2026",isin:"IN0020140060",d:"2026-11-24",amt:27205.741,st:"v",src:"rbiOS",why:""},
+  {sec:"8.24% GS 2027",isin:"IN0020060078",d:"2027-02-15",amt:58052.341,st:"v",src:"rbiOS",why:""}
+];
+const SPECIAL={sec:"8.23% GoI FCI Special Bonds 2027",isin:"IN0020060029",d:"2027-02-12",amt:6200,st:"s",src:"ccil",why:"Special security (not marketable dated stock); outstanding at end-July 2026 per CCIL."};
+MAT.forEach(m=>{
+  let det=`${m.sec} (${m.isin}) matures. ${m.why}`;
+  const wd=dow(m.d);
+  if(wd===0||wd===6) det+=` Maturity falls on a ${wd===0?"Sunday":"Saturday"}; under standard GoI terms repayment is made on the preceding working day (UNVERIFIED — CHECK MANUALLY).`;
+  add(m.d,"mat",`Redemption · ${m.sec}`,{amt:m.amt,detail:det.trim(),st:m.st,src:m.src});
+});
+add(SPECIAL.d,"mat",`Redemption · ${SPECIAL.sec}`,{amt:SPECIAL.amt,detail:SPECIAL.why,st:SPECIAL.st,src:SPECIAL.src});
+
+/* ---------- T-bills ---------- */
+const TB=[
+  {q:"Q1 (Apr–Jun 2026)",src:"pibTB1",st:"v",mix:[12000,6000,6000],rows:[["2026-04-08","2026-04-09"],["2026-04-15","2026-04-16"],["2026-04-22","2026-04-23"],["2026-04-29","2026-04-30"],["2026-05-06","2026-05-07"],["2026-05-13","2026-05-14"],["2026-05-20","2026-05-21"],["2026-05-27","2026-05-29"],["2026-06-03","2026-06-04"],["2026-06-10","2026-06-11"],["2026-06-17","2026-06-18"],["2026-06-24","2026-06-25"]]},
+  {q:"Q2 (Jul–Sep 2026)",src:"pibTB2",st:"v",mix:[9000,8000,7000],rows:[["2026-07-01","2026-07-02"],["2026-07-08","2026-07-09"],["2026-07-15","2026-07-16"],["2026-07-22","2026-07-23"],["2026-07-29","2026-07-30"],["2026-08-05","2026-08-06"],["2026-08-12","2026-08-13"],["2026-08-19","2026-08-20"],["2026-08-27","2026-08-28"],["2026-09-02","2026-09-03"],["2026-09-09","2026-09-10"],["2026-09-16","2026-09-17"],["2026-09-23","2026-09-24"],["2026-09-30","2026-10-01"]]},
+  {q:"Q3 (Oct–Dec 2026)",src:"tb3",st:"s",mix:[8000,8000,7000],rows:[["2026-10-07","2026-10-08"],["2026-10-14","2026-10-15"],["2026-10-21","2026-10-22"],["2026-10-28","2026-10-29"],["2026-11-04","2026-11-05"],["2026-11-11","2026-11-12"],["2026-11-18","2026-11-19"],["2026-11-25","2026-11-26"],["2026-12-02","2026-12-03"],["2026-12-09","2026-12-10"],["2026-12-16","2026-12-17"],["2026-12-23","2026-12-24"],["2026-12-30","2026-12-31"]]}
+];
+TB.forEach(q=>q.rows.forEach(([a,iss])=>{
+  const tot=q.mix.reduce((x,y)=>x+y,0);
+  add(a,"tbill",`T-bill auction · 91D/182D/364D${(a==="2026-10-07"||a==="2026-10-14"||a==="2026-10-28")?" · ✓ done":a==="2026-10-21"?" · ✗ nil accepted (all bids rejected)":""}`,{amt:a==="2026-10-21"?0:tot,detail:`91D ${inr(q.mix[0])}, 182D ${inr(q.mix[1])}, 364D ${inr(q.mix[2])}. Issue date ${fmtD(iss)}.${q.st==="s"?" Q3 dates and split taken from secondary reports of the 25 Sep 2026 calendar; confirm on RBI/PIB.":""}${a==="2026-10-07"?" This week's amounts confirmed in RBI's auction notice of 1 Oct. Result (RBI): all fully accepted; cut-off yields 91D 5.5747%, 182D 6.0999%, 364D 6.2869%.":""}${a==="2026-10-14"?" This week's amounts confirmed in RBI's auction notice of 9 Oct (91D ₹8,000 cr, 182D ₹8,000 cr, 364D ₹7,000 cr); settlement Thu 15 Oct. Result (RBI): competitive notified amounts fully accepted; cut-off yields 91D 5.7281% (price 98.5920), 182D 6.2896% (96.9592), 364D 6.4891% (93.9220), up 15/19/20 bps on 7 Oct (Computed). Weighted average 5.6964% / 6.2563% / 6.4427%. Competitive bids ₹19,609 / ₹15,326 / ₹11,790 cr, cover 2.58× / 2.02× / 1.77× on competitive portion (Computed). Non-competitive accepted ₹5,024.89 cr in 91D (outside notified amount), ₹400 cr in 182D and ₹350 cr in 364D; total accepted 91D ₹12,624.89 cr (Computed).":""}${a==="2026-10-21"?" This week's amounts confirmed in RBI's auction notice of 16 Oct (91D ₹8,000 cr, 182D ₹8,000 cr, 364D ₹7,000 cr; total ₹23,000 cr); auction Wed 21 Oct, settlement Thu 22 Oct. Result (RBI, 21 Oct): NIL accepted in all three tenors; cut-off price and yield shown as NA, no competitive or non-competitive bids accepted. Bids received: 91D ₹15,366.60 cr competitive (67) + ₹12,028.76 cr non-competitive (10); 182D ₹18,925.50 cr (63) + ₹1,712.42 cr (5); 364D ₹11,352.50 cr (75) + ₹1,683.57 cr (4). Competitive cover on notified 1.92× / 2.37× / 1.62× (Computed). No reason stated in the releases. Gross T-bill supply this week is nil against ₹23,000 cr notified, so maturing bills are repaid from cash.":""}${a==="2026-10-28"?" Amounts confirmed in RBI's notice of 23 Oct; settlement Thu 29 Oct. Result (RBI PR 1398/1399, 28 Oct): notified amounts fully accepted after the nil 21 Oct auction. Cut-off yields 91D 5.9337% (price 98.5422), 182D 6.5493% (96.8376), 364D 6.6900% (93.7456), up 21/26/20 bps on the 14 Oct cut-offs (Computed). Weighted average 5.9094% / 6.5140% / 6.6391%. Competitive bids ₹15,676.74 cr (95) / ₹21,225.17 cr (77) / ₹15,310.00 cr (111), accepted ₹7,600 / ₹7,600 / ₹6,650 cr; competitive cover 1.96× / 2.65× / 2.19× on notified (Computed); partial allotment at cut-off 97.10% / 52.74% / 54.44%. Non-competitive accepted ₹25,741.40 cr in 91D (of ₹25,802.08 cr bid), ₹2,990 cr in 182D and ₹2,350 cr in 364D; total accepted incl. non-competitive ₹33,341.40 / ₹10,590 / ₹9,000 cr (Computed).":""}`,st:(a==="2026-10-07"||a==="2026-10-14"||a==="2026-10-21"||a==="2026-10-28")?"v":q.st,src:a==="2026-10-28"?"tb28f":a==="2026-10-07"?"tb7r":a==="2026-10-14"?"tb14f":a==="2026-10-21"?"tb21f":q.src});
+}));
+add("2026-12-28","tbill","T-bill calendar for Jan–Mar 2027 expected",{detail:"Timing estimated from prior quarters (released 25–29 Dec in earlier years).",st:"u",src:"none"});
+
+/* ---------- SDLs ---------- */
+const SDLQ=[
+  {q:"Q1 (Apr–Jun 2026)",amt:254509,st:"s",src:"sdlQ1",note:"Benchmark Issuance Strategy pilot began with nine states: Andhra Pradesh, Bihar, Chhattisgarh, Kerala, Madhya Pradesh, Maharashtra, Rajasthan, Telangana, Uttar Pradesh."},
+  {q:"Q2 (Jul–Sep 2026)",amt:318816,st:"v",src:"sdlQ2",note:"BIS extended to Delhi, Himachal Pradesh, Jharkhand, Manipur, Meghalaya, Odisha, Punjab, Sikkim, Uttarakhand and West Bengal (18 states plus Delhi on BIS). Annex 1 covers BIS states, Annex 2 the rest."},
+  {q:"Q3 (Oct–Dec 2026)",amt:360820,st:"v",src:"sdlQ3p",note:"Released 1 Oct 2026. Up 13.2% on Q2 (computed). BIS extended to Assam, Goa, Haryana, Mizoram, Nagaland, Tripura and J&K, taking it to 26 states/UTs. Week-wise, state-wise amounts are in RBI's annexes (not captured); each week's list is confirmed 2–3 days before the auction."},
+  {q:"Q4 (Jan–Mar 2027)",amt:null,st:"u",src:"none",note:"Official calendar not yet released (Q4 FY26 calendar came on 2 Jan 2026). ESTIMATE — not an RBI release: about ₹5,23,116 cr (adjusted), with a cross-check of ₹6,03,221 cr. See the estimate block below."}
+];
+add("2026-04-01","sdl","SDL indicative calendar Q1: ₹2,54,509 cr",{amt:254509,detail:SDLQ[0].note+" Week-wise, state-wise amounts are in RBI's annex (not captured here).",st:"s",src:"sdlQ1"});
+add("2026-07-01","sdl","SDL indicative calendar Q2: ₹3,18,816 cr",{amt:318816,detail:SDLQ[1].note+" Released 25 Jun 2026.",st:"v",src:"sdlQ2"});
+add("2026-10-01","sdl","SDL indicative calendar Q3: ₹3,60,820 cr",{amt:360820,detail:SDLQ[2].note,st:"v",src:"sdlQ3p"});
+add("2026-10-06","sdl","SDL auction: ₹23,600 cr accepted of ₹25,100 cr · ✓ done",{amt:23600,detail:"Result (RBI full auction result): ₹23,600 cr accepted of ₹25,100 cr notified across 13 states/UTs. Skipped/reduced: Delhi took nothing in either re-issue (2033, 2041; ₹0 of ₹1,000 cr); Punjab took nothing in its 2031 re-issue (₹1,000 of ₹1,500 cr). State-wise notified/accepted (₹ cr): Maharashtra 7,200/7,200 (cut-offs 7.6297% 2031, 7.9788% 2039, 8.01% 2043, 7.9921% 2049); Madhya Pradesh 3,000/3,000 (7.91% 2036, 7.9877% 2044, 7.9794% 2056); Telangana 2,500/2,500 (8.03% 2046, 8.02% 2052); Andhra Pradesh 2,000/2,000 (7.9197% 2035, 7.9971% 2042); Karnataka 2,000/2,000 (7.86% 2034); West Bengal 2,000/2,000 (7.9278% 2035, 7.99% 2041, 8.0671% 2047); Rajasthan 1,900/1,900 (8.0079% 2041, 8.0157% 2048); Punjab 1,500/1,000 (8.0183% 2041); Delhi 1,000/0; J&K 800/800 (8.01% 2051); Himachal Pradesh 600/600 (8.0061% 2044); Meghalaya 400/400 (8.08% 2039, the week's high); Goa 200/200 (7.85% 2034). Q3 week-wise indicative amounts are in RBI annex PDFs that could not be read, so the comparison is against notified amounts. Corrects the earlier notified list (Delhi ₹1,000 cr, West Bengal ₹2,000 cr, Andhra Pradesh ₹2,000 cr).",st:"v",src:"sdl6f"});
+add("2026-10-13","sdl","SDL auction: ₹30,005 cr accepted of ₹31,200 cr · ✓ done",{amt:30005,detail:"Result (RBI full auction result): ₹30,005 cr accepted of ₹31,200 cr notified across 13 states; bids ₹87,997 cr (1,775 bids), cover 2.82× on notified (Computed); settlement Wed 14 Oct. Short: Gujarat accepted nothing in its 12Y 2038 (₹0 of ₹1,000 cr); Assam took ₹805 of ₹1,000 cr (11Y 2037, 8.10%). State-wise notified/accepted (₹ cr) and cut-offs: Tamil Nadu 7,000/7,000 (8.14% 2046, 8.21% 2051, 8.18% 2056); West Bengal 5,400/5,400 (7.8967% 2031, 8.15% 2044, 8.16% 2052); Uttar Pradesh 3,500/3,500 (8.11% 2038, 8.1591% 2046); Bihar 3,000/3,000 (8.1475% 2044, 8.1585% 2051); Haryana 2,500/2,500 (8.1501% 2040, 8.17% 2048); Gujarat 2,000/1,000 (7.96% 2035); Karnataka 2,000/2,000 (8.03% 2036); Uttarakhand 1,500/1,500 (8.00% 2034, 8.1887% 2044, 8.15% 2052); Chhattisgarh 1,200/1,200 (8.0285% 2035, 8.1493% 2042); Assam 1,000/805; Keralam 1,000/1,000 (7.92% 2032); Odisha 1,000/1,000 (7.852% 2032, 8.169% 2040); Mizoram 100/100 (8.14% 2041). Week's high cut-off 8.21% (Tamil Nadu 2051); 10Y-type paper 7.96–8.03%, up from 7.86% (Karnataka 2034) on 6 Oct.",st:"v",src:"sdl13f"});
+add("2026-10-19","sdl","SDL auction (Monday): ₹23,016 cr accepted of ₹24,400 cr · ✓ done",{amt:23016.418,detail:"Result (RBI full auction result, 19 Oct): ₹23,016.418 cr accepted of ₹24,400 cr notified across 11 states/UTs; bids ₹81,121.73 cr (1,628 bids), cover 3.32× on notified (Computed); competitive accepted ₹21,765.143 cr (608 bids). Moved to Monday because 20 Oct is a holiday; settlement Wed 21 Oct (per the 15 Oct notice). Short: Andhra Pradesh accepted nothing in its 7.68% 2051 re-issue (₹0 of ₹1,000 cr); Punjab took ₹316.418 of ₹700 cr in its 7.75% 2035 re-issue. State-wise accepted (₹ cr) and cut-offs: Maharashtra 8,000 (7.9794% 2034, new 2041 8.14%, 8.1688% 2044, 8.1845% 2054); Madhya Pradesh 4,500 (new 2030 7.77%, 8.1393% 2038, 8.2370% 2048); Rajasthan 3,500 (new 2036 8.04%, new 2042 8.23%, 8.1768% 2057); Gujarat 2,000 (7.9627% 2035, new 2038 8.06%); Telangana 2,000 (8.1466% 2039, 8.1864% 2049); Punjab 1,116.418 (8.1097% 2035, 8.2002% 2043); J&K 800 (8.1980% 2044); Tripura 800 (new 2034 8.03%, new 2050 8.19%); Goa 200 (8.1004% 2037); Meghalaya 100 (8.1488% 2039); Andhra Pradesh 0. Week's high cut-off 8.2370% (MP 2048); 10Y-type paper 7.96–8.04% (Gujarat 2035, Rajasthan 2036). Meghalaya's 2039 re-issue cleared at 8.1488% vs 8.08% on 6 Oct.",st:"v",src:"sdl19f"});
+add("2026-10-27","sdl","SDL auction: ₹18,963 cr accepted of ₹23,300 cr · ✓ done",{amt:18963.348,detail:"Result (RBI full auction result, 27 Oct): ₹18,963.348 cr accepted of ₹23,300 cr notified (81.4%, Computed) across 13 states/UTs; settlement Wed 28 Oct. Competitive bids ₹79,748.40 cr (1,452), accepted ₹18,194.187 cr (195); non-competitive ₹1,334.997 cr received (180), ₹769.161 cr accepted (118). Competitive cover 3.42× on notified (Computed). Rejected outright: Gujarat 2035 and 2038 (₹0 of ₹2,000 cr), Keralam new 14Y 2040 (₹0 of ₹1,500 cr), Jharkhand 2033 (₹0 of ₹200 cr), Sikkim 2030 (₹0 of ₹200 cr). Partial: Assam new 9Y 2035 ₹606.733 of ₹1,000 cr (8.15%), Nagaland new 9Y 2035 ₹256.615 of ₹300 cr (8.18%). Accepted (₹ cr) and cut-offs: Tamil Nadu 9,000 (8.2597% 2041, 8.2767% 2046, 8.2656% 2051, 8.2537% 2056); Uttar Pradesh 3,500 (7.9593% 2032, 8.2789% 2042, 8.2772% 2051); Bihar 3,000 (new 9Y 2035 8.18%, 8.2811% 2041, the week's high); Chhattisgarh 1,200 (8.2498% 2040, 8.2462% 2048); Uttarakhand 500 (8.2295% 2038); Himachal Pradesh 400 (8.2487% 2049); Manipur 300 (8.2651% 2042); Sikkim 200 (8.2547% 2042). Tamil Nadu re-issues cleared 6–14 bp above their 13 Oct cut-offs (2046 8.14%→8.2767%, 2051 8.21%→8.2656%, 2056 8.18%→8.2537%; Computed). Notified list per RBI PR 1382 of 23 Oct.",st:"v",src:"sdl27f"});
+add("2026-11-03","sdl","SDL auction notified: ₹29,900 cr, 12 states/UTs",{amt:29900,detail:"RBI PR 1418 (30 Oct): auction Tue 3 Nov, settlement Wed 4 Nov; 25 securities. Notified (₹ cr): Maharashtra 7,200 (re-issues 2031, 2039, 2043, 2049); West Bengal 5,000 (re-issues 2035, 2041, 2047); Madhya Pradesh 4,000 (re-issues 2036, 2044, 2056); Andhra Pradesh 3,000 (re-issues 7.46% 2035, 7.81% 2056); Telangana 3,000 (new 20Y and 26Y); Gujarat 2,000 (re-issues 7.96% 2035 with ₹500 cr greenshoe, 8.06% 2038 — both rejected outright on 27 Oct); Karnataka 2,000 (re-issue 7.86% 2034); Punjab 1,500 (re-issues 2031, 7.91% 2041 with ₹500 cr greenshoe); Delhi 1,000 (re-issue 7.57% 2036, new 15Y; Delhi took nothing on 6 Oct); Rajasthan 1,000 (new 11Y and 21Y); Goa 100 (re-issue 2034); Meghalaya 100 (new 6Y). Result due 3 Nov.",st:"v",src:"sdl3"});
+add("2027-01-01","sdl","SDL indicative calendar Q4 expected",{detail:SDLQ[3].note,st:"u",src:"none"});
+/* weekly Tuesday SDL slots for the rest of the year, flagged */
+for(let s=addDays(TODAY,0);s<=FY_END;s=addDays(s,1)){ if(dow(s)===2 && s>=TODAY && s!=="2026-10-06" && s!=="2026-10-13" && s!=="2026-10-20" && s!=="2026-10-27" && s!=="2026-11-03"){
+  if(s>="2027-01-01") add(s,"sdl","SDL slot · ESTIMATE ≈₹40,240 cr (not an RBI release)",{detail:"ESTIMATE — not an RBI release. Q4 FY27 adjusted estimate of ₹5,23,116 cr spread evenly over the 13 Q4 Tuesdays as a total only; no state-by-date split is implied. Holidays not applied. See the SDLs tab for method and sources; replace with the official RBI Q4 calendar when released (usually around the turn of the year).",st:"u",src:"none"});
+  else add(s,"sdl","SDL auction (usual Tuesday slot)",{detail:"States and amounts are notified by RBI 2–3 days before. Weekly slot inferred from the usual Tuesday pattern; the Q3 calendar total is out (₹3,60,820 cr) but week-wise amounts were not captured.",st:"u",src:"none"});
+}}
+
+/* ---------- RBI policy & operations ---------- */
+const MPCM=[["2026-04-06","2026-04-08"],["2026-06-03","2026-06-05"],["2026-08-03","2026-08-05"],["2026-10-05","2026-10-07"],["2026-12-02","2026-12-04"],["2027-02-03","2027-02-05"]];
+MPCM.forEach(([a,b],i)=>{
+  add(a,"mpc",`MPC meeting begins (${i+1} of 6)`,{detail:`Meeting ${fmtD(a)} to ${fmtD(b)}.`,st:"s",src:"mpc"});
+  let det=`Policy announcement at the end of the ${fmtD(a).slice(4)}–${fmtD(b).slice(4)} meeting.`;
+  if(b==="2026-08-05") det+=" Outcome: repo held at 5.25% (unanimous), SDF 5.00%, MSF/Bank Rate 5.50%, neutral stance.";
+  if(b<"2026-08-05") det+=" Repo was 5.25% after this meeting.";
+  if(b==="2026-10-07") det+=" Outcome (RBI): repo raised 25 bps to 5.50% (unanimous); SDF 5.25%, MSF/Bank Rate 5.75%; stance changed to calibrated tightening (two members preferred neutral). FY27 projections: real GDP 7.1%, CPI 5.2%.";
+  add(b,"mpc",`MPC decision (${i+1} of 6)${b==="2026-10-07"?": repo +25 bps to 5.50%":""}`,{detail:det,st:b==="2026-10-07"?"v":"s",src:b==="2026-08-05"?"mpcAug":b==="2026-10-07"?"mpcOct":"mpc"});
+});
+add("2026-08-19","mpc","MPC minutes (August meeting)",{detail:"Publication date stated in the 5 Aug 2026 policy statement.",st:"s",src:"mpcAug"});
+add("2026-10-21","mpc","MPC minutes (October meeting) · ✓ published",{detail:"Published 21 Oct (RBI). Repo +25 bps to 5.50%: unanimous. Stance to calibrated tightening 4–2: Sanjay Malhotra, Poonam Gupta, Indranil Bhattacharyya and Saugata Bhattacharya for; Nagesh Kumar and Ram Singh voted for the hike but to retain neutral. Minutes cite CPI 4.8% in Aug, core 4.2%, items above 4% inflation about 37% of the basket; FY27 CPI projection 5.2% with Q3 at 6.0%; FY27 GDP 7.1% (from 6.7% in Aug), Q1 actual 7.8%. Most members see current inflation as mainly supply-driven (monsoon, El Niño, energy and commodities); concerns raised on household inflation expectations, input-cost pass-through and strong credit growth. External side: rupee depreciation listed as an inflation factor; FCNR(B) inflows seen as stabilising. Next meeting 2–4 Dec 2026.",st:"v",src:"mpcMin"});
+[["2026-12-18","December"],["2027-02-19","February"]].forEach(([d,m])=>add(d,"mpc",`MPC minutes (${m} meeting), expected`,{detail:"Estimated as 14 days after the decision; the exact date is stated in each policy statement.",st:"u",src:"none"}));
+/* switch auctions: third Monday rule */
+for(let y=2026,m=3;!(y===2027&&m===3);){ // months Apr 2026 .. Mar 2027 (0-index m)
+  let d=S(new Date(Date.UTC(y,m,1)));while(dow(d)!==1)d=addDays(d,1);d=addDays(d,14);
+  add(d,"mpc","Switch auction slot (third Monday)",{detail:"Calendar rule: switches are held on the third Monday of each month or more often; if a holiday, the fourth Monday. Occurrence and securities are announced separately.",st:"v",src:d<"2026-10-01"?"deaH1":"rbiH2"});
+  m++; if(m>11){m=0;y++;}
+}
+add("2026-07-28","mpc","GoI buyback auction, up to ₹20,000 cr",{amt:20000,detail:"Buyback of 7.33% GS 2026, 5.74% GS 2026, 8.15% GS 2026 and 8.24% GS 2027.",st:"s",src:"buyback"});
+add("2026-10-01","mpc","WMA limit for H2 FY27: ₹50,000 cr",{amt:50000,detail:"Ways and Means Advances limit for Government of India, October 2026 to March 2027.",st:"s",src:"mofH2"});
+add("2026-09-25","gsec","H2 issuance calendar released: ₹7,86,000 cr",{amt:786000,detail:"23 weekly auctions, 3Y to 50Y, including ₹15,000 cr Sovereign Green Bonds. FY27 dated borrowing now ₹15,99,506 cr vs ₹17,20,000 cr BE; the reduction reflects switching ₹1,14,286 cr of FY27 maturities (Finance Ministry, via media).",st:"v",src:"rbiH2"});
+
+/* ---------- MoSPI (verified dates, weekend → next working day per ARC note) ---------- */
+function mospi(day,title,detail){const w=nextWorking(day);add(w,"data",title,{detail:detail+(w!==day?` Scheduled ${fmtD(day)}; shifted to next working day per the calendar's holiday rule (actual date may differ).`:""),st:"v",src:"mospi"});}
+const months=[];for(let y=2026,m=4;!(y===2027&&m===4);){months.push([y,m]);m++;if(m>12){m=1;y++;}}
+const pad=n=>String(n).padStart(2,"0");
+const prevMon=(y,m,k)=>{let mm=m-k,yy=y;while(mm<1){mm+=12;yy--;}return MONL[mm-1]+" "+yy;};
+months.forEach(([y,m])=>{
+  mospi(`${y}-${pad(m)}-12`,"CPI inflation",`All-India CPI (base 2024) for ${prevMon(y,m,1)}.`);
+  const plfsDay=(y===2026&&m===8)?17:15;
+  mospi(`${y}-${pad(m)}-${pad(plfsDay)}`,"PLFS monthly bulletin",`Periodic Labour Force Survey, ${prevMon(y,m,1)}.`);
+});
+add("2026-10-12","data","CPI Sep 2026: 5.54% (Aug 4.83%)",{detail:"MoSPI/NSO, provisional: all-India CPI inflation 5.54% y/y in September 2026, up from 4.83% in August. Rural 6.08%, urban 4.88%. CFPI food inflation 7.74% (Aug 5.97%); rural food 8.06%, urban food 7.18%. Next CPI release 12 Nov 2026. Figures read from a media report of the MoSPI release; confirm against the MoSPI PDF.",st:"s",src:"cpiSep"});
+const IIP=["2026-04-28","2026-06-01","2026-06-28","2026-07-28","2026-08-28","2026-09-28","2026-10-28","2026-11-28","2026-12-28","2027-01-28","2027-02-28","2027-03-28"];
+IIP.forEach(d=>mospi(d,"IIP (industrial production)","All-India Index of Industrial Production (base 2022-23)."));
+mospi("2026-05-11","PLFS quarterly bulletin","Quarter January–March 2026.");
+mospi("2026-08-10","PLFS quarterly bulletin","Quarter April–June 2026.");
+mospi("2026-11-10","PLFS quarterly bulletin","Quarter July–September 2026.");
+mospi("2027-02-10","PLFS quarterly bulletin","Quarter October–December 2026.");
+mospi("2026-06-05","GDP: FY26 provisional estimates + Q4 FY26","Provisional Estimates of GDP for 2025-26 and Q4 2025-26 (base 2022-23).");
+mospi("2026-08-31","GDP: Q1 FY27","Quarterly Estimates of GDP for April–June 2026.");
+mospi("2026-11-30","GDP: Q2 FY27","Quarterly Estimates of GDP for July–September 2026.");
+mospi("2027-01-07","GDP: First Advance Estimates FY27","First Advance Estimates of GDP for 2026-27.");
+mospi("2027-02-26","GDP: Second Advance Estimates + Q3 FY27","Second Advance Estimates for 2026-27, Q3 estimates, First Revised Estimates for 2025-26 and Final Estimates for 2024-25.");
+mospi("2026-09-29","ASI results 2024-25","Annual Survey of Industries.");
+["2026-05-21","2026-08-21","2026-11-21","2027-03-21"].forEach((d,i)=>mospi(d,"ASUSE quarterly bulletin",["Quarter Jan–Mar 2026.","Quarter Apr–Jun 2026.","Quarter Jul–Sep 2026.","ASUSE 2026 factsheet with quarter Oct–Dec 2026."][i]));
+mospi("2027-03-25","PLFS annual report, calendar year 2026","Detailed report with unit-level data.");
+
+/* ---------- other data: dates by convention only ---------- */
+months.forEach(([y,m])=>{
+  add(nextWorking(`${y}-${pad(m)}-14`),"other","WPI inflation (DPIIT)",{detail:`Wholesale Price Index for ${prevMon(y,m,1)}. Usual 14th-of-month release; not read from the DPIIT calendar.`,st:"u"});
+  add(nextWorking(`${y}-${pad(m)}-15`),"other","Merchandise trade data",{detail:`Trade data for ${prevMon(y,m,1)}. Usual mid-month release; date not verified.`,st:"u"});
+  add(nextWorking(`${y}-${pad(m)}-20`),"other","Eight core industries index",{detail:`Core sector for ${prevMon(y,m,1)}. Usual ~20th release; date not verified.`,st:"u"});
+  let last=S(new Date(Date.UTC(y,m,0)));while(dow(last)===0||dow(last)===6)last=addDays(last,-1);
+  add(last,"other","CGA monthly accounts (Union Govt)",{detail:`Union Government accounts for ${prevMon(y,m,1)}. Usually last working day; date not verified.`,st:"u"});
+});
+for(let s="2026-04-03";s<=FY_END;s=addDays(s,7)) add(s,"other","RBI WSS: forex reserves, money & credit",{detail:"Weekly Statistical Supplement, released Fridays (holiday shifts not applied).",st:"u"});
+
+/* ---------- fiscal & liquidity ---------- */
+
+add("2027-02-01","fiscal","Union Budget 2027-28",{detail:"1 February by convention since 2017; the date is notified separately.",st:"u"});
+["2026-06-30","2026-09-30","2026-12-31","2027-03-31"].forEach(d=>add(d,"fiscal","Quarter-end",{detail:"Quarter-end balance-sheet and liquidity date.",st:"v",src:"none"}));
+
+
+/* ---------- tax outflows ---------- */
+const TAX=[];
+function tax(d,title,detail,st,src){const w=nextWorking(d);TAX.push({d:w,title,detail:detail+(w!==d?` Statutory date ${fmtD(d)} falls on a weekend; next working day shown.`:""),st,src});add(w,"tax",title,{detail:TAX[TAX.length-1].detail,st,src});}
+[["2026-06-15","15% cumulative (companies)"],["2026-09-15","45% cumulative (companies); 30% for non-corporates"],["2026-12-15","75% cumulative (companies); 60% for non-corporates"],["2027-03-15","100% (all assessees)"]].forEach(([d,x],i)=>tax(d,`Advance tax instalment ${i+1} of 4`,`${x}. Mid-quarter corporate tax outflow; usually the largest single-day liquidity drain of the month.`,"v","itd"));
+months.forEach(([y,m])=>{
+  tax(`${y}-${pad(m)}-20`,"GST payment + GSTR-3B (monthly filers)",`GST for ${prevMon(y,m,1)} payable with GSTR-3B by the 20th (monthly filers, turnover above ₹5 crore or not on QRMP).`,"s","gst");
+  if([1,4,7,10].includes(m)){
+    tax(`${y}-${pad(m)}-22`,"GSTR-3B quarterly (QRMP), Category X states",`Quarter ending ${prevMon(y,m,1)}: QRMP filers in southern and western states.`,"s","gst");
+    tax(`${y}-${pad(m)}-24`,"GSTR-3B quarterly (QRMP), Category Y states",`Quarter ending ${prevMon(y,m,1)}: QRMP filers in northern and eastern states and Delhi.`,"s","gst");
+  }
+  const tdsDay=(m===4)?`${y}-04-30`:`${y}-${pad(m)}-07`;
+  tax(tdsDay,"TDS/TCS deposit",`TDS/TCS deducted in ${prevMon(y,m,1)} (March deductions due 30 April). Date by convention; not verified this session.`,"u","none");
+});
+
+/* ---------- RBI liquidity & FX operations ---------- */
+const OMO=[
+  {d:"2026-09-17",settle:"2026-09-18",notified:50000,bid:66590,acc:50000,src:"omo17",st:"s",split:"7.59% GS 2029 ₹7,005 cr; 6.79% GS 2029 ₹7,255 cr; 7.61% GS 2030 ₹1,005 cr; 5.77% GS 2030 ₹12,645 cr; 6.68% GS 2031 ₹3,250 cr; 8.28% GS 2032 ₹18,840 cr"},
+  {d:"2026-09-21",settle:"2026-09-22",notified:25000,bid:84982,acc:25000,st:"s",split:"6.10% GS 2031 ₹11,512 cr; 7.95% GS 2032 ₹8,758 cr; one further security ₹2,300 cr (name not captured); 7.17% GS 2030 ₹2,250 cr; 7.17% GS 2028 ₹180 cr; no bids accepted in 8.28% GS 2027",src:"omo21b"},
+  {d:"2026-09-28",settle:"2026-09-29",notified:25000,bid:67655,acc:25000,src:"omo28",st:"s",split:"7.59% GS 2029 ₹920 cr (cut-off 6.6676%); 6.45% GS 2029 ₹610 cr (6.7201%); 7.61% GS 2030 ₹1,350 cr (6.9108%); 5.85% GS 2030 ₹1,320 cr (6.9481%); 6.54% GS 2032 ₹14,350 cr (7.0810%); sixth security ₹6,450 cr (7.1021%)"},
+  {d:"2026-10-13",settle:"2026-10-14",notified:25000,bid:55518,acc:25000,src:"omo13r",st:"v",split:"7.88% GS 2030 ₹2,820 cr (cut-off 7.1428%); 6.10% GS 2031 ₹8,430 cr (7.2236%); 7.95% GS 2032 ₹1,600 cr (7.2659%); 7.26% GS 2033 ₹2,735 cr (7.3413%); 7.18% GS 2033 ₹9,415 cr (7.3947%); no bids accepted in 7.10% GS 2034",note:"Announced 9 Oct, separate from the September ₹1 lakh cr programme; 339 bids, 132 accepted (Computed). Absorbs durable liquidity and adds 2030–2033 paper to the market."}
+];
+OMO.forEach((o,i)=>add(o.d,"ops",`OMO sale tranche ${i+1}${i<3?" of 3 (Sep programme)":" (October)"}: ${inr(o.acc)}`,{amt:o.acc,detail:`Notified ${inr(o.notified)}, bids ${inr(o.bid)}, accepted ${inr(o.acc)}; settlement ${fmtD(o.settle)}. ${o.split}. ${o.note||"Absorbs durable liquidity and adds 2029–2032 paper to the market."}`,st:o.st,src:o.src}));
+add("2026-09-11","ops","₹1 lakh crore OMO sale programme announced",{amt:100000,detail:"Three tranches: ₹50,000 cr on 17 Sep, ₹25,000 cr each on 21 and 28 Sep. Driven by the rupee surplus created by FCNR(B) swap inflows.",st:"s",src:"omoAnn"});
+add("2026-05-20","ops","USD/INR buy/sell swap announced: $5 bn, 3 years",{detail:"Announced to inject durable rupee liquidity after FX intervention drained it.",st:"v",src:"swapMay"});
+add("2026-05-26","ops","USD/INR buy/sell swap auction: $5 bn accepted",{detail:"Notified $5.00 bn, bids $9.80 bn (bid-cover 1.96, 254 bids), accepted $5.00 bn, cut-off premium 910 paise. Three-year tenor; the RBI buys dollars now and sells them back at maturity, so rupee liquidity is injected until then.",st:"v",src:"swapMay"});
+const FXS=[
+  {d:"2026-06-05",t:"Special USD-INR swap facility announced",x:"Covers fresh FCNR(B) deposits of 3–5 years, ECBs and overseas foreign-currency borrowings (OFCB).",st:"s",src:"fx18"},
+  {d:"2026-06-08",t:"Special USD-INR swap facility opens",x:"Operational from 8 June 2026.",st:"s",src:"fx31"},
+  {d:"2026-08-14",t:"Swap facility inflows: $56.85 bn (as of 14 Aug)",x:"FCNR(B) + ECB + OFCB, RBI data.",st:"s",src:"fxBS"},
+  {d:"2026-08-24",t:"Swap facility inflows: $73 bn (as of 21 Aug)",x:"FCNR(B) $65.40 bn of the total. Finance Ministry release; FCNR(B) window deadline advanced from 30 Sep to 31 Aug.",st:"s",src:"fx21"},
+  {d:"2026-08-31",t:"FCNR(B) window closes for fresh deposits",x:"Last date for fresh FCNR(B) deposits to qualify for the special swap.",st:"s",src:"fx31"},
+  {d:"2026-09-02",t:"Swap facility inflows: $136.38 bn (as of 31 Aug)",x:"FCNR(B) $127.23 bn, OFCB $5.26 bn, ECB $3.89 bn. Provisional.",st:"s",src:"fx31"},
+  {d:"2026-09-11",t:"Last date to execute FCNR(B) swaps with RBI",x:"Banks could complete swaps against eligible deposits mobilised by 31 Aug until this date.",st:"s",src:"fxBS"},
+  {d:"2026-09-21",t:"Swap facility inflows: $143.60 bn (as of 18 Sep)",x:"FCNR(B) $132.98 bn, OFCB $5.32 bn, ECB $5.30 bn. Revised up by about $7.2 bn from the 31 Aug figure.",st:"s",src:"fx18"},
+  {d:"2026-12-31",t:"ECB/OFCB swap window closes",x:"The ECB and OFCB legs of the facility stay open until 31 Dec 2026.",st:"s",src:"fx31"}
+];
+FXS.forEach(f=>add(f.d,"ops",f.t,{detail:f.x,st:f.st,src:f.src}));
+add("2026-10-01","ops","4-day VRRR auction (liquidity absorption)",{detail:"Variable Rate Reverse Repo under LAF, 4-day tenor, to absorb the surplus left after the OMO sales.",st:"v",src:"rbiPR"});
+add("2026-10-05","ops","Overnight VRRR auction: ₹2,00,050 cr absorbed",{amt:200050,detail:"Variable Rate Reverse Repo under LAF, 1-day tenor; notified ₹2,00,000 cr, bids ₹2,10,688 cr, accepted ₹2,00,050 cr at cut-off and weighted average 5.24% (94.36% partial acceptance at cut-off); reversal Tue 6 Oct. Absorbs surplus as the 4-day VRRR of 1 Oct matures.",st:"v",src:"vrrr5r"});
+add("2026-10-05","ops","Second overnight VRRR auction: ₹10,142 cr absorbed",{amt:10142,detail:"1-day tenor; notified ₹50,000 cr, bids ₹10,142 cr, all accepted at 5.24% (cut-off and weighted average). Weak demand suggests the surplus left after the first auction was largely parked.",st:"v",src:"vrrr5b"});
+add("2026-10-06","ops","Overnight VRRR auction: ₹1,92,357 cr absorbed",{amt:192357,detail:"Variable Rate Reverse Repo under LAF, 1-day tenor; notified ₹2,50,000 cr, bids ₹1,92,357 cr, all accepted at 5.24% (cut-off and weighted average); reversal Wed 7 Oct (MPC decision day). Undersubscribed by about ₹57,600 cr (Computed).",st:"v",src:"vrrr6r"});
+add("2026-10-07","ops","Overnight VRRR auction: ₹2,55,827 cr absorbed",{amt:255827,detail:"Variable Rate Reverse Repo under LAF, 1-day tenor, on MPC decision day; notified ₹3,00,000 cr, bids ₹2,55,827 cr, all accepted at 5.49% (cut-off and weighted average), just under the new 5.50% repo. Undersubscribed by ₹44,173 cr (Computed).",st:"v",src:"vrrr7r"});
+add("2026-10-08","ops","29-day VRRR auction: ₹79,655 cr absorbed",{amt:79655,detail:"Variable Rate Reverse Repo under LAF, 29-day tenor; window 9:30–10:00 AM; reversal Fri 6 Nov 2026. Notified ₹2,00,000 cr, bids ₹79,655 cr, all accepted at 5.49% (cut-off and weighted average). Undersubscribed by ₹1,20,345 cr (Computed). Announced 7 Oct 'on a review of the current and evolving liquidity conditions'.",st:"v",src:"vrrr29r"});
+add("2026-10-08","ops","Overnight VRRR auction: ₹1,60,664 cr absorbed",{amt:160664,detail:"Second VRRR of the day, 1-day tenor, window 11:00–11:30 AM; notified ₹2,00,000 cr, bids ₹1,60,664 cr, all accepted at 5.49% (cut-off and weighted average); reversal Fri 9 Oct. Undersubscribed by ₹39,336 cr (Computed).",st:"v",src:"vrrr8r"});
+add("2026-10-09","ops","10-day VRRR auction: ₹18,170 cr absorbed",{amt:18170,detail:"Variable Rate Reverse Repo under LAF, 10-day tenor; window 9:30–10:00 AM; reversal Mon 19 Oct 2026. Notified ₹1,50,000 cr, bids ₹18,170 cr, all accepted at 5.49% (cut-off and weighted average). Undersubscribed by ₹1,31,830 cr (Computed).",st:"v",src:"vrrr10r"});
+add("2026-10-09","ops","3-day VRRR auction: ₹1,39,847 cr absorbed",{amt:139847,detail:"Second VRRR of the day, 3-day tenor, window 11:00–11:30 AM; reversal Mon 12 Oct. Notified ₹1,50,000 cr, bids ₹1,39,847 cr, all accepted at 5.49% (cut-off and weighted average). Undersubscribed by ₹10,153 cr (Computed).",st:"v",src:"vrrr3ar"});
+add("2026-10-09","ops","OMO sale announced: ₹25,000 cr on 13 Oct",{amt:25000,detail:"RBI, 9 Oct, 'on a review of current and evolving liquidity conditions'. Multi-security, multiple-price auction of 7.88% GS 2030, 6.10% GS 2031, 7.95% GS 2032, 7.26% GS 2033, 7.18% GS 2033 and 7.10% GS 2034; security-wise amounts not specified.",st:"v",src:"omoOct"});
+add("2026-10-10","ops","FX market measures: FERR 20%, no-underlying limit cut to $5 mn",{detail:"RBI A.P. (DIR Series) Circulars 25 and 26: users may not rebook cancelled INR FX derivative contracts (rollovers on maturity still allowed); limit for hedging contracted exposures without establishing underlying cut from USD 100 mn to USD 5 mn across all ADs, and likewise for exchange-traded INR currency derivatives across all exchanges; undertaking that the same exposure is not hedged with another AD; ADs to keep a cash Foreign Exchange Risk Reserve with RBI of 20% of the INR notional on INR contracts above USD 2 mn where the user buys foreign currency against current-account exposures. Effective dates not stated in the press release; see the circulars.",st:"v",src:"fxReg"});
+add("2026-10-12","ops","Special USD window for public sector OMCs opens",{detail:"RBI will sell USD through designated bank(s) to meet the entire daily dollar requirements of IOCL, HPCL and BPCL, from Mon 12 Oct 2026 until further notice (announced 10 Oct). Amounts, pricing and mechanism not stated. Takes OMC dollar demand off the market and drains rupee liquidity as RBI sells dollars.",st:"v",src:"omcWin"});
+add("2026-10-12","ops","3-day VRRR auction: ₹37,558 cr absorbed",{amt:37558,detail:"Variable Rate Reverse Repo under LAF, 3-day tenor; window 9:30–10:00 AM; reversal Thu 15 Oct 2026. Notified ₹2,00,000 cr, bids ₹37,558 cr, all accepted at 5.49% (cut-off and weighted average). Undersubscribed by ₹1,62,442 cr (Computed); take-up 18.8% of notified.",st:"v",src:"vrrr12r"});
+add("2026-10-13","ops","Overnight VRRR auction: ₹71,580 cr absorbed",{amt:71580,detail:"Variable Rate Reverse Repo under LAF, 1-day tenor; window 9:30–10:00 AM; reversal Wed 14 Oct 2026. Notified ₹1,50,000 cr, bids ₹71,580 cr, all accepted at 5.49% (cut-off and weighted average). Undersubscribed by ₹78,420 cr (Computed); take-up 47.7% of notified.",st:"v",src:"vrrr13r"});
+add("2026-10-14","ops","Overnight VRRR auction: ₹25,533 cr absorbed",{amt:25533,detail:"Variable Rate Reverse Repo under LAF, 1-day tenor; window 9:30–10:00 AM; reversal Thu 15 Oct 2026. Notified ₹50,000 cr (a third of the 13 Oct amount), bids ₹25,533 cr, all accepted at 5.49% (cut-off and weighted average). Undersubscribed by ₹24,467 cr (Computed); take-up 51.1% of notified.",st:"v",src:"vrrr14r"});
+add("2026-10-15","ops","Overnight VRRR auction: ₹9,562 cr absorbed",{amt:9562,detail:"Variable Rate Reverse Repo under LAF, 1-day tenor; window 9:30–10:00 AM; reversal Fri 16 Oct 2026. Notified ₹50,000 cr, bids ₹9,562 cr, all accepted at 5.49% (cut-off and weighted average). Undersubscribed by ₹40,438 cr (Computed); take-up 19.1% of notified, lowest of the overnight series since 5 Oct.",st:"v",src:"vrrr15r"});
+add("2026-10-15","ops","FAQs on Foreign Exchange Risk Reserve issued",{detail:"RBI FAQs on the 20% FERR introduced on 10 Oct. Content not captured this session; see the release.",st:"v",src:"ferrFaq"});
+add("2026-10-15","ops","BoP Aug 2026: CAD $5.2 bn, overall surplus $45.4 bn",{detail:"RBI, preliminary (US$ bn): current account deficit 5.2 (Aug 2025: 6.1); capital account surplus 50.6, including net banking capital 64.7 of which NRI deposits 83.0; net ECB −22.4, FDI 3.3, FPI 1.7; overall balance +45.4 (reserves up). April–August: CAD 18.3, capital account 76.3, overall +58.0. The NRI deposit surge matches the FCNR(B) swap window.",st:"v",src:"bopAug"});
+add("2026-10-16","ops","Forex reserves $726.03 bn (9 Oct), down $8.58 bn on week",{detail:"RBI WSS extract of 16 Oct: total reserves US$726,027 mn as on 9 Oct 2026, down US$8,578 mn on the week (FCA −7,142 mn, gold −1,319 mn); up US$34,920 mn since end-March. RBI WSS liquidity table: net absorption ₹2.97–4.28 lakh cr a day on 5–9 Oct. Money Market Operations of 15 Oct: net durable liquidity surplus ₹10,14,401 cr as on 30 Sep 2026; net absorption incl. outstanding ops ₹2,42,482 cr on 15 Oct; SDF ₹1,79,621 cr. The same release shows the 29-day VRRR of 8 Oct outstanding at ₹42,655 cr against ₹79,655 cr accepted; reason not stated.",st:"v",src:"wss16"});
+add("2026-10-16","tbill","T-bill auction notice for 21 Oct issued",{detail:"RBI notice of 16 Oct for the 21 Oct 91/182/364-day auction. Read on 18 Oct: 91D ₹8,000 cr, 182D ₹8,000 cr, 364D ₹7,000 cr (total ₹23,000 cr), matching the Q3 calendar; settlement Thu 22 Oct.",st:"v",src:"tb21"});
+add("2026-10-19","mpc","Switch auction: ₹11,302 cr accepted of ₹20,000 cr · ✓ done",{amt:11302.18,detail:"GoI conversion/switch via RBI e-Kuber, multiple-price; settlement Wed 21 Oct. Result (RBI, 19 Oct), source accepted → destination issued (₹ cr), destination cut-off price/yield: 8.26% GS 2027 2,000 of 2,000 → 7.19% GS 2060 2,191.941 (92.32/7.8391%); 7.17% GS 2028 3,000 of 3,000 → 7.41% GS 2036 3,014.193 (100.15/7.3867%); 7.06% GS 2028 1,925 of 3,000 → 7.23% GS 2039 1,968.890 (98.38/7.4311%); 7.26% GS 2029 2,377.18 of 4,000 → 6.64% GS 2035 2,509.916 (95.44/7.3598%); 6.03% GS 2029 no offers (0 of 4,000) → 7.50% GS 2034 nil; 6.79% GS 2029 2,000 of 4,000 → 7.57% GS 2033 1,966.176 (101.08/7.3590%). Total source accepted ₹11,302.18 cr (56.5% of notified), destination issued ₹11,651.116 cr (Computed). None of the source securities matures in FY27, so FY27 redemptions are unchanged; trims FY28–FY30 repayments by the source amount.",st:"v",src:"sw19r"});
+add("2026-10-19","ops","7-day VRR auction: ₹1,00,014 cr injected",{amt:100014,detail:"Variable Rate Repo under LAF (liquidity injection), 7-day tenor; window 9:30–10:00 AM; reversal Mon 26 Oct 2026. Notified ₹1,00,000 cr, bids ₹1,50,735 cr, allotted ₹1,00,014 cr; cut-off 5.51%, weighted average 5.52% (56.04% partial allotment at cut-off). First injection-side LAF auction on this page after the October absorption series. RBI Money Market Operations as on 18 Oct: net absorption incl. outstanding ops ₹1,85,873 cr (down from ₹2,42,482 cr on 15 Oct); SDF ₹1,44,678 cr; MSF ₹10,410 cr; 29-day VRRR outstanding ₹38,655 cr; net durable surplus still shown as ₹10,14,401 cr as on 30 Sep.",st:"v",src:"vrr19r"});
+add("2026-10-21","ops","Overnight VRR auction: ₹50,007 cr injected",{amt:50007,detail:"Variable Rate Repo under LAF (liquidity injection), 1-day tenor; window 9:30–10:00 AM; reversal Thu 22 Oct 2026. Announced 19 Oct 'on a review of current and evolving liquidity conditions in the near term'. Result (RBI): notified ₹50,000 cr, bids ₹93,241 cr (1.86×, Computed), allotted ₹50,007 cr at cut-off and weighted average 5.52% (87.99% partial allotment at cut-off). RBI Money Market Operations: net absorption incl. outstanding ops ₹1,14,615 cr on 19 Oct (SDF ₹1,87,158 cr) and ₹48,304 cr on 20 Oct (SDF ₹1,46,888 cr; MSF ₹29,561 cr, up from ₹3,520 cr on 19 Oct); no call money trades on the 20 Oct holiday; 29-day VRRR outstanding ₹37,055 cr; net durable surplus still shown as ₹10,14,401 cr as on 30 Sep.",st:"v",src:"vrr21r"});
+add("2026-10-22","ops","Overnight VRR auction: ₹50,006 cr injected",{amt:50006,detail:"Variable Rate Repo under LAF (liquidity injection), 1-day tenor; window 9:30–10:00 AM; reversal Fri 23 Oct 2026. Announced 21 Oct 'on a review of current and evolving liquidity conditions in the near term'. Third injection-side auction in a row. Result (RBI PR 1365): notified ₹50,000 cr, bids ₹1,62,354 cr (3.25×, Computed), allotted ₹50,006 cr; cut-off 5.54%, weighted average 5.55% (3.2% partial allotment at cut-off), up from 5.52% on 21 Oct. RBI Money Market Operations as on 21 Oct: net absorption incl. outstanding ops ₹541.95 cr (down from ₹48,304 cr on 20 Oct), so the surplus is nearly gone; SDF ₹1,25,597 cr, MSF ₹2,613 cr; call money weighted average 5.65%, above the 5.50% repo; 7-day VRR ₹1,00,014 cr and 29-day VRRR ₹37,055 cr outstanding; net durable surplus still shown as ₹10,14,401 cr as on 30 Sep.",st:"v",src:"vrr22r"});
+add("2026-10-23","ops","3-day VRR auction: ₹50,003 cr injected",{amt:50003,detail:"Variable Rate Repo under LAF (liquidity injection), 3-day tenor; window 9:30–10:00 AM; reversal Mon 26 Oct 2026 (same day as the 7-day VRR of 19 Oct). Announced 22 Oct. Fourth injection-side auction in a row. Result (RBI PR 1373): notified ₹50,000 cr, bids ₹1,06,949 cr (2.14×, Computed), allotted ₹50,003 cr; cut-off 5.58%, weighted average 5.60% (30.99% partial allotment at cut-off), up from 5.54%/5.55% on 22 Oct. RBI Money Market Operations as on 22 Oct (PR 1371): net absorption incl. outstanding ops ₹31,254.95 cr (up from ₹541.95 cr on 21 Oct); SDF ₹1,61,742 cr, MSF ₹3,746 cr; call money weighted average 5.69% (range 4.85–5.85%); 7-day VRR ₹1,00,014 cr and 29-day VRRR ₹33,055 cr outstanding; net durable surplus still shown as ₹10,14,401 cr as on 30 Sep.",st:"v",src:"vrr23r"});
+add("2026-10-26","ops","4-day VRR auction: ₹1,50,007 cr injected",{amt:150007,detail:"Variable Rate Repo under LAF (liquidity injection), 4-day tenor; window 9:30–10:00 AM; reversal Fri 30 Oct 2026. Announced 23 Oct 'on a review of current and evolving liquidity conditions in the near term'. Same day as the ₹1,00,014 cr 7-day VRR and the ₹50,003 cr 3-day VRR reverse, so it rolls them over almost exactly. Fifth injection-side auction in a row. Result (RBI PR 1386): notified ₹1,50,000 cr, bids ₹1,86,666 cr (1.24×, Computed), allotted ₹1,50,007 cr; cut-off 5.55%, weighted average 5.59% (85.07% partial allotment at cut-off), cut-off below the 3-day VRR's 5.58% of 23 Oct. RBI Money Market Operations as on 23–25 Oct (PR 1385, 1387, 1388): net absorption incl. outstanding ops ₹39,421.95 cr (23 Oct), ₹38,895.95 cr (24 Oct) and ₹39,082.95 cr (25 Oct), up from ₹31,254.95 cr on 22 Oct; SDF about ₹2.0 lakh cr and MSF ₹27,382–29,479 cr a day alongside; call money weighted average 5.78% on 23 Oct (range 4.30–5.95%), no call trades on 24–25 Oct; 29-day VRRR outstanding ₹29,555 cr (from ₹33,055 cr); net durable surplus still shown as ₹10,14,401 cr as on 30 Sep.",st:"v",src:"vrr26r"});
+add("2026-10-27","ops","Liquidity 26 Oct: net absorption ₹34,082 cr",{detail:"RBI Money Market Operations as on 26 Oct (PR 1391, 27 Oct): 4-day VRR ₹1,50,007 cr at 5.55% (matures 30 Oct); SDF ₹1,82,261 cr; MSF ₹17,385 cr (down from ₹27,382–29,479 cr on 23–25 Oct); 29-day VRRR outstanding ₹29,555 cr (matures 6 Nov); Standing Liquidity Facility ₹10,341.87 cr. Net absorption incl. outstanding ops ₹34,082.13 cr (₹39,082.95 cr on 25 Oct). Call money weighted average 5.81% (range 4.30–5.90%), above the 5.50% repo and up from 5.78% on 23 Oct. Net durable surplus still shown as ₹10,14,401 cr as on 30 Sep.",st:"v",src:"mmo26"});
+add("2026-10-28","ops","Liquidity 27 Oct: net absorption ₹30,419 cr",{detail:"RBI Money Market Operations as on 27 Oct (PR 1396, 28 Oct): 4-day VRR ₹1,50,007 cr at 5.55% outstanding (matures 30 Oct); 29-day VRRR outstanding ₹25,555 cr (from ₹29,555 cr; matures 6 Nov); SDF ₹1,72,235 cr; MSF ₹7,022 cr (from ₹17,385 cr on 26 Oct); Standing Liquidity Facility ₹10,341.87 cr. Net absorption incl. outstanding ops ₹30,419.13 cr (₹34,082.13 cr on 26 Oct). Call money weighted average 5.75% (range 4.30–5.90%), down from 5.81%. Net durable surplus still shown as ₹10,14,401 cr as on 30 Sep.",st:"v",src:"mmo27"});
+add("2026-10-29","ops","Liquidity 28 Oct: net absorption ₹13,453 cr",{detail:"RBI Money Market Operations as on 28 Oct (PR 1401, 29 Oct): no VRR/VRRR auction that day; SDF ₹1,46,807 cr, MSF ₹495 cr (from ₹7,022 cr on 27 Oct); 4-day VRR ₹1,50,007 cr at 5.55% outstanding (matures 30 Oct); 29-day VRRR ₹25,555 cr outstanding (matures 6 Nov); Standing Liquidity Facility ₹8,406.87 cr. Net absorption incl. outstanding ops ₹13,453.13 cr (₹30,419.13 cr on 27 Oct), the smallest since 21 Oct. Call money weighted average 5.68% (range 4.30–5.85%), down from 5.75%. Net durable surplus still shown as ₹10,14,401 cr as on 30 Sep.",st:"v",src:"mmo28"});
+add("2026-10-30","ops","Liquidity 29 Oct: net absorption ₹30,454 cr",{detail:"RBI Money Market Operations as on 29 Oct (PR 1407, 30 Oct): no VRR/VRRR auction that day; SDF ₹1,74,418 cr, MSF ₹9,205 cr (from ₹495 cr on 28 Oct); 4-day VRR ₹1,50,007 cr at 5.55% outstanding (matured 30 Oct); 29-day VRRR ₹25,555 cr outstanding (matures 6 Nov); Standing Liquidity Facility ₹10,306.87 cr. Net absorption incl. outstanding ops ₹30,454.13 cr (₹13,453.13 cr on 28 Oct). Call money weighted average 5.58% (range 4.30–5.80%), down from 5.68%. No new VRR announced in RBI's 29–30 Oct releases to replace the ₹1,50,007 cr maturing 30 Oct. Net durable surplus still shown as ₹10,14,401 cr as on 30 Sep.",st:"v",src:"mmo29"});
+add("2026-10-30","ops","Forex reserves $719.75 bn (23 Oct), down $1.27 bn on week",{detail:"RBI WSS extract of 30 Oct (PR 1413): total reserves US$719,748 mn as on 23 Oct 2026, down US$1,269 mn on the week; FCA US$593,205 mn (+1,358 mn), gold US$103,150 mn (−2,650 mn), SDR US$18,605 mn (+27 mn), IMF reserve position US$4,787 mn (−4 mn). Third weekly fall in a row, driven by gold valuation. Liquidity table (19–25 Oct): net absorption ₹72,437 cr (21 Oct) to ₹1,71,858 cr (25 Oct) a day, on the WSS definition, which differs from the 'incl. outstanding ops' figure in the daily Money Market Operations releases. Confirmed against the RBI release on 1 Nov (previously from a PTI report).",st:"v",src:"wss30"});
+add("2026-10-30","tbill","T-bill auction notice for 4 Nov issued",{detail:"RBI PR 1417 (30 Oct): 4 Nov auction of 91D ₹8,000 cr, 182D ₹8,000 cr, 364D ₹7,000 cr (total ₹23,000 cr), matching the Q3 calendar; settlement Thu 5 Nov.",st:"v",src:"tb4"});
+add("2026-11-02","fiscal","SGB 2021-22 Series VII premature redemption: ₹14,167/unit",{detail:"RBI, 30 Oct (PR 1419): premature redemption due 2 Nov 2026 at ₹14,167 per unit, the simple average of IBJA 999 gold closing prices for 28, 29 and 30 Oct. Amount to be redeemed not published.",st:"v",src:"sgb2"});
+add("2026-10-30","gsec","FRB 2034 coupon reset: 7.26% (30 Oct 2026 – 29 Apr 2027)",{detail:"RBI, 29 Oct (PR 1405): GoI Floating Rate Bond 2034 carries 7.26% a year for the half-year 30 Oct 2026 to 29 Apr 2027. Base rate is the average of the weighted average yields of the last three 182-day T-bill auctions, plus a fixed spread of 0.98%.",st:"v",src:"frb34"});
+add("2026-10-30","fiscal","SGB 2019-20 Series VI premature redemption: ₹14,213/unit",{detail:"RBI, 29 Oct (PR 1406): premature redemption due 30 Oct 2026 at ₹14,213 per unit, the simple average of IBJA 999 gold closing prices for 27, 28 and 29 Oct. Amount to be redeemed not published.",st:"v",src:"sgb30"});
+add("2026-10-27","fiscal","RBI's 36th Conference of State Finance Secretaries",{detail:"Held in Mumbai on 27 Oct (PR 1395). The Governor released a compendium on cash and debt management for state governments; states' market borrowings were reviewed. No borrowing figures in the release.",st:"v",src:"csfs"});
+add("2026-10-28","data","IIP Sep 2026: 6.7% (Aug revised 7.8%)",{detail:"NSO, quick estimate: IIP growth 6.7% y/y in September 2026 (index 124.3), down from 7.8% in August (revised from 8.0%). Manufacturing 7.6% (Aug 8.6%), mining −6.2% (third straight contraction), electricity and gas 11.2% (Aug 12.3%). Use-based: capital goods 10.4% (Aug 15.9%), consumer durables 6.0% (10.5%), consumer non-durables 1.4%. April–September 6.8% vs 4.4% a year earlier. Figures read from a media report of the MoSPI release; confirm against the MoSPI PDF.",st:"s",src:"iipSep"});
+add("2026-10-23","ops","Forex reserves $721.02 bn (16 Oct), down $5.01 bn on week",{detail:"RBI WSS extract of 23 Oct (PR 1377): total reserves US$721,016 mn as on 16 Oct 2026, down US$5,011 mn on the week (FCA −5,758 mn, gold +706 mn, SDR +30 mn, IMF reserve position +11 mn); up US$29,909 mn since end-March (FCA +39,565 mn, gold −9,595 mn). Second weekly fall in a row. Liquidity table: net absorption ₹1.34–2.44 lakh cr a day on 12–18 Oct, narrowing through the week.",st:"v",src:"wss23"});
+add("2026-10-23","tbill","T-bill auction notice for 28 Oct issued",{detail:"RBI notice of 23 Oct (PR 1379) for the 28 Oct 91/182/364-day auction: 91D ₹8,000 cr, 182D ₹8,000 cr, 364D ₹7,000 cr (total ₹23,000 cr), matching the Q3 calendar; price-based, multiple-price; settlement Thu 29 Oct. Comes after the 21 Oct auction in which no bids were accepted.",st:"v",src:"tb28"});
+add("2026-10-19","fiscal","SGB 2020-21 Series VII premature redemption: ₹14,614/unit",{detail:"RBI, 16 Oct: premature redemption window due 19 Oct 2026 (brought forward because 20 Oct is a holiday); price ₹14,614 per unit, the simple average of IBJA 999 gold closing prices for 14–16 Oct. Amount to be redeemed not published.",st:"v",src:"sgb19"});
+add("2026-10-22","fiscal","Reserve Money for fortnight to 15 Oct released",{detail:"RBI released Reserve Money data for the fortnight ended 15 Oct 2026 on 22 Oct, earlier than the 30 Oct WSS this page expected. It carries Net RBI Credit to the Centre for the Govt cash tab; the PDF/Excel file could not be read (bot check). The same figure was read on 1 Nov from the 30 Oct WSS (₹15,53,569 cr as on 15 Oct) and added to the Govt cash table.",st:"v",src:"rm15"});
+add("2026-10-23","fiscal","SGB 2018-19 Series-II final redemption: ₹14,425/unit",{detail:"RBI, 22 Oct: final redemption of SGB 2018-19 Series-II (issued 23 Oct 2018) on 23 Oct 2026 at ₹14,425 per unit, the simple average of IBJA 999 gold closing prices for 19, 21 and 22 Oct. Amount outstanding not published in the release.",st:"v",src:"sgb23"});
+add("2026-10-28","fiscal","SGB 2020-21 Series I premature redemption: ₹14,159/unit",{detail:"RBI, 27 Oct: premature redemption of SGB 2020-21 Series I due 28 Oct 2026 at ₹14,159 per unit, the simple average of IBJA 999 gold closing prices for 23, 26 and 27 Oct (PR 1394). Amount to be redeemed not published.",st:"v",src:"sgb28"});
+add("2026-10-20","fiscal","Holiday (per RBI): no market operations expected",{detail:"RBI's SGB release of 16 Oct describes 20 Oct 2026 as a holiday; the holiday is not named there. This is why the week's SDL auction moved to Mon 19 Oct. RBI Mumbai holiday list not read.",st:"v",src:"sgb19"});
+add("2026-09-03","mpc","GoI buyback auction, up to ₹30,000 cr",{amt:30000,detail:"Buyback of 7.33% GS 2026, 5.74% GS 2026, 8.15% GS 2026 and 8.24% GS 2027 (multiple-price). Accepted amount not read; the drop in these four securities between end-July (CCIL) and 28 Sep (RBI) implies about ₹5,712 cr (Computed). Auction date taken as the Thursday after the 28 Aug announcement (UNVERIFIED — CHECK MANUALLY).",st:"s",src:"bb2"});
+
+add("2026-10-30","fiscal","WSS: Centre's net RBI credit ₹15,53,569 cr (15 Oct), down ₹49,146 cr",{detail:"RBI WSS of 30 Oct, Reserve Money table: Net RBI Credit to the Centre ₹15,53,569 cr as on 15 Oct 2026, fortnight change −₹49,146 cr (from ₹16,02,714 cr on 30 Sep); Net RBI Credit to Government ₹15,81,500 cr (−₹32,652 cr). Added to the Govt cash tab.",st:"v",src:"wss1030"});
+add("2026-11-13","fiscal","WSS: Centre's net RBI credit as on 31 Oct expected",{detail:"Fortnightly print for the Govt cash tab; date estimated from the FY27 pattern.",st:"u",src:"none"});
+
+EV.sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:CATS.findIndex(c=>c.k===a.cat)-CATS.findIndex(c=>c.k===b.cat));
+
+/* ---------- state ---------- */
+let on={};
+try{const s=JSON.parse(localStorage.getItem("fy27cal.filters")||"null");if(s)on=s;}catch(e){}
+CATS.forEach(c=>{if(!(c.k in on))on[c.k]=c.k!=="other";});
+let cur={y:+TODAY.slice(0,4),m:+TODAY.slice(5,7)-1}, sel=TODAY;
+const vis=e=>on[e.cat];
+const col=k=>`var(${CATS.find(c=>c.k===k).c})`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const badge=e=>{const lab={v:"Verified",s:"Secondary",u:"UNVERIFIED — CHECK MANUALLY"}[e.st];const sr=SRC[e.src||"none"];return `<span class="badge ${e.st}">${lab}</span>${sr&&sr.u?`<a class="src" href="${sr.u}" target="_blank" rel="noopener">source</a>`:""}`;};
+const evHTML=(e,withDate)=>`<div class="ev"><div class="cbar" style="background:${col(e.cat)}"></div><div><div class="t">${esc(e.title)}${e.amt!=null?` <span class="amt">· ${inr(e.amt)}</span>`:""}</div>${withDate?`<div class="meta">${fmtD(e.date)}</div>`:""}${e.detail?`<div class="d">${esc(e.detail)}</div>`:""}${badge(e)}</div></div>`;
+
+/* ---------- facts ---------- */
+const remMat=MAT.filter(m=>m.d>=TODAY).reduce((a,b)=>a+b.amt,0);
+const h2Mat=MAT.filter(m=>m.d>="2026-10-01").reduce((a,b)=>a+b.amt,0);
+const origMat=MAT.reduce((a,b)=>a+b.amt,0);
+const facts=[
+  ["FY27 dated borrowing",inr(1599506),"vs ₹17,20,000 cr BE · Secondary"],
+  ["H2 calendar (Oct–Mar)",inr(786000),"23 weeks · Verified RBI"],
+  ["Redemptions still due",inr(Math.round(remMat*100)/100),"3 securities · Verified RBI 28 Sep"],
+  ["FY27 dated redemptions, best estimate",inr(Math.round(origMat*100)/100),"10 securities · partly UNVERIFIED"],
+  ["Switched out of FY27",inr(114286),"Finance Ministry · Secondary"],
+  ["Net borrowing so far",inr(Math.round(12727131.919-12183645)),"change in dated stock · Computed"],
+  ["FY27 net (projected)",inr(Math.round(12727131.919-12183645+786000-h2Mat)),"vs ₹11,70,000 cr Budget · Computed"],
+  ["OMO sales, FY27 to date",inr(125000),"Sep ₹1,00,000 cr Secondary · 13 Oct ₹25,000 cr Verified RBI"],
+  ["FX swap facility inflows","$143.60 bn","as of 18 Sep · Secondary"],
+  ["Repo / SDF / MSF","5.50 / 5.25 / 5.75%","+25 bps on 7 Oct policy · Verified RBI"],
+  ["G-Sec raised FY27 to date",inr(982506),"61.4% of ₹15,99,506 cr plan · H1 Secondary, Oct Verified"],
+  ["SDL raised FY27 to date",inr(593524),"63.5% of Q1–Q3 calendars · Verified RBI results"],
+  ["Next MPC decision","Wed 7 Oct 2026","meeting 5–7 Oct · Secondary"]
+];
+document.getElementById("facts").innerHTML=facts.map(f=>`<div><dt>${f[0]}</dt><dd>${f[1]}<small>${f[2]}</small></dd></div>`).join("");
+
+/* ---------- market strip: m = "y" (yield, change in bp), "px" (price, change abs + %) ---------- */
+const MKT=[
+  {n:"Brent crude",u:"$/bbl",m:"px",dp:2,pts:[],st:"s",src:"mBrent",note:"Not captured yet: filled by your first update run (media or vendor source, Secondary)."},
+  {n:"Gold, XAU/USD spot",u:"$/oz",m:"px",dp:2,pts:[],st:"s",src:"mGold",note:"Not captured yet: filled by your first update run (media or vendor source, Secondary)."},
+  {n:"USD/INR",u:"₹ per $",m:"px",dp:2,pts:[],st:"s",src:"mInr",note:"Not captured yet: filled by your first update run (media or vendor source, Secondary)."},
+  {n:"India 10Y (6.94% GS 2036)",u:"%",m:"y",dp:4,pts:[],st:"s",src:"mIn10",note:"Not captured yet: filled by your first update run (media or vendor source, Secondary)."},
+  {n:"India 5Y",u:"%",m:"y",dp:2,pts:[],st:"s",src:"mIn5",note:"Not captured yet: filled by your first update run (media or vendor source, Secondary)."},
+  {n:"UST 2Y",u:"%",m:"y",dp:2,pts:[["2026-10-23",4.69],["2026-10-26",4.68],["2026-10-27",4.70],["2026-10-28",4.67],["2026-10-29",4.61],["2026-10-30",4.56]],st:"v",src:"mUst",note:"Par yield, US Treasury, every business day 23–30 Oct. 2 Nov not yet published when updated."},
+  {n:"UST 5Y",u:"%",m:"y",dp:2,pts:[["2026-10-23",4.82],["2026-10-26",4.84],["2026-10-27",4.82],["2026-10-28",4.85],["2026-10-29",4.78],["2026-10-30",4.71]],st:"v",src:"mUst",note:"Par yield, US Treasury, every business day 23–30 Oct. 2 Nov not yet published when updated."},
+  {n:"UST 10Y",u:"%",m:"y",dp:2,pts:[["2026-10-23",5.00],["2026-10-26",5.00],["2026-10-27",4.99],["2026-10-28",5.05],["2026-10-29",4.98],["2026-10-30",4.94]],st:"v",src:"mUst",note:"Par yield, US Treasury, every business day 23–30 Oct. 2 Nov not yet published when updated."},
+  {n:"Baltic Dry Index",u:"pts",m:"px",dp:0,pts:[],st:"s",src:"mBdi",note:"Not captured yet: filled by your first update run (media or vendor source, Secondary)."}
+];
+(function(){
+  const dm=s=>{const d=D(s);return `${d.getUTCDate()} ${MON[d.getUTCMonth()]}`;};
+  const nf=(v,dp)=>v.toLocaleString("en-IN",{minimumFractionDigits:dp,maximumFractionDigits:dp});
+  const spark=pts=>{if(pts.length<3)return"";const vs=pts.map(p=>p[1]),lo=Math.min(...vs),hi=Math.max(...vs),r=hi-lo||1;
+    const xy=pts.map((p,i)=>`${(i/(pts.length-1)*96+2).toFixed(1)},${(22-(p[1]-lo)/r*18).toFixed(1)}`);const up=vs[vs.length-1]>=vs[vs.length-2];
+    return `<svg viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="${xy.join(" ")}" fill="none" stroke="var(--muted)" stroke-width="1.4" vector-effect="non-scaling-stroke"/><circle cx="${xy[xy.length-1].split(",")[0]}" cy="${xy[xy.length-1].split(",")[1]}" r="2.2" fill="var(${up?"--gsec":"--mpc"})"/></svg>`;};
+  document.getElementById("mkt").innerHTML=MKT.map(o=>{
+    if(!o.pts.length)return `<div class="mk" title="${esc(o.note)}"><div class="nm">${esc(o.n)}</div><div class="val">—</div><div class="dt">Filled on your first update run</div></div>`;
+    const n=o.pts.length,[d1,v1]=o.pts[n-1];let ch="";
+    if(n>=2){const [d0,v0]=o.pts[n-2],dv=v1-v0,cls=Math.abs(dv)<1e-9?"ch flat":dv>0?"ch up":"ch dn",ar=Math.abs(dv)<1e-9?"▬":dv>0?"▲":"▼";
+      ch=o.m==="y"?`<span class="${cls}">${ar} ${dv>0?"+":""}${(dv*100).toFixed(1)} bp</span>`:`<span class="${cls}">${ar} ${dv>0?"+":""}${nf(dv,o.dp)} (${dv>0?"+":""}${(dv/v0*100).toFixed(2)}%)</span>`;
+      ch+=`<div class="dt">${dm(d1)} vs ${dm(d0)}</div>`;}
+    else if(o.rep!=null){ch=`<span class="ch ${o.rep>0?"up":"dn"}">${o.rep>0?"▲ +":"▼ "}${o.rep.toFixed(2)}% on day (as reported)</span><div class="dt">${dm(d1)}</div>`;}
+    else ch=`<span class="ch flat">change n/a</span><div class="dt">${dm(d1)} · previous close not captured</div>`;
+    const hist=n>=3?`<div class="hist">${o.pts.map(p=>`${dm(p[0])} ${nf(p[1],o.dp)}`).join(" · ")}</div>`:"";
+    return `<div class="mk" title="${esc(o.note)}"><div class="nm">${esc(o.n)}</div><div class="val">${nf(v1,o.dp)}<small> ${esc(o.u)}</small></div>${ch}${spark(o.pts)}${hist}${badge(o)}</div>`;}).join("");
+})();
+
+/* ---------- filters ---------- */
+function drawFilters(){
+  const cnt={};EV.forEach(e=>cnt[e.cat]=(cnt[e.cat]||0)+1);
+  document.getElementById("filters").innerHTML=CATS.map(c=>`<button class="chip" aria-pressed="${on[c.k]}" data-k="${c.k}"><span class="sw" style="background:var(${c.c})"></span>${c.n} <b>${cnt[c.k]||0}</b></button>`).join("");
+}
+document.getElementById("filters").addEventListener("click",ev=>{const b=ev.target.closest(".chip");if(!b)return;on[b.dataset.k]=!on[b.dataset.k];try{localStorage.setItem("fy27cal.filters",JSON.stringify(on));}catch(e){}drawFilters();drawCal();drawAgenda();});
+
+/* ---------- calendar ---------- */
+document.getElementById("dow").innerHTML=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(d=>`<div class="dow">${d}</div>`).join("");
+function drawCal(){
+  const {y,m}=cur;
+  document.getElementById("calTitle").textContent=`${MONL[m]} ${y}`;
+  const first=S(new Date(Date.UTC(y,m,1)));const lead=(dow(first)+6)%7;
+  const days=new Date(Date.UTC(y,m+1,0)).getUTCDate();
+  let h="";for(let i=0;i<lead;i++)h+=`<div class="day out" aria-hidden="true"></div>`;
+  for(let d=1;d<=days;d++){
+    const s=`${y}-${pad(m+1)}-${pad(d)}`;const es=EV.filter(e=>e.date===s&&vis(e));
+    const cls=["day"];if(s===TODAY)cls.push("today");if(s===sel)cls.push("sel");if(dow(s)===0||dow(s)===6)cls.push("wknd");
+    const cats=[...new Set(es.map(e=>e.cat))];
+    h+=`<button class="${cls.join(" ")}" data-d="${s}" aria-label="${fmtD(s)}, ${es.length} events"><span class="n">${d}</span><span class="dots">${cats.map(c=>`<span style="background:${col(c)}"></span>`).join("")}</span>${es.slice(0,3).map(e=>`<span class="mini" style="border-color:${col(e.cat)}">${esc(e.title.split(" · ")[0])}</span>`).join("")}${es.length>3?`<span class="mini" style="border-color:transparent">+${es.length-3} more</span>`:""}</button>`;
+  }
+  document.getElementById("grid").innerHTML=h;
+  drawDetail();
+}
+function drawDetail(){
+  const es=EV.filter(e=>e.date===sel&&vis(e));
+  document.getElementById("detail").innerHTML=`<h4>${fmtD(sel)}${sel===TODAY?" · today":""}</h4>`+(es.length?es.map(e=>evHTML(e,false)).join(""):`<p class="note">Nothing scheduled for the selected types. Pick another day, or switch on more types above.</p>`);
+}
+document.getElementById("grid").addEventListener("click",ev=>{const b=ev.target.closest(".day");if(!b||!b.dataset.d)return;sel=b.dataset.d;drawCal();});
+const clampMonth=()=>{if(cur.y<2026||(cur.y===2026&&cur.m<3))cur={y:2026,m:3};if(cur.y>2027||(cur.y===2027&&cur.m>2))cur={y:2027,m:2};};
+document.getElementById("prev").onclick=()=>{cur.m--;if(cur.m<0){cur.m=11;cur.y--;}clampMonth();drawCal();};
+document.getElementById("next").onclick=()=>{cur.m++;if(cur.m>11){cur.m=0;cur.y++;}clampMonth();drawCal();};
+document.getElementById("todayBtn").onclick=()=>{cur={y:+TODAY.slice(0,4),m:+TODAY.slice(5,7)-1};sel=TODAY;drawCal();};
+function goTo(s){const d=D(s);cur={y:d.getUTCFullYear(),m:d.getUTCMonth()};sel=s;showTab("cal");drawCal();document.getElementById("p-cal").scrollIntoView({block:"start"});}
+
+/* ---------- agenda ---------- */
+function drawAgenda(){
+  const past=document.getElementById("showPast").checked;
+  const list=EV.filter(e=>vis(e)&&(past||e.date>=TODAY));
+  let h="",lastM="",lastD="";
+  list.forEach(e=>{const mk=e.date.slice(0,7);if(mk!==lastM){const d=D(e.date);h+=`<h4>${MONL[d.getUTCMonth()]} ${d.getUTCFullYear()}</h4>`;lastM=mk;lastD="";}
+    if(e.date!==lastD){h+=`<div class="dt">${fmtD(e.date)}${e.date===TODAY?" · today":""}</div>`;lastD=e.date;}
+    h+=evHTML(e,false);});
+  document.getElementById("agenda").innerHTML=h||`<p class="note">No events for the selected types.</p>`;
+}
+document.getElementById("showPast").addEventListener("change",drawAgenda);
+
+/* ---------- maturities table ---------- */
+(function(){
+  const rows=[...MAT,SPECIAL].sort((a,b)=>a.d<b.d?-1:1);
+  let h=`<thead><tr><th>Security</th><th>ISIN</th><th>Maturity</th><th class="num">Amount</th><th>Status</th></tr></thead><tbody>`;
+  rows.forEach(r=>{h+=`<tr class="${r.d<TODAY?"past":""}"><td>${r.sec}</td><td>${r.isin}</td><td>${fmtD(r.d)}</td><td class="num">${inr(r.amt)}</td><td>${badge(r)}</td></tr>`;});
+  h+=`<tr class="tot"><td colspan="3">Still due (from today), dated securities</td><td class="num">${inr(Math.round(remMat*1000)/1000)}</td><td><span class="badge v">Verified</span></td></tr>`;
+  h+=`<tr class="tot"><td colspan="3">Full year, dated securities (best estimate, mixed sources)</td><td class="num">${inr(Math.round(origMat*1000)/1000)}</td><td><span class="badge u">UNVERIFIED — CHECK MANUALLY</span></td></tr></tbody>`;
+  document.getElementById("matTbl").innerHTML=h;
+  document.getElementById("matNote").innerHTML=`The four remaining securities fell by about ₹${(36472.60+42878.08+27653.24+58956.54-remMat).toFixed(0)} crore between end-July (CCIL) and 28 September (RBI), consistent with the ₹30,000 crore buyback announced on 28 August (the 28 July buyback settled before the end-July CCIL figures). The Finance Ministry says ₹1,14,286 crore of FY27 maturities were switched out during the year; confirm redeemed amounts for April–September maturities against RBI's redemption notices before using them in cash-flow work.`;
+})();
+
+/* ---------- G-Sec table & mix ---------- */
+function drawGsec(half){
+  const rows=GW.filter(w=>half==="ALL"||w.half===half);
+  let h=`<thead><tr><th>Wk</th><th>Week</th><th>Allocation</th><th class="num">Total</th></tr></thead><tbody>`;
+  rows.forEach(w=>{h+=`<tr class="${w.fri<TODAY?"past":""}"><td>${w.half} ${w.wk}</td><td><a href="#" data-go="${w.fri}">${fmtD(w.mon).slice(4)} – ${fmtD(w.fri).slice(4,10)}</a>${HOLS[w.fri]?` <span class="badge u">Fri holiday</span>`:""}</td><td>${w.alloc.map(x=>`<span class="ten ${x.t==="G30"?"g":""}">${tenLabel(x.t)} ${x.a/1000}k</span>`).join("")}</td><td class="num">${inr(w.tot)}</td></tr>`;});
+  const tot=rows.reduce((a,b)=>a+b.tot,0);
+  h+=`<tr class="tot"><td colspan="3">${rows.length} weeks</td><td class="num">${inr(tot)}</td></tr></tbody>`;
+  document.getElementById("gsecTbl").innerHTML=h;
+  document.querySelectorAll("[data-half]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.half===half));
+}
+(function(){
+  const order=["3","5","7","10","15","30","G30","40","50"];
+  const agg=(half)=>{const r={};GW.filter(w=>w.half===half).forEach(w=>w.alloc.forEach(x=>r[x.t]=(r[x.t]||0)+x.a));return r;};
+  const a1=agg("H1"),a2=agg("H2"),n1=GW.filter(w=>w.half==="H1").length,n2=GW.filter(w=>w.half==="H2").length;
+  const t1=Object.values(a1).reduce((a,b)=>a+b,0),t2=Object.values(a2).reduce((a,b)=>a+b,0);
+  let h=`<thead><tr><th>Tenor</th><th class="num">H1</th><th class="num">H2</th><th class="num">H2 share</th><th class="num">Weekly run-rate change</th></tr></thead><tbody>`;
+  order.forEach(t=>{const x=a1[t]||0,y=a2[t]||0;const ch=((y/n2)/(x/n1)-1)*100;
+    h+=`<tr><td>${tenLabel(t)}</td><td class="num">${inr(x)}</td><td class="num">${inr(y)}</td><td class="num">${(y/t2*100).toFixed(1)}%</td><td class="num ${ch>=0?"up":"dn"}">${ch>=0?"+":""}${ch.toFixed(1)}%</td></tr>`;});
+  const chT=((t2/n2)/(t1/n1)-1)*100;
+  h+=`<tr class="tot"><td>Total</td><td class="num">${inr(t1)}</td><td class="num">${inr(t2)}</td><td class="num">100%</td><td class="num">${chT>=0?"+":""}${chT.toFixed(1)}%</td></tr></tbody>`;
+  document.getElementById("mixTbl").innerHTML=h;
+})();
+document.querySelectorAll("[data-half]").forEach(b=>b.addEventListener("click",()=>drawGsec(b.dataset.half)));
+document.getElementById("gsecTbl").addEventListener("click",ev=>{const a=ev.target.closest("[data-go]");if(!a)return;ev.preventDefault();goTo(a.dataset.go);});
+
+/* ---------- T-bill tables ---------- */
+(function(){
+  let h="";
+  TB.forEach(q=>{const tot=q.mix.reduce((a,b)=>a+b,0);
+    h+=`<div class="q"><h4>${q.q}</h4><p class="note" style="margin:0 0 8px">${q.rows.length} auctions · ${inr(tot*q.rows.length)} total · 91D ${inr(q.mix[0])}, 182D ${inr(q.mix[1])}, 364D ${inr(q.mix[2])} each week. ${badge(q)}</p><div class="tbl"><table><thead><tr><th>Auction</th><th>Issue</th><th class="num">91D</th><th class="num">182D</th><th class="num">364D</th><th class="num">Total</th></tr></thead><tbody>`+
+    q.rows.map(([a,i])=>`<tr class="${a<TODAY?"past":""}"><td>${fmtD(a)}</td><td>${fmtD(i)}</td><td class="num">${inr(q.mix[0])}</td><td class="num">${inr(q.mix[1])}</td><td class="num">${inr(q.mix[2])}</td><td class="num">${inr(tot)}</td></tr>`).join("")+`</tbody></table></div></div>`;});
+  h+=`<div class="q"><h4>Q4 (Jan–Mar 2027)</h4><p class="note" style="margin:0">Calendar not yet released. <span class="badge u">UNVERIFIED — CHECK MANUALLY</span></p></div>`;
+  document.getElementById("tbWrap").innerHTML=h;
+})();
+
+/* ---------- SDL cards ---------- */
+const Q4ROWS=[["Andhra Pradesh", 26200, 17500, 46072.03, 50800, 1.103, 0, 28889], ["Arunachal Pradesh", 190, 0, 0, 600, 1.022, 1, 194], ["Assam", 10309.45, 10800, 8304.03, 9621.57, 1.159, 0, 11945], ["Bihar", 12100, 12121, 30000, 25675.21, 0.856, 0, 10356], ["Chhattisgarh", 14000, 24000, 4470, 10890.03, 1.022, 1, 14311], ["Delhi", 1000, 0, 0, 3700, 1.022, 1, 1022], ["Goa", 300, 800, 900, 550, 1.022, 1, 307], ["Gujarat", 19630, 16000, 21500, 22500, 1.047, 0, 20543], ["Haryana", 22000, 21000, 21500, 8500, 1.022, 1, 22489], ["Himachal Pradesh", 1595, 2300, 6419.05, 4800, 0.748, 0, 1193], ["Jammu and Kashmir", 6062, 3917, 5805.02, 6900, 1.189, 0, 7205], ["Jharkhand", 4000, 8000, 2000, 2100, 1.05, 0, 4200], ["Karnataka", 94401.32, 93000, 0, 2000, 1.022, 1, 96499], ["Kerala", 13450, 11910, 28988.01, 27600, 0.952, 0, 12806], ["Madhya Pradesh", 38050.2, 48600, 33876.51, 40400, 1.193, 0, 45377], ["Maharashtra", 38080, 51000, 75000, 68050, 0.907, 0, 34551], ["Manipur", 350, 350, 1350, 1380.09, 1.022, 1, 358], ["Meghalaya", 253, 0, 1650, 2259, 1.022, 1, 259], ["Mizoram", 350, 290, 585, 500, 1.022, 1, 358], ["Nagaland", 1700.01, 1200, 400, 0, 1.022, 1, 1738], ["Odisha", 3000, 8000, 6000, 9000, 1.5, 0, 4500], ["Puducherry", 300, 670, 550, 0, 1.022, 1, 307], ["Punjab", 12598, 12006, 27232.56, 24934.31, 0.916, 0, 11535], ["Rajasthan", 17730, 24469, 43100, 42600, 0.988, 0, 17524], ["Sikkim", 1150, 1288, 500, 1000, 1.022, 1, 1176], ["Tamil Nadu", 73930.94, 51000, 51300, 40500, 0.789, 0, 58367], ["Telangana", 17540, 10600, 49900, 48900, 0.98, 0, 17188], ["Tripura", 3830, 500, 800, 0, 1.022, 1, 3915], ["Uttar Pradesh", 33240.05, 16000, 12000, 33500, 1.022, 1, 33979], ["Uttarakhand", 8209.05, 6500, 4500, 3479.28, 0.773, 0, 6347], ["West Bengal", 47527.16, 46000, 25500, 28800, 1.129, 0, 53678]];
+const SDLX=(function(){
+  const B=(st,src)=>badge({st,src});
+  const pc=(a,b)=>(a/b*100).toFixed(1)+"%";
+  let h=`<div class="q"><h4>FY27 borrowing to date vs indicative calendars (G-Sec to 30 Oct, SDL to 27 Oct 2026)</h4><div class="tbl"><table><thead><tr><th>Item</th><th class="num">Calendar</th><th class="num">Raised</th><th class="num">Completed</th><th>Status</th></tr></thead><tbody>
+  <tr><td>G-Sec H1 (Apr–Sep)</td><td class="num">${inr(820000)}</td><td class="num">${inr(813506)}</td><td class="num">${pc(813506,820000)}</td><td>${B("s","mofH2b")}</td></tr>
+  <tr><td>G-Sec H2 to date (1, 9, 16, 23, 30 Oct; ₹33,000 + ₹36,000 + ₹34,000 + ₹33,000 + ₹33,000 cr)</td><td class="num">${inr(786000)}</td><td class="num">${inr(169000)}</td><td class="num">${pc(169000,786000)}</td><td>${B("v","gs30f")}</td></tr>
+  <tr class="tot"><td>G-Sec FY27 to date</td><td class="num">${inr(1599506)}</td><td class="num">${inr(982506)}</td><td class="num">${pc(982506,1599506)}</td><td><span class="badge c">Computed</span></td></tr>
+  <tr><td>SDL Q1 (13 auctions)</td><td class="num">${inr(254509)}</td><td class="num">${inr(217477)}</td><td class="num">${pc(217477,254509)}</td><td>${B("v","sdlRes")}</td></tr>
+  <tr><td>SDL Q2 (13 auctions)</td><td class="num">${inr(318816)}</td><td class="num">${inr(280462)}</td><td class="num">${pc(280462,318816)}</td><td>${B("v","sdlRes")}</td></tr>
+  <tr><td>SDL Q3 to date (6, 13, 19, 27 Oct; ₹23,600 + ₹30,005 + ₹23,016 + ₹18,963 cr)</td><td class="num">${inr(360820)}</td><td class="num">${inr(95585)}</td><td class="num">${pc(95585,360820)}</td><td>${B("v","sdl27f")}</td></tr>
+  <tr class="tot"><td>SDL FY27 to date vs Q1–Q3 calendars</td><td class="num">${inr(934145)}</td><td class="num">${inr(593524)}</td><td class="num">${pc(593524,934145)}</td><td><span class="badge c">Computed</span></td></tr>
+  <tr><td>Memo: SDL raised, same period FY26 (3 Apr–7 Oct 2025, 28 auctions)</td><td class="num"></td><td class="num">${inr(510202)}</td><td class="num">FY27 to 6 Oct +2.2%</td><td>${B("v","sdlRes")}</td></tr>
+  </tbody></table></div><p class="note">G-Sec H1 actual is the Finance Ministry figure (Secondary); H2 auctions are RBI cut-off releases. SDL figures sum state-wise accepted amounts from each RBI result release; Q1 calendar total is Secondary. Q1 and Q2 SDL realisation was 85% and 88% of the indicative calendars.</p></div>`;
+  const base=Q4ROWS.reduce((a,r)=>a+r[1],0), cal=Q4ROWS.reduce((a,r)=>a+r[2],0), adj=Q4ROWS.reduce((a,r)=>a+r[7],0);
+  h+=`<div class="q" style="border:2px solid var(--bad)"><h4>Q4 FY27 (Jan–Mar 2027) SDL borrowing — ESTIMATE — not an RBI release</h4>
+  <p class="note" style="margin:0 0 8px"><span class="badge u">ESTIMATE — not an RBI release</span> RBI has not released the Q4 FY27 indicative calendar (checked 20 Oct 2026; usually out in late December or the first days of January). When it is out, this block is replaced by the official state-wise numbers.</p>
+  <div class="tbl"><table><thead><tr><th>Method</th><th class="num">Q4 FY27 estimate</th><th>Basis</th></tr></thead><tbody>
+  <tr class="tot"><td>Base (Q4 FY26 actual)</td><td class="num">${inr(Math.round(base))}</td><td style="white-space:normal;min-width:240px">Sum of state-wise amounts accepted in the 13 SDL auctions of 6 Jan–27 Mar 2026; ties to RBI Bulletin monthly totals (Jan ₹1,08,215, Feb ₹1,71,220, Mar ₹2,43,641 cr)</td></tr>
+  <tr class="tot"><td>Adjusted</td><td class="num">${inr(adj)}</td><td style="white-space:normal;min-width:240px">Base × state ratio of FY27 SDL raised (7 Apr–6 Oct 2026) to FY26 same period (3 Apr–7 Oct 2025). All-state ratio ${(521539.486/510202.207).toFixed(3)} used for 14 states with a FY26 base under ₹2,000 cr, no FY27 issuance, or a ratio outside 0.5–2.0×</td></tr>
+  <tr><td>Cross-check: Q4 share of full year, FY24–FY26</td><td class="num">${inr(603221)}</td><td style="white-space:normal;min-width:240px">Q4 shares 40.0% (FY24), 42.8% (FY25), 41.0% (FY26); average 41.3%. Applied to FY27 Apr–Dec = Q1+Q2 actual ₹4,97,939 cr + Q3 calendar ₹3,60,820 cr. Range ₹5,73,030–6,42,046 cr on min/max share</td></tr>
+  <tr><td>Gap: cross-check minus adjusted</td><td class="num">${inr(603221-adj)}</td><td style="white-space:normal;min-width:240px">+15.3%. The share method assumes Q3 is raised in full, which Q1–Q2 realisation (85–88%) suggests it may not be; at 87% Q3 realisation the cross-check falls to ≈₹5,70,300 cr</td></tr>
+  <tr><td>Memo: Q4 FY26 indicative calendar</td><td class="num">${inr(cal)}</td><td style="white-space:normal;min-width:240px">RBI PR 2025-2026/1839, 2 Jan 2026; actual/indicative realisation ${(base/cal*100).toFixed(1)}%</td></tr>
+  <tr><td>Spread over Q4 auction Tuesdays (total only)</td><td class="num">≈${inr(40240)} each</td><td style="white-space:normal;min-width:240px">Adjusted estimate ÷ 13 Tuesdays (5 Jan – 30 Mar 2027); shown on the calendar as estimate slots, with no state-by-date split</td></tr>
+  </tbody></table></div>
+  <h4 style="margin:12px 0 6px">State-wise (₹ crore)</h4>
+  <div class="tbl"><table><thead><tr><th>State/UT</th><th class="num">Q4 FY26 indicative</th><th class="num">Base (Q4 FY26 actual)</th><th class="num">Realisation</th><th class="num">FY26 Apr–Oct</th><th class="num">FY27 Apr–Oct</th><th class="num">Ratio used</th><th class="num">Adjusted</th><th>Note</th></tr></thead><tbody>`+
+  Q4ROWS.map(r=>{const real=r[2]?r[1]/r[2]:null;let note=r[6]?"All-state ratio (unstable or small base)":"";if(!r[2])note+=(note?"; ":"")+"Not in Q4 FY26 calendar as summed";if(real&&real>2)note+=(note?"; ":"")+"Calendar figure UNVERIFIED — CHECK MANUALLY";
+    return `<tr><td>${r[0]}</td><td class="num">${r[2]?inr(r[2]):"—"}</td><td class="num">${inr(r[1])}</td><td class="num">${real?(real*100).toFixed(0)+"%":"—"}</td><td class="num">${inr(r[3])}</td><td class="num">${inr(r[4])}</td><td class="num">${r[5].toFixed(3)}×</td><td class="num">${inr(r[7])}</td><td style="white-space:normal;min-width:180px">${note}</td></tr>`;}).join("")+
+  `<tr class="tot"><td>Total</td><td class="num">${inr(cal)}</td><td class="num">${inr(Math.round(base))}</td><td class="num">${(base/cal*100).toFixed(0)}%</td><td class="num">${inr(510202)}</td><td class="num">${inr(521539)}</td><td class="num"></td><td class="num">${inr(adj)}</td><td></td></tr></tbody></table></div>
+  <p class="note">Sources: RBI SDL auction result releases for every auction in both windows and in Jan–Mar 2026 (state rows tie to each release's total); RBI PR 2025-2026/1839 (Q4 FY26 calendar, state totals summed from its weekly schedule); RBI Annual Report 2025-26 Table VII.4 and RBI Bulletin state-borrowing tables (full-year and Q4 totals; FY24 and FY25 Q4 derived as full year minus Apr–Dec). State amounts were read through a page-summarising fetch and checked against RBI totals, not row by row. Karnataka, the largest Q4 borrower, raised ₹2,000 cr in FY27 to date against nil a year earlier, so its estimate rests on the all-state ratio. FY24 Q4 indicative calendar not found. Not a forecast of any state's actual programme.</p></div>`;
+  return h;
+})();
+(function(){
+  document.getElementById("sdlWrap").innerHTML=SDLQ.map(q=>`<div class="q"><h4>${q.q}</h4><p style="margin:0 0 4px;font-weight:700">${q.amt?inr(q.amt):"Calendar pending"}</p><p class="note" style="margin:0 0 6px">${q.note}</p>${badge(q)}</div>`).join("")+
+  `<p class="note">Week-wise, state-wise amounts sit in RBI's annex PDFs, which could not be read this session (bot check). Pull them from the RBI press release links, or from the Friday press releases announcing each Tuesday's auction.</p>`+SDLX;
+})();
+
+
+/* ---------- borrowing math ---------- */
+(function(){
+  const BE_G=1720000,BE_N=1170000,G_MAR=1609000,G_REV=1599506,H1_DONE=813506,H2=786000;
+  const OS_MAR=11786281+397364, OS_SEP=12727131.919; // end-Mar-26 fixed + FRB (CCIL); 28-Sep-26 RBI list incl. FRBs
+  const NET_TD=OS_SEP-OS_MAR, H1_OUT=H1_DONE-NET_TD, H2_RED=h2Mat, H2_NET=H2-H2_RED, FY_NET=NET_TD+H2_NET, IMPL_RED=G_REV-BE_N;
+  const B=(st)=>`<span class="badge ${st}">${{v:"Verified",s:"Secondary",u:"UNVERIFIED — CHECK MANUALLY",c:"Computed"}[st]||"Computed"}</span>`;
+  const rows=[
+    ["Proposed for the year",null,null,"h"],
+    ["Gross dated borrowing, Budget Estimate",BE_G,"s","Budget speech, 1 Feb 2026"],
+    ["Gross after switches done before FY start",G_MAR,"s","Finance Ministry, 27 Mar 2026 (₹16.09 lakh cr)"],
+    ["Gross, current plan (H1 raised + H2 calendar)",G_REV,"s","Finance Ministry, 25 Sep 2026"],
+    ["Net dated borrowing (kept at Budget level)",BE_N,"s","₹11.7 lakh cr; Finance Ministry says unchanged"],
+    ["Implied repayments + buybacks for the year",IMPL_RED,"c","Gross current plan − net"],
+    ["Done so far (1 Apr – 28 Sep 2026)",null,null,"h"],
+    ["Gross raised in H1",H1_DONE,"s","₹6,494 cr short of the ₹8,20,000 cr H1 calendar"],
+    ["Outstanding dated stock, end-Mar 2026",OS_MAR,"s","CCIL: fixed-coupon ₹1,17,86,281 cr + FRBs ₹3,97,364 cr"],
+    ["Outstanding dated stock, 28 Sep 2026",OS_SEP,"v","RBI list (excludes special securities, includes FRBs)"],
+    ["Net borrowing so far (change in stock)",NET_TD,"c","Includes all redemptions, the July buyback and switch effects"],
+    ["Implied H1 redemptions, buyback & switch effect",H1_OUT,"c","Gross raised − net so far"],
+    ["Rest of the year (Oct 2026 – Mar 2027)",null,null,"h"],
+    ["Gross still to be raised (H2 calendar)",H2,"v","RBI, 25 Sep 2026"],
+    ["Redemptions due Oct 2026 – Mar 2027",H2_RED,"v","7.33% 2026 (30 Oct), 5.74% 2026, 8.15% 2026, 8.24% 2027"],
+    ["H2 net borrowing",H2_NET,"c","Before any further switches or buybacks"],
+    ["Full year",null,null,"h"],
+    ["Projected FY27 net dated borrowing",FY_NET,"c","Net so far + H2 net"],
+    ["Difference from the ₹11.7 lakh cr Budget net",FY_NET-BE_N,"c","Within rounding of the Budget figure"]
+  ];
+  let h=`<thead><tr><th>Item</th><th class="num">₹ crore</th><th>Status</th><th>Basis</th></tr></thead><tbody>`;
+  rows.forEach(r=>{ if(r[3]==="h"){h+=`<tr class="tot"><td colspan="4">${r[0]}</td></tr>`;return;}
+    h+=`<tr><td>${r[0]}</td><td class="num">${inr(Math.round(r[1]))}</td><td>${B(r[2])}</td><td style="white-space:normal;min-width:220px">${r[3]}</td></tr>`;});
+  document.getElementById("mathTbl").innerHTML=h+"</tbody>";
+  document.getElementById("mathNote").innerHTML=`Two things to check before relying on this. First, the 28 Sep stock may or may not include the ₹34,000 crore 10Y auctioned on 25 Sep, depending on settlement; if it doesn't, net so far is understated by that amount. Second, H1 redemptions measured this way (${inr(Math.round(H1_OUT))}) sit below the sum of the six April–September maturities on the older RBI snapshot, which fits with those securities having been partly switched out before maturity. Any H2 switch of the four remaining securities lowers H2 redemptions and raises H2 net by the same amount.`;
+  const oth=[["T-bills outstanding",741709,802916],["SDLs outstanding",7236970,7454203],["Special securities",6200,6200],["UDAY bonds",66481,60164]];
+  let t=`<thead><tr><th>Instrument</th><th class="num">End-Mar 2026</th><th class="num">End-Jul 2026</th><th class="num">Net change</th><th>Status</th></tr></thead><tbody>`;
+  oth.forEach(o=>t+=`<tr><td>${o[0]}</td><td class="num">${inr(o[1])}</td><td class="num">${inr(o[2])}</td><td class="num">${inr(o[2]-o[1])}</td><td><span class="badge s">Secondary</span><a class="src" href="${SRC.ccil.u}" target="_blank" rel="noopener">CCIL</a></td></tr>`);
+  t+=`<tr class="tot"><td>SDL gross indicated, Q1 + Q2 + Q3 calendars</td><td></td><td></td><td class="num">${inr(254509+318816+360820)}</td><td><span class="badge s">Secondary</span></td></tr>`;
+  document.getElementById("otherTbl").innerHTML=t+"</tbody>";
+})();
+
+/* ---------- Govt cash reconciliation (fortnightly, RBI WSS Reserve Money table) ---------- */
+/* CASH: d = 'as on' date; nrcc = Net RBI Credit to Centre (₹ cr) as printed in that issue; chg = fortnight variation as printed (first row vs 30 Mar provisional) */
+const CASH=[
+  {d:"2026-04-15",nrcc:2339423,chg:320856,src:"wss0501"},
+  {d:"2026-04-30",nrcc:2218585,chg:-120838,src:"wss0515"},
+  {d:"2026-05-15",nrcc:2223087,chg:4502,src:"wss0529"},
+  {d:"2026-05-31",nrcc:1919745,chg:-303342,src:"wss0612"},
+  {d:"2026-06-15",nrcc:1920078,chg:333,src:"wss0626"},
+  {d:"2026-06-30",nrcc:1904184,chg:-15894,src:"wss0710"},
+  {d:"2026-07-15",nrcc:1863537,chg:-40646,src:"wss0724"},
+  {d:"2026-07-31",nrcc:1855642,chg:-7895,src:"wss0807"},
+  {d:"2026-08-15",nrcc:1866577,chg:10935,src:"wss0904"},
+  {d:"2026-08-31",nrcc:1883566,chg:16989,src:"wss0918"},
+  {d:"2026-09-15",nrcc:1855188,chg:-28378,src:"wss1002"},
+  {d:"2026-09-30",nrcc:1602714,chg:-252474,src:"wss1016"},
+  {d:"2026-10-15",nrcc:1553569,chg:-49146,src:"wss1030"}
+];
+(function(){
+  const prevWork=s=>{let x=s;while(dow(x)===0||dow(x)===6)x=addDays(x,-1);return x;};
+  const inP=(x,a,b)=>x>a&&x<=b;
+  const B=st=>`<span class="badge ${st}">${{v:"Verified",s:"Secondary",u:"UNVERIFIED — CHECK MANUALLY",c:"Computed"}[st]}</span>`;
+  let prev="2026-03-31",T={chg:0,omo:0,c:0,g:0,r:0,res:0};
+  const rows=CASH.map(x=>{
+    const omo=OMO.filter(o=>inP(o.settle,prev,x.d)).reduce((a,o)=>a+o.acc,0);
+    const g=GW.filter(w=>w.fri<=DATA_AS_OF&&inP(addDays(w.fri,3),prev,x.d)).reduce((a,w)=>a+w.tot,0);
+    const r=MAT.filter(m=>inP(prevWork(m.d),prev,x.d)).reduce((a,m)=>a+m.amt,0);
+    const c=-x.chg-omo, res=c-(g-r);
+    const row={x,from:addDays(prev,1),omo,g,r,c,res};
+    T.chg+=x.chg;T.omo+=omo;T.c+=c;T.g+=g;T.r+=r;T.res+=res;prev=x.d;return row;});
+  const f=n=>inr(Math.round(n));
+  const sg=n=>(n>0?"+":"")+f(n);
+  let h=`<thead><tr><th>Fortnight</th><th class="num">Net RBI credit to Centre, end</th><th class="num">Change</th><th class="num">OMO sales settled</th><th class="num">Centre's cash surplus, change</th><th class="num">Dated G-Sec gross (notified)</th><th class="num">Redemptions</th><th class="num">Residual: T-bills net + receipts − spending</th><th>Source</th></tr></thead><tbody>`;
+  rows.forEach(o=>{h+=`<tr><td>${fmtD(o.from).slice(4,10)} – ${fmtD(o.x.d).slice(4,10)}</td><td class="num">${f(o.x.nrcc)}</td><td class="num">${sg(o.x.chg)}</td><td class="num">${o.omo?f(o.omo):"—"}</td><td class="num sp ${o.c>=0?"up":"dn"}">${sg(o.c)}</td><td class="num">${o.g?f(o.g):"—"}</td><td class="num">${o.r?f(o.r):"—"}</td><td class="num">${sg(o.res)}</td><td>${badge({st:"v",src:o.x.src})}</td></tr>`;});
+  h+=`<tr class="tot"><td>1 Apr – 15 Oct 2026</td><td class="num">${f(CASH[CASH.length-1].nrcc)}</td><td class="num">${sg(T.chg)}</td><td class="num">${f(T.omo)}</td><td class="num">${sg(T.c)}</td><td class="num">${f(T.g)}</td><td class="num">${f(T.r)}</td><td class="num">${sg(T.res)}</td><td>${B("c")}</td></tr>`;
+  h+=`<tr><td colspan="9" style="white-space:normal" class="note">Status by column: net RBI credit and its change ${B("v")} RBI WSS, as first printed (later revisions not applied); OMO sales ${B("s")} for September, ${B("v")} from October; G-Sec gross is the notified calendar amount settled the Monday after each Friday auction, not the accepted amount (H1 accepted ₹6,494 cr less in total) ${B("c")}; redemptions use the Maturities tab amounts, April–September partly ${B("u")}; cash surplus change and residual ${B("c")}.</td></tr></tbody>`;
+  document.getElementById("cashTbl").innerHTML=h;
+  document.getElementById("cashNote").innerHTML=`Cash surplus change = −(change in net RBI credit to Centre) − OMO sales settled. Residual = cash surplus change − (dated gross − redemptions); it holds net T-bill issuance, tax and other receipts, spending including interest, and anything not captured: the 28 Jul and Sep buybacks (accepted amounts not read; Sep implied about ₹5,712 cr), switch cash differences, and redemptions or coupons on paper RBI itself holds, which move the Centre's cash without moving this measure. The first row is measured from RBI's provisional 30 Mar figure (₹20,18,567 cr); the final 31 Mar figure is ₹20,46,623 cr. Central Government deposits with RBI are ₹100 cr in every week checked ${badge({st:"v",src:"wssT1"})}. The 15 Oct row is from the 30 Oct WSS (as first printed); the 31 Oct print is due with the 13 Nov WSS.`;
+  const big=rows.slice().sort((a,b)=>Math.abs(b.c)-Math.abs(a.c)).slice(0,3);
+  const lab=o=>`${fmtD(o.from).slice(4,10).trim()}–${fmtD(o.x.d).slice(4,10).trim()}`;
+  const O=[
+    ["Net build-up, 30 Mar – 15 Oct",`After removing ${f(T.omo)} of OMO sales (September programme and 13 Oct), the Centre's cash surplus with RBI rose by about ${f(T.c)} between 30 Mar and 15 Oct (Computed). Dated borrowing net of redemptions brought in ${f(T.g-T.r)} on calendar amounts, more than that build-up, so the residual of ${sg(T.res)} is net outgo after T-bills, taxes and other receipts.`],
+    ["Three fortnights do most of the work",big.map(o=>`${lab(o)}: ${sg(o.c)}`).join("; ")+`. The 1–15 Apr drawdown is consistent with the usual start-of-year spending surge. The 16–31 May build-up is timed like RBI's annual surplus transfer, but that amount was not read this session (UNVERIFIED — CHECK MANUALLY). The 16–30 Sep build-up spans the 15 Sep advance-tax and 20 Sep GST dates.`],
+    ["Why this matters for liquidity",`A rising government cash surplus drains rupee liquidity from banks just as OMO sales do. The 16–30 Sep build-up came on top of ₹1 lakh cr of OMO sales, which is consistent with RBI moving from absorbing liquidity to injecting it (VRR auctions from 19 Oct). In the 1–15 Oct print, net RBI credit to the Centre fell ${f(-rows[rows.length-1].x.chg)}; after the ${f(rows[rows.length-1].omo)} OMO sale of 13 Oct that leaves a cash build-up of ${sg(rows[rows.length-1].c)}, below the ${f(rows[rows.length-1].g)} of dated G-Secs settled from the 1 and 9 Oct auctions, so the residual is ${sg(rows[rows.length-1].res)} (Computed).`]
+  ];
+  document.getElementById("cashObs").innerHTML=O.map(([a,b])=>`<div class="q"><h4>${esc(a)}</h4><p>${esc(b)}</p><span class="badge c">Computed</span></div>`).join("");
+})();
+
+/* ---------- RBI ops panel ---------- */
+(function(){
+  const omoTot=OMO.reduce((a,b)=>a+b.acc,0);
+  let h=`<div class="q"><h4>Outright OMOs</h4><p class="note" style="margin:0 0 8px">OMO sales in FY27: ${inr(omoTot)} across three September tranches and a ₹25,000 cr sale on 13 Oct (RBI result, bid-cover 2.22×). System liquidity surplus was about ₹6.05 lakh cr on 20 Sep (RBI data via Business Standard), so the September ₹1 lakh cr drained roughly a sixth of it. OMO purchases in FY27: none found in this session's searches. <span class="badge u">UNVERIFIED — CHECK MANUALLY</span> against RBI's money market operations releases.</p><div class="tbl"><table><thead><tr><th>Date</th><th class="num">Notified</th><th class="num">Bids</th><th class="num">Accepted</th><th class="num">Bid-cover</th><th>Securities</th><th>Status</th></tr></thead><tbody>`+
+  OMO.map(o=>`<tr><td>${fmtD(o.d)}</td><td class="num">${inr(o.notified)}</td><td class="num">${inr(o.bid)}</td><td class="num">${inr(o.acc)}</td><td class="num">${(o.bid/o.notified).toFixed(2)}×</td><td style="white-space:normal;min-width:260px">${o.split}</td><td>${badge(o)}</td></tr>`).join("")+
+  `<tr class="tot"><td>Total</td><td class="num">${inr(OMO.reduce((a,b)=>a+b.notified,0))}</td><td class="num">${inr(OMO.reduce((a,b)=>a+b.bid,0))}</td><td class="num">${inr(omoTot)}</td><td></td><td></td><td></td></tr></tbody></table></div></div>`;
+  h+=`<div class="q"><h4>USD/INR swap auctions</h4><div class="tbl"><table><thead><tr><th>Date</th><th>Type</th><th class="num">Notified</th><th class="num">Bids</th><th class="num">Accepted</th><th class="num">Cut-off premium</th><th>Tenor</th><th>Status</th></tr></thead><tbody><tr><td>${fmtD("2026-05-26")}</td><td>Buy/sell (injects ₹)</td><td class="num">$5.00 bn</td><td class="num">$9.80 bn</td><td class="num">$5.00 bn</td><td class="num">910 paise</td><td>3 years</td><td>${badge({st:"v",src:"swapMay"})}</td></tr></tbody></table></div><p class="note">Sell/buy swaps in FY27: none found this session. <span class="badge u">UNVERIFIED — CHECK MANUALLY</span></p></div>`;
+  h+=`<div class="q"><h4>Special USD-INR swap facility (FCNR(B), ECB, OFCB)</h4><p class="note" style="margin:0 0 8px">Announced 5 June, operational 8 June 2026. Fresh FCNR(B) deposits of 3–5 years could be swapped with RBI; the FCNR(B) window closed on 31 August (advanced from 30 September), with swaps executable until 11 September. The ECB and OFCB windows stay open until 31 December 2026.</p><div class="tbl"><table><thead><tr><th>Data as of</th><th class="num">FCNR(B)</th><th class="num">OFCB</th><th class="num">ECB</th><th class="num">Total</th><th>Status</th></tr></thead><tbody>
+  <tr><td>14 Aug 2026</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">$56.85 bn</td><td>${badge({st:"s",src:"fxBS"})}</td></tr>
+  <tr><td>21 Aug 2026</td><td class="num">$65.40 bn</td><td class="num">—</td><td class="num">—</td><td class="num">$73.00 bn</td><td>${badge({st:"s",src:"fx21"})}</td></tr>
+  <tr><td>31 Aug 2026</td><td class="num">$127.23 bn</td><td class="num">$5.26 bn</td><td class="num">$3.89 bn</td><td class="num">$136.38 bn</td><td>${badge({st:"s",src:"fx31"})}</td></tr>
+  <tr><td>18 Sep 2026</td><td class="num">$132.98 bn</td><td class="num">$5.32 bn</td><td class="num">$5.30 bn</td><td class="num">$143.60 bn</td><td>${badge({st:"s",src:"fx18"})}</td></tr>
+  </tbody></table></div><p class="note">The FCNR(B) figure nearly doubled in the last ten days of August ($65.4 bn on 21 Aug to $127.2 bn on 31 Aug), so treat intra-window figures as provisional; RBI itself labels these subject to reconciliation. The rupee equivalent injected into the system is not published in these releases; converting at a spot rate is an estimate, not data.</p></div>`;
+  document.getElementById("opsWrap").innerHTML=h;
+})();
+
+/* ---------- tax table ---------- */
+(function(){
+  const rows=TAX.slice().sort((a,b)=>a.d<b.d?-1:1);
+  document.getElementById("taxTbl").innerHTML=`<thead><tr><th>Date</th><th>Payment</th><th>Detail</th><th>Status</th></tr></thead><tbody>`+rows.map(r=>`<tr class="${r.d<TODAY?"past":""}"><td>${fmtD(r.d)}</td><td>${r.title}</td><td style="white-space:normal;min-width:240px">${r.detail}</td><td>${badge(r)}</td></tr>`).join("")+`</tbody>`;
+})();
+
+/* ---------- sources ---------- */
+document.getElementById("srcList").innerHTML=Object.entries(SRC).filter(([k,v])=>v.u).map(([k,v])=>`<li><a href="${v.u}" target="_blank" rel="noopener">${v.t}</a></li>`).join("");
+
+/* ---------- year strip ---------- */
+(function(){
+  const svg=document.getElementById("strip");
+  const weeks=[];let mon="2026-03-30";
+  while(mon<=FY_END){weeks.push(mon);mon=addDays(mon,7);}
+  const bw=11,gap=3,L=6,top=30,up=64,down=92,W=L+weeks.length*(bw+gap)+6,H=top+up+down+24;
+  const zero=top+up;const sU=up/62000,sD=down/90000;
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);svg.setAttribute("width",W);svg.setAttribute("height",H);
+  let g=`<line x1="${L}" x2="${W-4}" y1="${zero}" y2="${zero}" stroke="var(--rule)" stroke-width="1"/>`;
+  let lastM=-1;
+  weeks.forEach((wk,i)=>{
+    const x=L+i*(bw+gap), end=addDays(wk,6);
+    const inW=e=>e.date>=wk&&e.date<=end;
+    const gs=EV.filter(e=>e.cat==="gsec"&&inW(e)&&e.title.startsWith("G-Sec auction")).reduce((a,b)=>a+b.amt,0);
+    const tb=EV.filter(e=>e.cat==="tbill"&&inW(e)&&e.amt).reduce((a,b)=>a+b.amt,0);
+    const mt=EV.filter(e=>e.cat==="mat"&&inW(e)).reduce((a,b)=>a+b.amt,0);
+    const mpc=EV.some(e=>e.cat==="mpc"&&inW(e)&&e.title.startsWith("MPC decision"));
+    const gdp=EV.some(e=>e.cat==="data"&&inW(e)&&e.title.startsWith("GDP"));
+    const atx=EV.some(e=>e.cat==="tax"&&inW(e)&&e.title.startsWith("Advance tax"));
+    const omo=EV.filter(e=>e.cat==="ops"&&inW(e)&&e.title.startsWith("OMO sale tranche")).reduce((a,b)=>a+b.amt,0);
+    const hG=gs*sU,hT=tb*sU,hM=mt*sD;
+    const target=gs?EV.find(e=>e.cat==="gsec"&&inW(e)).date:(EV.find(e=>inW(e)&&e.cat!=="other"&&e.cat!=="sdl")||{date:wk}).date;
+    const lab=`Week of ${fmtD(wk)}: G-Sec ${inr(gs)||"nil"}, T-bills ${inr(tb)||"nil"}, redemptions ${inr(mt)||"nil"}`;
+    g+=`<g class="bar" tabindex="0" role="button" data-go="${target<FY_START?FY_START:target}" aria-label="${lab}"><title>${lab}</title><rect x="${x-1}" y="${top-24}" width="${bw+2}" height="${up+down+26}" fill="transparent"/>`;
+    if(hG)g+=`<rect x="${x}" y="${zero-hG}" width="${bw}" height="${hG}" fill="var(--gsec)" rx="1.5"/>`;
+    if(hT)g+=`<rect x="${x}" y="${zero-hG-hT-1}" width="${bw}" height="${hT}" fill="var(--tbill)" rx="1.5"/>`;
+    if(hM)g+=`<rect x="${x}" y="${zero+1}" width="${bw}" height="${hM}" fill="var(--mat)" rx="1.5"/>`;
+    if(mpc)g+=`<rect x="${x+bw/2-4}" y="${top-20}" width="8" height="8" fill="var(--mpc)" transform="rotate(45 ${x+bw/2} ${top-16})"/>`;
+    if(gdp)g+=`<circle cx="${x+bw/2}" cy="${top-4}" r="3.5" fill="var(--data)"/>`;
+    if(atx)g+=`<path d="M${x+1} ${top-9} L${x+bw-1} ${top-9} L${x+bw/2} ${top-1} Z" fill="var(--tax)"/>`;
+    if(omo){const hO=omo*sD;g+=`<rect x="${x+2}" y="${zero+1+hM}" width="${bw-4}" height="${hO}" fill="var(--ops)" rx="1"/>`;}
+    g+=`</g>`;
+    const dm=D(addDays(wk,3));if(dm.getUTCMonth()!==lastM){lastM=dm.getUTCMonth();g+=`<text x="${x}" y="${H-6}" font-size="11" fill="var(--muted)">${MON[lastM]}${lastM===0?" ’27":""}</text>`;}
+    if(TODAY>=wk&&TODAY<=end){const tx=x+((dow(TODAY)+6)%7)/7*bw;g+=`<line x1="${tx}" x2="${tx}" y1="${top-24}" y2="${zero+down}" stroke="var(--ink)" stroke-dasharray="2 2"/><text x="${tx+3}" y="${zero+down-2}" font-size="10.5" fill="var(--ink)">today</text>`;}
+  });
+  svg.innerHTML=g;
+  const act=ev=>{const b=ev.target.closest(".bar");if(b)goTo(b.dataset.go);};
+  svg.addEventListener("click",act);
+  svg.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();act(ev);}});
+  const sc=svg.parentElement;const ti=weeks.findIndex(w=>TODAY>=w&&TODAY<=addDays(w,6));sc.scrollLeft=Math.max(0,L+ti*(bw+gap)-sc.clientWidth/2);
+})();
+
+/* ---------- G-Sec & SDL curves (RBI primary-market prints only) ---------- */
+(function(){
+  const NOW=2026.79; /* 16 Oct 2026 as a decimal year */
+  const yrs=y=>Math.max(0.05,y+0.5-NOW); /* maturity year only: placed at mid-year */
+  /* k: gs = G-Sec 9–16 Oct (builds the curve), bm = 10Y benchmark auction cut-off, gsO = G-Sec 1 Oct, sdl = SDL 13 Oct, sdlO = SDL 6 Oct */
+  const P=[
+    {k:"gs",lab:"91-day T-bill (matures 14 Jan 2027)",x:0.247,y:5.7281,d:"2026-10-14",how:"T-bill auction cut-off",st:"v",src:"tb14r"},
+    {k:"gs",lab:"182-day T-bill (matures 15 Apr 2027)",x:0.496,y:6.2896,d:"2026-10-14",how:"T-bill auction cut-off",st:"v",src:"tb14r"},
+    {k:"gs",lab:"364-day T-bill (matures 14 Oct 2027)",x:0.995,y:6.4891,d:"2026-10-14",how:"T-bill auction cut-off",st:"v",src:"tb14r"},
+    {k:"gs",lab:"7.88% GS 2030",yr:2030,y:7.1428,d:"2026-10-13",how:"OMO sale cut-off",st:"v",src:"omo13r"},
+    {k:"gs",lab:"6.10% GS 2031",yr:2031,y:7.2236,d:"2026-10-13",how:"OMO sale cut-off",st:"v",src:"omo13r"},
+    {k:"gs",lab:"7.95% GS 2032",yr:2032,y:7.2659,d:"2026-10-13",how:"OMO sale cut-off",st:"v",src:"omo13r"},
+    {k:"gs",lab:"7.26% GS 2033",yr:2033,y:7.3413,d:"2026-10-13",how:"OMO sale cut-off",st:"v",src:"omo13r"},
+    {k:"gs",lab:"7.18% GS 2033",yr:2033,y:7.3947,d:"2026-10-13",how:"OMO sale cut-off",st:"v",src:"omo13r"},
+    {k:"bm",lab:"6.94% GS 2036 (10Y benchmark, matures 11 May 2036)",x:9.57,y:7.3955,d:"2026-10-16",how:"Dated G-Sec auction cut-off (re-issue)",st:"v",src:"gs16r"},
+    {k:"gs",lab:"7.06% GS 2041",yr:2041,y:7.4898,d:"2026-10-09",how:"Dated G-Sec auction cut-off",st:"v",src:"gs9r"},
+    {k:"gs",lab:"7.43% GS 2076",yr:2076,y:7.8015,d:"2026-10-09",how:"Dated G-Sec auction cut-off",st:"v",src:"gs9r"},
+    {k:"gsO",lab:"6.20% GS 2029",yr:2029,y:6.7688,d:"2026-10-01",how:"Dated G-Sec auction cut-off",st:"v",src:"gs1r"},
+    {k:"gsO",lab:"6.57% GS 2033",yr:2033,y:7.1680,d:"2026-10-01",how:"Dated G-Sec auction cut-off",st:"v",src:"gs1r"},
+    {k:"gsO",lab:"7.63% GS 2056",yr:2056,y:7.6895,d:"2026-10-01",how:"Dated G-Sec auction cut-off",st:"v",src:"gs1r"},
+    {k:"gsO",lab:"7.50% GOI SGrB 2056",yr:2056,y:7.6539,d:"2026-10-01",how:"Sovereign green bond auction cut-off",st:"v",src:"gs1r"}
+  ];
+  const S13=[["West Bengal",2031,7.8967],["Keralam",2032,7.92],["Odisha",2032,7.852],["Uttarakhand",2034,8.00],["Gujarat",2035,7.96],["Chhattisgarh",2035,8.0285],["Karnataka",2036,8.03],["Assam",2037,8.10],["Uttar Pradesh",2038,8.11],["Haryana",2040,8.1501],["Odisha",2040,8.169],["Mizoram",2041,8.14],["Chhattisgarh",2042,8.1493],["West Bengal",2044,8.15],["Bihar",2044,8.1475],["Uttarakhand",2044,8.1887],["Tamil Nadu",2046,8.14],["Uttar Pradesh",2046,8.1591],["Haryana",2048,8.17],["Tamil Nadu",2051,8.21],["Bihar",2051,8.1585],["West Bengal",2052,8.16],["Uttarakhand",2052,8.15],["Tamil Nadu",2056,8.18]];
+  const S6=[["Maharashtra",2031,7.6297],["Goa",2034,7.85],["Karnataka",2034,7.86],["Andhra Pradesh",2035,7.9197],["West Bengal",2035,7.9278],["Madhya Pradesh",2036,7.91],["Maharashtra",2039,7.9788],["Meghalaya",2039,8.08],["West Bengal",2041,7.99],["Rajasthan",2041,8.0079],["Punjab",2041,8.0183],["Andhra Pradesh",2042,7.9971],["Maharashtra",2043,8.01],["Madhya Pradesh",2044,7.9877],["Himachal Pradesh",2044,8.0061],["Telangana",2046,8.03],["West Bengal",2047,8.0671],["Rajasthan",2048,8.0157],["Maharashtra",2049,7.9921],["Jammu & Kashmir",2051,8.01],["Telangana",2052,8.02],["Madhya Pradesh",2056,7.9794]];
+  S13.forEach(([st,yr,y])=>P.push({k:"sdl",lab:`${st} SGS ${yr}`,yr,y,d:"2026-10-13",how:"SDL auction cut-off",st:"v",src:"sdl13f"}));
+  S6.forEach(([st,yr,y])=>P.push({k:"sdlO",lab:`${st} SGS ${yr}`,yr,y,d:"2026-10-06",how:"SDL auction cut-off",st:"v",src:"sdl6f"}));
+  P.forEach(p=>{if(p.x==null)p.x=yrs(p.yr);});
+
+  /* G-Sec reference curve: 9–14 Oct points plus the benchmark; same-maturity points averaged; straight lines between */
+  const ref=(()=>{const m={};P.filter(p=>p.k==="gs"||p.k==="bm").forEach(p=>{const k=p.x.toFixed(3);(m[k]=m[k]||[]).push(p.y);});
+    return Object.keys(m).map(Number).sort((a,b)=>a-b).map(x=>[x,m[x.toFixed(3)].reduce((a,b)=>a+b,0)/m[x.toFixed(3)].length]);})();
+  const gAt=x=>{for(let i=0;i<ref.length-1;i++){const [a,ya]=ref[i],[b,yb]=ref[i+1];if(x>=a&&x<=b)return ya+(yb-ya)*(x-a)/(b-a);}return null;};
+  const sdlAvg=k=>{const m={};P.filter(p=>p.k===k).forEach(p=>(m[p.yr]=m[p.yr]||[]).push(p.y));return Object.keys(m).map(Number).sort((a,b)=>a-b).map(yr=>[yrs(yr),m[yr].reduce((a,b)=>a+b,0)/m[yr].length]);};
+
+  const W=720,H=380,L=46,R=14,T=16,B=40,YMIN=5.5,YMAX=8.4;
+  const sx=x=>L+(Math.sqrt(x)-Math.sqrt(0.2))/(Math.sqrt(52)-Math.sqrt(0.2))*(W-L-R);
+  const sy=y=>T+(YMAX-y)/(YMAX-YMIN)*(H-T-B);
+  const svg=document.getElementById("cvSvg");
+  const show={gs:true,bm:true,gsO:true,sdl:true,sdlO:false};
+  const path=pts=>pts.map((p,i)=>`${i?"L":"M"}${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join("");
+  const COL={gs:"var(--gsec)",bm:"var(--gsec)",gsO:"var(--gsec)",sdl:"var(--sdl)",sdlO:"var(--sdl)"};
+  function draw(){
+    let g="";
+    for(let y=5.5;y<=8.41;y+=0.25){const Y=sy(y);g+=`<line x1="${L}" x2="${W-R}" y1="${Y}" y2="${Y}" stroke="var(--rule)" stroke-width="${Math.abs(y%0.5)<0.01?1:0.5}"/>`;if(Math.abs(y%0.5)<0.01)g+=`<text x="${L-6}" y="${Y+4}" text-anchor="end">${y.toFixed(1)}%</text>`;}
+    [[0.25,"3M"],[1,"1Y"],[3,"3Y"],[5,"5Y"],[10,"10Y"],[15,"15Y"],[20,"20Y"],[30,"30Y"],[50,"50Y"]].forEach(([x,l])=>{const X=sx(x);g+=`<line x1="${X}" x2="${X}" y1="${T}" y2="${H-B}" stroke="var(--rule)" stroke-width="0.5"/><text x="${X}" y="${H-B+16}" text-anchor="middle">${l}</text>`;});
+    g+=`<text x="${(L+W-R)/2}" y="${H-6}" text-anchor="middle">Residual maturity (square-root scale)</text>`;
+    if(show.gs)g+=`<path d="${path(ref)}" fill="none" stroke="var(--gsec)" stroke-width="2"/>`;
+    if(show.sdl)g+=`<path d="${path(sdlAvg("sdl"))}" fill="none" stroke="var(--sdl)" stroke-width="2"/>`;
+    if(show.sdlO)g+=`<path d="${path(sdlAvg("sdlO"))}" fill="none" stroke="var(--sdl)" stroke-width="1.2" stroke-dasharray="4 3"/>`;
+    P.forEach((p,i)=>{if(!show[p.k])return;const X=sx(p.x),Y=sy(p.y),c=COL[p.k],hollow=p.k==="gsO"||p.k==="sdlO";
+      const mark=p.k==="bm"?`<rect x="${X-5}" y="${Y-5}" width="10" height="10" transform="rotate(45 ${X} ${Y})" fill="var(--card)" stroke="${c}" stroke-width="2"/>`:`<circle cx="${X}" cy="${Y}" r="${hollow?3.6:4}" fill="${hollow?"var(--card)":c}" stroke="${c}" stroke-width="${hollow?1.6:1}"/>`;
+      g+=`<g class="pt" tabindex="0" role="button" data-i="${i}" aria-label="${esc(p.lab)} ${p.y.toFixed(4)}% on ${fmtD(p.d)}">${mark}</g>`;});
+    const bm=P.find(p=>p.k==="bm");if(show.gs)g+=`<text x="${sx(bm.x)+8}" y="${sy(bm.y)+16}" style="fill:var(--gsec);font-weight:700">10Y 7.40%</text>`;
+    svg.innerHTML=g;
+  }
+  const pick=i=>{const p=P[i];const gs=(p.k==="sdl"||p.k==="sdlO")?gAt(p.x):null;
+    document.getElementById("cvPick").innerHTML=`<b>${esc(p.lab)}</b> · ${p.y.toFixed(4)}% · ${esc(p.how)}, ${fmtD(p.d)}${gs!=null?` · ${((p.y-gs)*100).toFixed(0)} bp over the G-Sec auction curve <span class="badge c">Computed</span>`:""} ${badge(p)}`;};
+  const act=ev=>{const t=ev.target.closest(".pt");if(t)pick(+t.dataset.i);};
+  svg.addEventListener("click",act);
+  svg.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();act(ev);}});
+  [["cvGs",["gs","bm"]],["cvGsO",["gsO"]],["cvSdl",["sdl"]],["cvSdlO",["sdlO"]]].forEach(([id,ks])=>{const el=document.getElementById(id);
+    try{const s=JSON.parse(localStorage.getItem("fy27cal.curve."+id)||"null");if(s!==null)el.checked=s;}catch(e){}
+    ks.forEach(k=>show[k]=el.checked);
+    el.addEventListener("change",()=>{ks.forEach(k=>show[k]=el.checked);try{localStorage.setItem("fy27cal.curve."+id,JSON.stringify(el.checked));}catch(e){}draw();});});
+  draw();
+
+  /* spread table */
+  const rows=P.filter(p=>p.k==="sdl").map(p=>({p,g:gAt(p.x)})).map(r=>Object.assign(r,{sp:(r.p.y-r.g)*100}));
+  const longGap=x=>x>yrs(2041)+0.01;
+  document.getElementById("cvTbl").innerHTML=`<tr><th>SDL (13 Oct)</th><th class="num">Cut-off</th><th class="num">G-Sec curve</th><th class="num">Spread</th><th>Read</th></tr>`+
+    rows.map(r=>`<tr><td>${esc(r.p.lab)}</td><td class="num">${r.p.y.toFixed(4)}%</td><td class="num">${r.g.toFixed(2)}%</td><td class="num sp">${r.sp.toFixed(0)} bp</td><td class="note">${longGap(r.p.x)?"G-Sec value interpolated across 2041–2076; spread likely overstated":r.p.x<yrs(2034)?"G-Sec value from 13 Oct OMO cut-offs":"G-Sec value near 10Y benchmark and 2041 auction"}</td></tr>`).join("");
+  const avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
+  const mid=rows.filter(r=>r.p.yr>=2034&&r.p.yr<=2036), lng=rows.filter(r=>r.p.yr>=2046);
+  document.getElementById("cvNote").textContent=`Spread = SDL cut-off minus the G-Sec auction curve at the same maturity, all built from RBI prints (Computed). Not CCIL-published SGS spreads. Dated paper is placed at mid-year of its maturity year because exact maturity dates were not read for every security, so each point can sit up to six months off. Mixed dates: SDLs 13 Oct; G-Sec points 9–16 Oct.`;
+
+  /* observations: each one is a check against the obvious reading */
+  const stale2033=(P.filter(p=>p.k==="gs"&&p.yr===2033).map(p=>p.y).reduce((a,b)=>a+b,0)/2-7.1680)*100;
+  const sdlSlope=(avg(rows.filter(r=>r.p.yr>=2051).map(r=>r.p.y))-avg(rows.filter(r=>r.p.yr>=2044&&r.p.yr<=2046).map(r=>r.p.y)))*100;
+  const gsSlope=(7.8015-7.4898)*100;
+  const OBS=[
+    ["The 1 Oct points are stale",`The same 2033 maturity printed 7.17% at the 1 Oct auction and ${(7.3413).toFixed(2)}–${(7.3947).toFixed(2)}% at the 13 Oct OMO sale, about ${stale2033.toFixed(0)} bp higher. The 10Y re-issue cut off at 7.3955% at RBI's 16 Oct auction. Treat the hollow G-Sec points as two weeks behind a selloff, not as the current curve.`],
+    ["SDL 10Y spread is about 60 bp",`SDL cut-offs maturing 2034–2036 averaged ${avg(mid.map(r=>r.p.y)).toFixed(2)}%, against roughly ${avg(mid.map(r=>r.g)).toFixed(2)}% on the G-Sec curve: ${avg(mid.map(r=>r.sp)).toFixed(0)} bp (Computed, range ${Math.min(...mid.map(r=>r.sp)).toFixed(0)}–${Math.max(...mid.map(r=>r.sp)).toFixed(0)} bp). Issuer mix moves this by several bp week to week, so compare like states before reading a trend.`],
+    ["The long-end spread squeeze may be an artefact",`Computed spreads fall to ${avg(lng.map(r=>r.sp)).toFixed(0)} bp for 2046–2056 SDLs. But there is no fresh G-Sec print between 2041 and 2076, so the curve there is a straight line. That line gives 7.62% at 2056, below the 1 Oct auction's 7.69%, and 2056 has likely sold off since. A truer long G-Sec curve likely sits higher, which would make long SDL spreads narrower than shown. Wait for the next 30Y/40Y auction before trading it.`],
+    ["SDLs are flat past 2044; G-Secs are not",`SDL cut-offs rise only ${sdlSlope.toFixed(0)} bp from 2044–46 to 2051–56, while G-Sec cut-offs rise ${gsSlope.toFixed(0)} bp from 2041 to 2076. Insurance and pension demand for long SDLs is one explanation; thin supply at those maturities is another. The two imply different things if supply shifts in Q4, so this needs Q4 calendar data before it becomes a view.`]
+  ];
+  document.getElementById("cvObs").innerHTML=OBS.map(([h,t])=>`<div class="q"><h4>${esc(h)}</h4><p>${esc(t)}</p><span class="badge c">Computed</span></div>`).join("");
+})();
+
+/* ---------- tabs ---------- */
+function showTab(k){document.querySelectorAll("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===k));document.querySelectorAll("section[role=tabpanel]").forEach(p=>p.classList.toggle("on",p.id==="p-"+k));document.getElementById("filters").style.display=(k==="cal"||k==="agenda")?"flex":"none";}
+document.querySelector("nav.tabs").addEventListener("click",ev=>{const b=ev.target.closest("button");if(b)showTab(b.dataset.tab);});
+
+document.getElementById("asof").textContent=fmtD(DATA_AS_OF).slice(4);
+/* next MPC decision computed from today */
+(function(){const n=MPCM.find(m=>m[1]>=TODAY);const dd=[...document.querySelectorAll("#facts div")].find(x=>x.querySelector("dt").textContent==="Next MPC decision");if(dd)dd.querySelector("dd").innerHTML=n?`${fmtD(n[1])}<small>meeting ${fmtD(n[0]).slice(4,10)} – ${fmtD(n[1]).slice(4,10)} · Secondary</small>`:"None left in FY27";})();
+drawFilters();drawCal();drawAgenda();drawGsec("H2");
+})();
+</script>
+<footer id="mmb-attribution" data-author="Aditya Kumar Singh" style="max-width:1100px;margin:0 auto;padding:14px 16px 28px;font-size:12.5px;color:var(--muted,#5E6A78);border-top:1px solid var(--rule,#D6DCD4)"><b>Morning Market Brief – SLR</b> · created by <b>Aditya Kumar Singh</b> · <a href="https://github.com/YOUR-GITHUB-ACCOUNT/morning-market-brief-slr" style="color:inherit">github.com/YOUR-GITHUB-ACCOUNT/morning-market-brief-slr</a> · Free software under AGPL-3.0 with attribution terms. Figures are tagged Verified / Secondary / UNVERIFIED against their sources; check the source before relying on any figure. Not investment advice.</footer>
+</body>
+</html>
